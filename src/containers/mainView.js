@@ -10,6 +10,11 @@ class MainView extends Component {
             강화로 이동
           </div>
         </Link>
+        <Link to="/youtube_list/youtubeList">
+          <div className="btn">
+            유튜브 리스트로 이동
+          </div>
+        </Link>
       </div>
     );
   }
