@@ -22,7 +22,7 @@ class EnhanceEquipCpt extends Component {
   render () {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div className={[classes.root], 'fade-in'}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
             <EnhanceLuckCard title="스타포스" content="맑습니다"/>

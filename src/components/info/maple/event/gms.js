@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class FooterCpt extends Component {
+class GMSEventCpt extends Component {
   render () {
     return (
       <div>
-        Footer
+        GMS Event
       </div>
     )
   }
 }
 
-export default FooterCpt;
+export default GMSEventCpt;

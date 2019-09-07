@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class FooterCpt extends Component {
+class KMSEventCpt extends Component {
   render () {
     return (
       <div>
-        Footer
+        KMS Event
       </div>
     )
   }
 }
 
-export default FooterCpt;
+export default KMSEventCpt;

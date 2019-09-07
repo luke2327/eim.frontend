@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class FooterCpt extends Component {
+class GMSNoticeCpt extends Component {
   render () {
     return (
       <div>
-        Footer
+        GMS Notice
       </div>
     )
   }
 }
 
-export default FooterCpt;
+export default GMSNoticeCpt;
