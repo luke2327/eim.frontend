@@ -1,21 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import HeaderCpt from 'components/header/header';
+import FooterCpt from 'components/footer/footer';
 
 class MainView extends Component {
   render() {
     return (
-      <div>
-        <Link to="/enhance/enhanceEquip">
-          <div className="btn">
-            강화로 이동
-          </div>
-        </Link>
-        <Link to="/youtube_list/youtubeList">
-          <div className="btn">
-            유튜브 리스트로 이동
-          </div>
-        </Link>
-      </div>
+      <Fragment>
+        <HeaderCpt></HeaderCpt>
+        <FooterCpt></FooterCpt>
+      </Fragment>
     );
   }
 }
