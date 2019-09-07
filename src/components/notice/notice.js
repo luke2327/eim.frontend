@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class FooterCpt extends Component {
+class NoticeCpt extends Component {
   render () {
     return (
       <div>
-        Footer
+        Notice
       </div>
     )
   }
 }
 
-export default FooterCpt;
+export default NoticeCpt;

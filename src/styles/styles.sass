@@ -1,0 +1,79 @@
+$IMAGE_PREFIX: '../static/images/'
+@mixin backgroundImageSet($imageUrl)
+  background-image: url($IMAGE_PREFIX + $imageUrl)
+  background-size: contain
+  background-position: center
+  background-repeat: no-repeat
+
+\:lang(ko)
+  font-family: 'Noto Sans KR', sans-serif
+\:lang(en)
+  font-family: 'Roboto Slab', serif
+\:lang(jp)
+html, body, #root
+  height: 100%
+.flexible
+  display: flex
+  align-items: center
+.center-flex
+  display: flex
+  align-items: center
+  justify-content: center
+.start-flex
+  display: flex
+  align-items: flex-start
+  justify-content: 
+.end-flex
+  display: flex
+  align-items: flex-end
+  justify-content: flex-end
+.cursor-pointer
+  cursor: pointer
+.remove-tmargin
+  margin-top: 0px !important
+.remove-lmargin
+  margin-left: 0px !important
+.remove-rmargin
+  margin-right: 0px !important
+.remove-bmargin
+  margin-bottom: 0px !important
+.font-ko-fixation
+  font-family: 'Noto Sans KR', sans-serif
+  font-weight: 700
+.font-en-fixation
+  font-family: 'Roboto Slab', serif
+.font-rw
+  font-weight: 400
+.font-mw
+  font-weight: 500
+.font-bw
+  font-weight: 700
+.font-bb
+  font-weight: 900
+.fs-italic
+  font-style: italic
+.fs-normal
+  font-style: normal
+.fs-oblique
+  font-style: oblique
+.td-none
+  text-decoration: none
+.td-underline
+  text-decoration: underline
+.td-overline
+  text-decoration: overline
+.td-strike
+  text-decoration: line-through
+.td-blink
+  text-decoration: blink
+.fade-in
+  animation: fadein .5s linear
+
+.linear-spc
+  -webkit-box-decoration-break: clone
+  background-image: linear-gradient(to right,#fce4ed,#ffe8cc)
+@keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1
