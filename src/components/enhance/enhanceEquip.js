@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Paper } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
+import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
     width: '100%',
-    height: '100vh',
+    height: '100%',
     backgroundColor: '#EAEAEA',
   },
   paper: {
@@ -25,17 +26,17 @@ class EnhanceEquipCpt extends Component {
       <div className={[classes.root], 'fade-in'}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="스타포스" content="맑습니다"/>
+            <EnhanceLuckCard title="스타포스" content="17"/>
           </Grid>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="큐브" content="흐림니다"/>
+            <EnhanceLuckCard title="큐브" content="20"/>
           </Grid>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="젬스톤" content="비가오네요"/>
+            <EnhanceLuckCard title="젬스톤" content="19"/>
           </Grid>
           <Grid item xs={5}>
             <Paper className={classes.paper}>
-              스탯입력Form
+              <EnhanceInputCard/>
             </Paper>
           </Grid>
           <Grid item xs={7}>
@@ -50,7 +51,7 @@ class EnhanceEquipCpt extends Component {
           </Grid>
         </Grid>
       </div>
-    )
+    );
   }
 }
 

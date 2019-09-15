@@ -49,9 +49,12 @@ class EnhanceLuckCard extends Component {
         <Typography variant="h4" gutterBottom>
           <small className={classes.small_text}>오늘의 </small>
             {title}
-          <small className={classes.small_text}>날씨는</small>
+          <small className={classes.small_text}>명당은</small>
           </Typography>
-        <Typography variant="h3" className={this.setFontColor()}>{content}</Typography>
+        <Typography variant="h1" className={this.setFontColor()}>
+          {content}
+          <small className={classes.small_text}>채널!!</small>
+        </Typography>
       </Card>
     );
   }
