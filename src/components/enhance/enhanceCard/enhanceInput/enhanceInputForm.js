@@ -66,6 +66,8 @@ class EnhanceInputForm extends Component {
               <MenuItem name={"3성"} value={3}>3성</MenuItem>
               <MenuItem name={"4성"} value={4}>4성</MenuItem>
               <MenuItem name={"5성"} value={5}>5성</MenuItem>
+              <MenuItem name={"6성"} value={6}>6성</MenuItem>
+              <MenuItem name={"7성"} value={7}>7성</MenuItem>
             </Select>
           </FormControl>
           <FormControl className={classes.sfControl}>
@@ -80,8 +82,8 @@ class EnhanceInputForm extends Component {
               <MenuItem name={"3성"} value={3}>도적</MenuItem>
               <MenuItem name={"4성"} value={4}>마법사</MenuItem>
               <MenuItem name={"5성"} value={5}>궁수</MenuItem>
-              <MenuItem name={"5성"} value={5}>데몬어벤져</MenuItem>
-              <MenuItem name={"5성"} value={5}>제논</MenuItem>
+              <MenuItem name={"6성"} value={6}>데몬어벤져</MenuItem>
+              <MenuItem name={"7성"} value={7}>제논</MenuItem>
             </Select>
           </FormControl>
         </div>
