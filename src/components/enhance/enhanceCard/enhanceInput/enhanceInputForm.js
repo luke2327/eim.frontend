@@ -10,7 +10,8 @@ const styles = theme => ({
   },
   sfControl: {
     minWidth: 120,
-    marginBottom: 40
+    marginBottom: 40,
+    marginRight: 40
   },
   addButton:{
     marginTop: 20,
@@ -67,12 +68,30 @@ class EnhanceInputForm extends Component {
               <MenuItem name={"5성"} value={5}>5성</MenuItem>
             </Select>
           </FormControl>
+          <FormControl className={classes.sfControl}>
+            <InputLabel>직업</InputLabel>
+            <Select 
+              name={this.state.getSf.name}
+              value={this.state.getSf.value}
+              onChange={this.handleSfChange}
+            >
+              <MenuItem name={"1성"} value={1}>해적</MenuItem>
+              <MenuItem name={"2성"} value={2}>전사</MenuItem>
+              <MenuItem name={"3성"} value={3}>도적</MenuItem>
+              <MenuItem name={"4성"} value={4}>마법사</MenuItem>
+              <MenuItem name={"5성"} value={5}>궁수</MenuItem>
+              <MenuItem name={"5성"} value={5}>데몬어벤져</MenuItem>
+              <MenuItem name={"5성"} value={5}>제논</MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <Grid container spacing={3}>
-          <Grid item xs={3} className={classes.nameText}>스탯</Grid>
-          <Grid item xs={3} className={classes.nameText}>기본옵션</Grid>
-          <Grid item xs={3} className={classes.nameText}>스타포스</Grid>
-          <Grid item xs={3} className={classes.nameText}>추가옵션</Grid>
+          <Grid item xs={2} className={classes.nameText}>스탯</Grid>
+          <Grid item xs={2} className={classes.nameText}>기본옵션</Grid>
+          <Grid item xs={2} className={classes.nameText}>스타포스</Grid>
+          <Grid item xs={2} className={classes.nameText}>추가옵션</Grid>
+          <Grid item xs={2} className={classes.nameText}>강화수치</Grid>
+          <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
         <EnhanceStatCard statName="마력" opt={0}/>
         <EnhanceStatCard statName="공격력" opt={2}/>

@@ -31,8 +31,8 @@ class EnhanceInputDialog extends Component {
     getTable: {
       page: 0,
       setPage: 0,
-      rowsPerPage: 10,
-      setRowsPerPage: 10
+      rowsPerPage: 300,
+      setRowsPerPage: 300
     }
   }
 
@@ -115,6 +115,10 @@ class EnhanceInputDialog extends Component {
     console.log('value : ', value)
   }
 
+  handleRowClick = (e) => {
+    console.log('ㅋㅋㅋㅋㅋ');
+  }
+
   render() {
 
     const { classes, open, onClose, name } = this.props;
@@ -171,7 +175,7 @@ class EnhanceInputDialog extends Component {
                     // console.log(this.rows)
                     this.rows.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map(row => {
                       return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
+                        <TableRow hover role="checkbox" tabIndex={-1} key={row.name} onClick={onClose}>
                           {
                             this.columns.map(column => {
                             const value = row[column.id];
