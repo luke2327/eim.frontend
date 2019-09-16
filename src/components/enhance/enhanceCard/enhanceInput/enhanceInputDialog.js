@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, ButtonGroup, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import axios from 'axios';
 
 const styles = theme => ({
   root: {
@@ -95,6 +96,21 @@ class EnhanceInputDialog extends Component {
     },
   ]
 
+  componentDidMount () {
+    const data = this.getSearchData('all', '하이네스');
+    console.log('hello');
+    console.log(data);
+  }
+
+  getSearchData = async(cate, name) => {
+    return await axios.post('http://127.0.0.1:6050/api/enhance/dialog/input/search',
+      {
+        cate: cate,
+        name: name
+      }
+    )
+  }
+
   createData(name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp) {
     return { name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp };
   }
@@ -113,10 +129,6 @@ class EnhanceInputDialog extends Component {
       setToggle: value
     });
     console.log('value : ', value)
-  }
-
-  handleRowClick = (e) => {
-    console.log('ㅋㅋㅋㅋㅋ');
   }
 
   render() {
