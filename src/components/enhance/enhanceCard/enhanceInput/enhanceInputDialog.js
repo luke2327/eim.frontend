@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, ButtonGroup, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import axios from 'axios';
 
 const styles = theme => ({
@@ -105,31 +105,20 @@ class EnhanceInputDialog extends Component {
       this.setState({
         itemList: res.data
       });
-      console.log('res: ', res);
-      console.log(cate);
-    }).catch(e => {
-      console.log(e);
     });
   }
 
   componentDidMount () {
      this.PostSearchData('all', '');
-    // console.log('hello');
-    // console.log(data);
-  }
-
-  createData(name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp) {
-    return { name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp };
   }
 
   handleInputChange = (e) => {
     this.setState({
-        [e.target.id]: e.target.value 
+        [e.target.id]: e.target.value
     });
   }
 
   handleSetToggle = async (event, value) => {
-    event.preventDefault();
     await this.setState({
       setToggle: value
     });
@@ -225,14 +214,7 @@ class EnhanceInputDialog extends Component {
                 color="primary"
                 name = {name}
             >
-                취소
-            </Button>
-            <Button 
-                onClick={onClose}
-                color="primary"
-                name = {name}
-            >
-                등록
+              나가기
             </Button>
           </DialogActions>
         </Dialog>
