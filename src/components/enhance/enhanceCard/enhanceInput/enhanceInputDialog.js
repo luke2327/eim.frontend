@@ -34,7 +34,8 @@ class EnhanceInputDialog extends Component {
       setPage: 0,
       rowsPerPage: 300,
       setRowsPerPage: 300
-    }
+    },
+    itemList: []
   }
 
   columns = [
@@ -96,39 +97,49 @@ class EnhanceInputDialog extends Component {
     },
   ]
 
-  componentDidMount () {
-    const data = this.getSearchData('all', '하이네스');
-    console.log('hello');
-    console.log(data);
+  PostSearchData = async (cate, name) => {
+    return await axios.post('http://127.0.0.1:6050/api/enhance/dialog/input/search', { 
+      cate: cate, 
+      name: name 
+    }).then( res => {
+      this.setState({
+        itemList: res.data
+      });
+      console.log('res: ', res);
+      console.log(cate);
+    }).catch(e => {
+      console.log(e);
+    });
   }
 
-  getSearchData = async(cate, name) => {
-    return await axios.post('http://127.0.0.1:6050/api/enhance/dialog/input/search',
-      {
-        cate: cate,
-        name: name
-      }
-    )
+  componentDidMount () {
+     this.PostSearchData('all', '');
+    // console.log('hello');
+    // console.log(data);
   }
 
   createData(name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp) {
     return { name, item_cate, level, mg_atk, atk, str, dex, int, luk, hp, mp };
   }
 
-  rows = [
-    this.createData('하이네스 원더러햇', '모자', 150, 0, 2, 40, 40, 0, 0, 360, 360),
-    this.createData('이글아이 원더러코트', '상의', 150, 0, 2, 30, 30, 0, 0, 0, 0),
-    this.createData('트릭스터 원더러팬츠', '하의', 150, 0, 2, 30, 30, 0, 0, 0, 0),
-    this.createData('파프니르 펜리르탈론', '너클', 150, 0, 128, 40, 40, 0, 0, 0, 0),
-    this.createData('파프니르 첼리스카', '건', 150, 0, 125, 40, 40, 0, 0, 0, 0),
-    this.createData('파프니르 러스터캐논', '핸드캐논', 150, 0, 175, 40, 40, 0, 0, 360, 360),
-  ]
-
-  handleSetToggle = (event, value) => {
+  handleInputChange = (e) => {
     this.setState({
+        [e.target.id]: e.target.value 
+    });
+  }
+
+  handleSetToggle = async (event, value) => {
+    event.preventDefault();
+    await this.setState({
       setToggle: value
     });
-    console.log('value : ', value)
+    await this.PostSearchData(this.state.setToggle, this.state.searchInput);
+  }
+
+  handleEnterKeyPress = async (e) => {
+    if (e.key === 'Enter') {
+      await this.PostSearchData(this.state.setToggle, this.state.searchInput);
+    }
   }
 
   render() {
@@ -149,10 +160,12 @@ class EnhanceInputDialog extends Component {
             <TextField
               className={classes.inputStyle}
               value={this.state.searchInput}
+              onChange={this.handleInputChange}
+              onKeyPress={this.handleEnterKeyPress}
               color="primary"
               margin="normal"
               variant="outlined"
-              id="title"
+              id="searchInput"
               placeholder="Search..."
             />
             <Paper className={classes.root}>
@@ -166,7 +179,7 @@ class EnhanceInputDialog extends Component {
                 <BottomNavigationAction label="전체" value="all"/>
                 <BottomNavigationAction label="방어구" value="equip"/>
                 <BottomNavigationAction label="무기" value="weapon"/>
-              </BottomNavigation>              
+              </BottomNavigation>
               <div className={classes.tableWrapper}>
                 <Table stickyHeader>
                   <TableHead>
@@ -185,9 +198,9 @@ class EnhanceInputDialog extends Component {
                   <TableBody>
                   {
                     // console.log(this.rows)
-                    this.rows.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map(row => {
+                    this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map(row => {
                       return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.name} onClick={onClose}>
+                        <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={onClose}>
                           {
                             this.columns.map(column => {
                             const value = row[column.id];
