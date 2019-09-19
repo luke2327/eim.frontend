@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Box, Grid, Paper, FormControl, NativeSelect, TextField, Input } from '@material-ui/core';
+import { Box, Grid, FormControl, NativeSelect, Input } from '@material-ui/core';
 
 const styles = theme => ({
   paper: {
@@ -32,7 +32,7 @@ class EnhanceStatCard extends Component {
           <Grid item xs={2}>
             <Input
               type="Number"
-              placeholder="주문서강화수치"
+              placeholder="주문서강화스탯"
             />
           </Grid>
           <Grid item xs={2}>

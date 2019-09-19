@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Box } from '@material-ui/core';
+import { observer, inject } from 'mobx-react';
 import EnhanceInputFalse from './enhanceInput/enhanceInputFalse';
 import EnhanceInputForm from './enhanceInput/enhanceInputForm';
 
@@ -12,7 +13,7 @@ class EnhanceInputCard extends Component {
   handleStateChange = () =>{
     this.setState({
       inputState: !this.state.inputState
-    })
+    });
   }
 
   render() {

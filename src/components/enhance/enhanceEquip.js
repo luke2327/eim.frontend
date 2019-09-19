@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Paper } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
+import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
 
 const styles = theme => ({
   root: {
@@ -15,6 +16,13 @@ const styles = theme => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+  },
+  middlePaper: {
+    padding: theme.spacing(3),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    height: 700,
+    verticalAlign: 'middle'
   }
 });
 
@@ -35,13 +43,13 @@ class EnhanceEquipCpt extends Component {
             <EnhanceLuckCard title="젬스톤" content="19"/>
           </Grid>
           <Grid item xs={5}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.middlePaper}>
               <EnhanceInputCard/>
             </Paper>
           </Grid>
           <Grid item xs={7}>
-            <Paper className={classes.paper}>
-              스탯평가Form
+            <Paper className={classes.middlePaper}>
+              <EnhanceEvaluateForm/>
             </Paper>
           </Grid>
           <Grid item xs={12}>

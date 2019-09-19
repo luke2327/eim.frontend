@@ -7,7 +7,7 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
-    margin: 200
+    marginTop: 300
   },
   text_margin: {
     margin: 10

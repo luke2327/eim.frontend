@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { observer, inject } from 'mobx-react';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import axios from 'axios';
 
@@ -21,6 +22,8 @@ const styles = theme => ({
   }
 });
 
+@inject('enhance')
+@observer
 class EnhanceInputDialog extends Component {
 
   state = {
@@ -41,60 +44,15 @@ class EnhanceInputDialog extends Component {
   columns = [
     { id: 'name', label: '이름', minWidth: 200 },
     { id: 'item_cate', label: '분류', minWidth: 100 },
-    {
-      id: 'level',
-      label: '레벨',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'mg_atk',
-      label: '마력',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'atk',
-      label: '공격력',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'str',
-      label: 'str',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'dex',
-      label: 'dex',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'luk',
-      label: 'luk',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'int',
-      label: 'int',
-      minWidth: 60,
-      align: 'right'
-    },
-    {
-      id: 'hp',
-      label: 'hp',
-      minWidth: 60,
-      align: 'right',
-    },
-    {
-      id: 'mp',
-      label: 'mp',
-      minWidth: 60,
-      align: 'right',
-    },
+    { id: 'level', label: '레벨', minWidth: 60, align: 'right' },
+    { id: 'mg_atk', label: '마력', minWidth: 60, align: 'right' },
+    { id: 'atk', label: '공격력', minWidth: 60, align: 'right', },
+    { id: 'str', label: 'str', minWidth: 60, align: 'right' },
+    { id: 'dex', label: 'dex', minWidth: 60, align: 'right' },
+    { id: 'luk', label: 'luk', minWidth: 60, align: 'right' },
+    { id: 'int', label: 'int', minWidth: 60, align: 'right' },
+    { id: 'hp', label: 'hp', minWidth: 60, align: 'right' },
+    { id: 'mp', label: 'mp', minWidth: 60, align: 'right' }
   ]
 
   PostSearchData = async (cate, name) => {
@@ -133,7 +91,7 @@ class EnhanceInputDialog extends Component {
 
   render() {
 
-    const { classes, open, onClose, name } = this.props;
+    const { classes, open, onClose, name, enhance } = this.props;
 
     return (
       <div>
@@ -189,7 +147,7 @@ class EnhanceInputDialog extends Component {
                     // console.log(this.rows)
                     this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map(row => {
                       return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={onClose}>
+                        <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={enhance.setSelectItem(row)}>
                           {
                             this.columns.map(column => {
                             const value = row[column.id];
