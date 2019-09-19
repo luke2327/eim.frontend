@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class FooterCpt extends Component {
   render () {
     return (
-      <div>
+      <div className="center-flex">
         Footer
       </div>
     )

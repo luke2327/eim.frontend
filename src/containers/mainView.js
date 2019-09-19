@@ -1,13 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class MainView extends Component {
   render() {
     return (
-      <Fragment>
-        <div>
-          메인 화면
-        </div>
-      </Fragment>
+      <div className="center-flex">
+        메인 화면
+      </div>
     );
   }
 }

@@ -10,7 +10,7 @@ $IMAGE_PREFIX: '../static/images/'
 \:lang(en)
   font-family: 'Roboto Slab', serif
 \:lang(jp)
-html, body, #root
+html, body
   height: 100%
 .flexible
   display: flex
@@ -21,11 +21,11 @@ html, body, #root
   justify-content: center
 .start-flex
   display: flex
-  align-items: flex-start
-  justify-content: 
+  align-items: center
+  justify-content: flex-start
 .end-flex
   display: flex
-  align-items: flex-end
+  align-items: center
   justify-content: flex-end
 .cursor-pointer
   cursor: pointer
@@ -76,3 +76,12 @@ html, body, #root
     opacity: 0
   to
     opacity: 1
+
+
+.default
+  max-width: 1920px
+.header
+  border-bottom: 1px solid #e0e0e8
+  padding: 5px 10px
+  .btn-side-step
+    margin: 0px 4px
