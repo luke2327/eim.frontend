@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
 import Layout from 'containers/layout';
 import * as serviceWorker from './serviceWorker';
-import EnhanceStore from './stores/enhance';
+import EnhanceStore from 'stores/enhance';
+import CommonStore from 'stores/commonStore';
 
-const enhance = new EnhanceStore();
+const enhance = new EnhanceStore(),
+      common = new CommonStore();
 
 ReactDOM.render(
-  <Provider enhance={enhance}>
+  <Provider 
+    enhance={enhance}
+    common={common}
+  >
     <Layout />
   </Provider>, 
   document.getElementById('root')
