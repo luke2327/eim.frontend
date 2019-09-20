@@ -52,36 +52,43 @@ export default class EnhanceStore {
     this.enhanceStat[name] = stat;
   }
   @action handleChangeSfStat = () => {
+    this.sfStat = {
+      mg_atk: 0,
+      atk: 0,
+      str: 0,
+      dex: 0,
+      luk: 0,
+      int: 0,
+      hp: 0,
+      mp: 0,
+    };
+
     if (this.item.item_cate === '장갑') {
       for (let i = 0; i < this.itemSf; i += 1) {
-        this.sfStat.mg_atk = sfEquip.glove[this.item.level].atkAll;
-        this.sfStat.atk = sfEquip.glove[this.item.level].atkAll;
-        this.sfStat.str = sfEquip.glove[this.item.level].stat;
-        this.sfStat.dex = sfEquip.glove[this.item.level].stat;
-        this.sfStat.luk = sfEquip.glove[this.item.level].stat;
-        this.sfStat.int = sfEquip.glove[this.item.level].stat;
+        this.sfStat.mg_atk += sfEquip.glove[this.item.level][i].atkAll;
+        this.sfStat.atk += sfEquip.glove[this.item.level][i].atkAll;
+        this.sfStat.str += sfEquip.glove[this.item.level][i].stat;
+        this.sfStat.dex += sfEquip.glove[this.item.level][i].stat;
+        this.sfStat.luk += sfEquip.glove[this.item.level][i].stat;
+        this.sfStat.int += sfEquip.glove[this.item.level][i].stat;
       }
     } else {
       if (this.item.cate === 'weapon') {
         for (let i = 0; i < (this.itemSf && 15); i += 1) {
-          this.sfStat.atk = (this.item.atk + this.sfStat.atk + this.enhanceStat.atk) / 50 + 1;
-          this.sfStat.mg_atk = (this.item.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) / 50 + 1;
+          this.sfStat.atk += (this.item.atk + this.sfStat.atk + this.enhanceStat.atk) / 50 + 1;
+          this.sfStat.mg_atk += (this.item.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) / 50 + 1;
         }
       }
 
       for (let i = 0; i <= this.itemSf; i += 1) {
-        console.log('확인 : ', sfEquip.equip[150].atkAll);
-        console.log('확인 : ', this.item.cate);
-        console.log('확인 : ', this.item.level);
-        this.sfStat.mg_atk = sfEquip[this.item.cate][this.item.level].atkAll;
-        this.sfStat.atk = sfEquip[this.item.cate][this.item.level].atkAll;
-        this.sfStat.str = sfEquip[this.item.cate][this.item.level].stat;
-        this.sfStat.dex = sfEquip[this.item.cate][this.item.level].stat;
-        this.sfStat.luk = sfEquip[this.item.cate][this.item.level].stat;
-        this.sfStat.int = sfEquip[this.item.cate][this.item.level].stat;
+        this.sfStat.mg_atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
+        this.sfStat.atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
+        this.sfStat.str += sfEquip[this.item.cate][this.item.level][i].stat;
+        this.sfStat.dex += sfEquip[this.item.cate][this.item.level][i].stat;
+        this.sfStat.luk += sfEquip[this.item.cate][this.item.level][i].stat;
+        this.sfStat.int += sfEquip[this.item.cate][this.item.level][i].stat;
       }
     }
-    console.log(this.sfStat);
   }
 
   @action setItemClass = (value) => {
