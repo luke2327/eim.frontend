@@ -6,26 +6,25 @@ import FooterCpt from 'components/footer/footer';
 import NoticeCpt from 'components/notice/notice';
 import MainView from './mainView';
 import {
-  BrowserRouter as Router, Route, Switch
+  BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
 class MainMedition extends Component {
-  render () {
+  render() {
     return (
       <Fragment>
         <Router>
-          <HeaderCpt></HeaderCpt>
+          <HeaderCpt />
           <Switch>
-            <Route exact path="/" component={MainView}></Route>
-            <Route exact path="/enhance/enhanceEquip" component={EnhanceEquipCpt}></Route>
-            <Route exact path="/youtube_list/youtubeList" component={YoutubeListCpt}></Route>
-            <Route exact path="/notice/notice" component={NoticeCpt}></Route>
+            <Route exact path="/" component={MainView} />
+            <Route exact path="/enhance/enhanceEquip" component={EnhanceEquipCpt} />
+            <Route exact path="/youtube_list/youtubeList" component={YoutubeListCpt} />
+            <Route exact path="/notice/notice" component={NoticeCpt} />
           </Switch>
-          <FooterCpt></FooterCpt>
+          <FooterCpt />
         </Router>
       </Fragment>
-
-    )
+    );
   }
 }
 

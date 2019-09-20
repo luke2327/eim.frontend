@@ -9,23 +9,23 @@ import custom_bootstrap from 'styles/custom_bootstrap.sass';
 
 @inject('common')
 @observer
-class Layout extends Component{
+class Layout extends Component {
   render() {
     const { common } = this.props;
     const defaultLang = common.selectedLang || common.defaultLang;
 
-    return(
+    return (
       <IntlProvider
         locale={defaultLang}
         messages={locale[defaultLang]}
       >
         <Fragment>
-          <Head></Head>
-          <MainMedition></MainMedition>
+          <Head />
+          <MainMedition />
         </Fragment>
       </IntlProvider>
-    )
+    );
   }
 }
 
-export default Layout
+export default Layout;

@@ -9,12 +9,12 @@ export default class MainView extends Component {
     return (
       <div className="main-view default center-flex margin-center-hori">
         <div className="between-flex w100p">
-          <LeftSideCpt></LeftSideCpt>
+          <LeftSideCpt />
           <div className="w100p flexible main-center-container">
-            <CenterTopCpt></CenterTopCpt>
-            <CenterCenterCpt></CenterCenterCpt>
+            <CenterTopCpt />
+            <CenterCenterCpt />
           </div>
-          <RightSideCpt></RightSideCpt>
+          <RightSideCpt />
         </div>
       </div>
     );
