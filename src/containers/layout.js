@@ -12,7 +12,7 @@ import custom_bootstrap from 'styles/custom_bootstrap.sass';
 class Layout extends Component{
   render() {
     const { common } = this.props;
-    const defaultLang = common.selectedLang || navigator.language.split(/[-_]/)[0];
+    const defaultLang = common.selectedLang || common.defaultLang;
 
     return(
       <IntlProvider
