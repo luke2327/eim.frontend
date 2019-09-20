@@ -12,6 +12,7 @@ export default {
 
     'enhance.todays': '',
     'enhance.registerEquipPlaceholder': '',
+    'enhance.stat':'stat'
   },
   ko: {
     T000: 'Test ko',
@@ -24,8 +25,9 @@ export default {
     'enhance.object.starforce': '스타포스',
     'enhance.object.gemstone': '젬스톤',
 
-    'enhance.todays': '오늘의{object}명당은 {br} {channelNumber}채널 입니다!',
+    'enhance.todays': '오늘의{object}명당은 {br} {channelNumber}채널!!',
     'enhance.registerEquipPlaceholder': '등록된 장비가 없습니다 <br/> 분석할 장비를 등록해보세요',
+    'enhance.stat':'스탯'
   },
   ja: {
     T000: 'Test ja',

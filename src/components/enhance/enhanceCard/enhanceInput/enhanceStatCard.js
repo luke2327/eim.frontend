@@ -12,7 +12,7 @@ const styles = theme => ({
 
 class EnhanceStatCard extends Component {
   render() {
-    const { classes, statName, opt } = this.props;
+    const { classes, statName, opt, name } = this.props;
     return (
       <Box>
         <Grid container spacing={3}>
@@ -30,10 +30,14 @@ class EnhanceStatCard extends Component {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-            <Input
-              type="Number"
-              placeholder="주문서강화스탯"
-            />
+            { name === 'none' ? 
+              '' 
+              : 
+              <Input
+                type="Number"
+                placeholder="주문서스탯"
+              />
+            }
           </Grid>
           <Grid item xs={2}>
             

@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
+import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+
 
 
 const styles = theme => ({
@@ -77,6 +79,7 @@ class EnhanceInputForm extends Component {
               value={this.state.getSf.value}
               onChange={this.handleSfChange}
             >
+              <MenuItem name={"1성"} value={0}>0성</MenuItem>
               <MenuItem name={"1성"} value={1}>1성</MenuItem>
               <MenuItem name={"2성"} value={2}>2성</MenuItem>
               <MenuItem name={"3성"} value={3}>3성</MenuItem>
@@ -111,13 +114,13 @@ class EnhanceInputForm extends Component {
               value={this.state.getClass.value}
               onChange={this.handleClassChange}
             >
-              <MenuItem name={"해적"} value={1}>해적</MenuItem>
-              <MenuItem name={"전사"} value={2}>전사</MenuItem>
-              <MenuItem name={"도적"} value={3}>도적</MenuItem>
-              <MenuItem name={"마법사"} value={4}>마법사</MenuItem>
-              <MenuItem name={"궁수"} value={5}>궁수</MenuItem>
-              <MenuItem name={"데몬어벤져"} value={6}>데몬어벤져</MenuItem>
-              <MenuItem name={"제논"} value={7}>제논</MenuItem>
+              <MenuItem name={"해적"} value={"pirate"}>해적</MenuItem>
+              <MenuItem name={"전사"} value={"warrior"}>전사</MenuItem>
+              <MenuItem name={"도적"} value={"thief"}>도적</MenuItem>
+              <MenuItem name={"마법사"} value={"wizard"}>마법사</MenuItem>
+              <MenuItem name={"궁수"} value={"archer"}>궁수</MenuItem>
+              <MenuItem name={"데몬어벤져"} value={"daemon"}>데몬어벤져</MenuItem>
+              <MenuItem name={"제논"} value={"jaenon"}>제논</MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -129,16 +132,16 @@ class EnhanceInputForm extends Component {
           <Grid item xs={2} className={classes.nameText}>강화스탯</Grid>
           <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
-        <EnhanceStatCard statName="마력" opt={enhance.item.mg_atk}/>
-        <EnhanceStatCard statName="공격력" opt={enhance.item.atk}/>
-        <EnhanceStatCard statName="str" opt={enhance.item.str}/>
-        <EnhanceStatCard statName="dex" opt={enhance.item.dex}/>
-        <EnhanceStatCard statName="luk" opt={enhance.item.luk}/>
-        <EnhanceStatCard statName="int" opt={enhance.item.int}/>
-        <EnhanceStatCard statName="HP" opt={enhance.item.hp}/>
-        <EnhanceStatCard statName="MP" opt={enhance.item.mp}/>
-        <EnhanceStatCard statName="올스탯" opt={0}/>
-        <EnhanceStatCard statName="착감" opt={0}/>
+        <EnhanceStatCard statName="마력" name={"mg_atk"} opt={enhance.item.mg_atk} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="공격력" name={"atk"} opt={enhance.item.atk} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="str" name={"str"} opt={enhance.item.str} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="dex" name={"dex"} opt={enhance.item.dex} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="luk" name={"luk"} opt={enhance.item.luk} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="int" name={"int"} opt={enhance.item.int} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="HP" name={"hp"} opt={enhance.item.hp} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="MP" name={"mp"} opt={enhance.item.mp} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="올스탯" name={"none"} opt={0} starforce={this.state.getSf.value}/>
+        <EnhanceStatCard statName="착감" name={"none"} opt={0} starforce={this.state.getSf.value}/>
         <Button 
           className={classes.addButton}
           variant="outlined"
