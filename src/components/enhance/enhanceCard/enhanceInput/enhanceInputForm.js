@@ -41,7 +41,8 @@ class EnhanceInputForm extends Component {
         name: e.target.name,
       },
     });
-    console.log(this.state.getSf);
+    this.props.enhance.setItemSf(e.target.value);
+    this.props.enhance.handleChangeSfStat();
   }
 
   handleClassChange = async (e) => {
@@ -51,7 +52,7 @@ class EnhanceInputForm extends Component {
         name: e.target.name,
       },
     });
-    console.log(this.state.getClass);
+    this.props.enhance.setItemClass(e.target.value);
   }
 
   render() {
@@ -134,7 +135,7 @@ class EnhanceInputForm extends Component {
         <EnhanceStatCard statName="dex" name={'dex'} opt={enhance.item.dex} starforce={this.state.getSf.value} />
         <EnhanceStatCard statName="luk" name={'luk'} opt={enhance.item.luk} starforce={this.state.getSf.value} />
         <EnhanceStatCard statName="int" name={'int'} opt={enhance.item.int} starforce={this.state.getSf.value} />
-        <EnhanceStatCard statName='"HP"' name={'hp'} opt={enhance.item.hp} starforce={this.state.getSf.value} />
+        <EnhanceStatCard statName="HP" name={'hp'} opt={enhance.item.hp} starforce={this.state.getSf.value} />
         <EnhanceStatCard statName="MP" name={'mp'} opt={enhance.item.mp} starforce={this.state.getSf.value} />
         <EnhanceStatCard statName="올스탯" name={'none'} opt={0} starforce={this.state.getSf.value} />
         <EnhanceStatCard statName="착감" name={'none'} opt={0} starforce={this.state.getSf.value} />
