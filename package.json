@@ -91,6 +91,8 @@
       "react/jsx-one-expression-per-line": 0,
       "react/jsx-fragments": 0,
       "react/prop-types": 0,
+      "lines-between-class-members": 0,
+      "one-var": 0,
       "import/order": 0,
       "import/no-unresolved": 0
     }
