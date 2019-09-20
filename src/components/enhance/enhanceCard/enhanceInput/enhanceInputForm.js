@@ -129,7 +129,7 @@ class EnhanceInputForm extends Component {
           <Grid item xs={2} className={classes.nameText}>기본옵션</Grid>
           <Grid item xs={2} className={classes.nameText}>스타포스</Grid>
           <Grid item xs={2} className={classes.nameText}>추가옵션</Grid>
-          <Grid item xs={2} className={classes.nameText}>강화스탯</Grid>
+          <Grid item xs={2} className={classes.nameText}>주문서강화스탯</Grid>
           <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
         <EnhanceStatCard statName="마력" name={"mg_atk"} opt={enhance.item.mg_atk} starforce={this.state.getSf.value}/>

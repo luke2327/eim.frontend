@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { observer, inject } from 'mobx-react';
 import { Box, Grid, FormControl, NativeSelect, Input } from '@material-ui/core';
 
 const styles = theme => ({
@@ -10,7 +11,18 @@ const styles = theme => ({
   }
 });
 
+@inject('enhance')
+@observer
 class EnhanceStatCard extends Component {
+
+  handleInputChange = (e) => {
+    // this.setState({
+    //     [e.target.id]: e.target.value
+    // });
+    console.log(e.target.name);
+    console.log(e.target.value);
+  }
+
   render() {
     const { classes, statName, opt, name } = this.props;
     return (
@@ -35,7 +47,9 @@ class EnhanceStatCard extends Component {
               : 
               <Input
                 type="Number"
-                placeholder="주문서스탯"
+                placeholder="먼저입력하세요"
+                onChange={ this.handleInputChange }
+                name={ name }
               />
             }
           </Grid>

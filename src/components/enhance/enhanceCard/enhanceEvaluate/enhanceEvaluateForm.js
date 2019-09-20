@@ -26,7 +26,7 @@ class EnhanceEvaluateForm extends Component {
     const { classes } = this.props;
     return (
       <Grid container spacing={1}>
-        <Grid item xs={6} >
+        <Grid item xs={12} >
           <RadarChart cx={270} cy={350} outerRadius={150} width={560} height={700} data={this.data}>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
@@ -34,11 +34,11 @@ class EnhanceEvaluateForm extends Component {
             <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
           </RadarChart>
         </Grid>
-        <Grid item xs={6}>
+        {/* <Grid item xs={6}>
           <Paper className={classes.paper}>
             HELLO
           </Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     );
   }

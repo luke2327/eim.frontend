@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Paper } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
 import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import LeftSide from 'components/layout/leftSide';
 
 const styles = theme => ({
   root: {
@@ -12,6 +13,7 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
     backgroundColor: '#EAEAEA',
+    leftMargin: 30
   },
   paper: {
     padding: theme.spacing(3),
@@ -32,45 +34,48 @@ class EnhanceEquipCpt extends Component {
   render () {
     const { classes } = this.props;
     return (
-      <div className={[classes.root], 'fade-in'}>
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <FormattedHTMLMessage
-              id="enhance.object.starforce"
-            >
-              {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
-            </FormattedHTMLMessage>
+      <div id='enhance' className="flexible default margin-center-hori">
+        <LeftSide></LeftSide>
+        <div className={[classes.root], 'fade-in'}>
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <FormattedHTMLMessage
+                id="enhance.object.starforce"
+              >
+                {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
+              </FormattedHTMLMessage>
+            </Grid>
+            <Grid item xs={4}>
+              <FormattedHTMLMessage
+                id="enhance.object.cube"
+              >
+                {(object) => <EnhanceLuckCard title={object} content="20"></EnhanceLuckCard>}
+              </FormattedHTMLMessage>
+            </Grid>
+            <Grid item xs={4}>
+              <FormattedHTMLMessage
+                id="enhance.object.gemstone"
+              >
+                {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
+              </FormattedHTMLMessage>
+            </Grid>
+            <Grid item xs={7}>
+              <Paper className={classes.middlePaper}>
+                <EnhanceInputCard/>
+              </Paper>
+            </Grid>
+            <Grid item xs={5}>
+              <Paper className={classes.middlePaper}>
+                <EnhanceEvaluateForm/>
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                해당 장비 관련 각종 컨텐츠
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item xs={4}>
-            <FormattedHTMLMessage
-              id="enhance.object.cube"
-            >
-              {(object) => <EnhanceLuckCard title={object} content="20"></EnhanceLuckCard>}
-            </FormattedHTMLMessage>
-          </Grid>
-          <Grid item xs={4}>
-            <FormattedHTMLMessage
-              id="enhance.object.gemstone"
-            >
-              {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
-            </FormattedHTMLMessage>
-          </Grid>
-          <Grid item xs={5}>
-            <Paper className={classes.middlePaper}>
-              <EnhanceInputCard/>
-            </Paper>
-          </Grid>
-          <Grid item xs={7}>
-            <Paper className={classes.middlePaper}>
-              <EnhanceEvaluateForm/>
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              해당 장비 관련 각종 컨텐츠
-            </Paper>
-          </Grid>
-        </Grid>
+        </div>
       </div>
     );
   }
