@@ -22,13 +22,13 @@ class EnhanceInputFalse extends Component {
 
   OpenDialog = (e) => {
     this.setState({
-        [e.currentTarget.name]: true
+      registDialogState: true
     })
   }
 
   CloseDialog = (e) => {
     this.setState({
-        [e.currentTarget.name]: false
+      registDialogState: false
     })
     this.props.handleStateChange();
   }

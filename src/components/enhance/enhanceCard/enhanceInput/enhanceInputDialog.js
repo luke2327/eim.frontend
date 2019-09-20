@@ -89,6 +89,11 @@ class EnhanceInputDialog extends Component {
     }
   }
 
+  handleItemClick = (e, row) => {
+    this.props.enhance.setItem(row);
+    this.props.onClose();
+  }
+
   render() {
 
     const { classes, open, onClose, name, enhance } = this.props;
@@ -147,17 +152,17 @@ class EnhanceInputDialog extends Component {
                     // console.log(this.rows)
                     this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map(row => {
                       return (
-                        <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={enhance.setSelectItem(row)}>
-                          {
-                            this.columns.map(column => {
-                            const value = row[column.id];
-                            return (
-                              <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === 'number' ? value.toString : value}
-                              </TableCell>
-                            );
-                          })}
-                        </TableRow>
+                          <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={e => this.handleItemClick(e, row)}>
+                            {
+                              this.columns.map(column => {
+                              const value = row[column.id];
+                              return (
+                                <TableCell key={column.id} align={column.align}>
+                                  {column.format && typeof value === 'number' ? value.toString : value}
+                                </TableCell>
+                              );
+                            })}
+                          </TableRow>
                       );
                     })
                   }
