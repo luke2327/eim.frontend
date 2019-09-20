@@ -4,6 +4,7 @@ import { Grid, Paper } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
+import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 const styles = theme => ({
   root: {
@@ -34,13 +35,25 @@ class EnhanceEquipCpt extends Component {
       <div className={[classes.root], 'fade-in'}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="스타포스" content="17"/>
+            <FormattedHTMLMessage
+              id="enhance.object.starforce"
+            >
+              {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
+            </FormattedHTMLMessage>
           </Grid>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="큐브" content="20"/>
+            <FormattedHTMLMessage
+              id="enhance.object.cube"
+            >
+              {(object) => <EnhanceLuckCard title={object} content="20"></EnhanceLuckCard>}
+            </FormattedHTMLMessage>
           </Grid>
           <Grid item xs={4}>
-            <EnhanceLuckCard title="젬스톤" content="19"/>
+            <FormattedHTMLMessage
+              id="enhance.object.gemstone"
+            >
+              {(object) => <EnhanceLuckCard title={object} content="17"></EnhanceLuckCard>}
+            </FormattedHTMLMessage>
           </Grid>
           <Grid item xs={5}>
             <Paper className={classes.middlePaper}>

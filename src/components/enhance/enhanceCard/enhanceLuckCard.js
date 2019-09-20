@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Card } from '@material-ui/core';
+import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 const styles = theme => ({
   month_text: {
@@ -46,15 +47,14 @@ class EnhanceLuckCard extends Component {
 
     return (
       <Card className={classes.board_paper}>
-        <Typography variant="h4" gutterBottom>
-          <small className={classes.small_text}>오늘의 </small>
-            {title}
-          <small className={classes.small_text}>명당은</small>
-          </Typography>
-        <Typography variant="h1" className={this.setFontColor()}>
-          {content}
-          <small className={classes.small_text}>채널!!</small>
-        </Typography>
+        <FormattedHTMLMessage
+          id="enhance.todays"
+          values={{object: <span className="enhance-card-object-font">{title}</span>,
+                  br: <br></br>,
+                  channelNumber: <span className={[this.setFontColor(), "enhance-card-channel-font"].join(' ')}>{content}</span>}}
+        >
+          {object => <div className={classes.small_text}>{object}</div>}
+        </FormattedHTMLMessage>
       </Card>
     );
   }

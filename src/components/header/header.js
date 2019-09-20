@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-import {FormattedMessage } from 'react-intl';
+import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 @inject('common')
 @observer
@@ -32,6 +32,10 @@ class HeaderCpt extends Component {
     const { common } = this.props;
     return (
       <div className="start-flex header">
+        <FormattedHTMLMessage
+          tagName="p"
+          id="T000"
+        ></FormattedHTMLMessage>
         <div className="default between-flex w100p margin-center-hori hedaer-line">
           <div className="header-left">
             <Link className="btn-side-step" to="/">
