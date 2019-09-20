@@ -75,8 +75,8 @@ export default class EnhanceStore {
     } else {
       if (this.item.cate === 'weapon') {
         for (let i = 0; i < (this.itemSf && 15); i += 1) {
-          this.sfStat.atk += (this.item.atk + this.sfStat.atk + this.enhanceStat.atk) / 50 + 1;
-          this.sfStat.mg_atk += (this.item.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) / 50 + 1;
+          this.sfStat.atk += parseInt((this.item.atk + this.sfStat.atk + this.enhanceStat.atk) / 50 + 1, 10);
+          this.sfStat.mg_atk += parseInt((this.item.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) / 50 + 1, 10);
         }
       }
 
