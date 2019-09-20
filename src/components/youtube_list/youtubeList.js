@@ -1,27 +1,37 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import api from 'libs/api/common';
+import { toJS } from 'mobx';
+import api from 'libs/api/vod';
 // const api = require('libs/api/common');
 
 @inject('crawling')
 @observer
 class YoutubeListCpt extends Component {
-  componentDidMount() {
-    this.getYoutubeList('api/vod/youtube/list');
+  constructor() {
+    super();
+
+    this.state = {
+      vod: {},
+    };
   }
 
-  getYoutubeList = async (url) => {
-    api.send(url)
-      .then((res) => {
-        console.log(res);
-      });
+  componentDidMount() {
+    api.getYoutubeList().then((res) => {
+      this.props.crawling.youtubeList = res.data;
+    });
   }
 
   render() {
+    const { crawling } = this.props;
     return (
-      <div>
-        works
-      </div>
+      crawling.youtubeList === undefined
+        ? <div>loading</div>
+        :
+        <div>
+          {toJS(crawling.youtubeList).map((item, i) => {
+            return <p key={i}>{item.create_tmp}</p>;
+          })}
+        </div>
     );
   }
 }

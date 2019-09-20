@@ -35,22 +35,38 @@ class HeaderCpt extends Component {
               <div className="between-flex default w100p margin-center-hori">
                 <div className="flexible-inline">
                   <li className="nav-item">
-                    <Link className={common.selectedHeaderTab === 1 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass} to="/" onClick={() => common.selectHeaderTab(1)}>
+                    <Link
+                      className={common.selectedHeaderTab === 1 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      to="/"
+                      onClick={() => common.selectHeaderTab(1)}
+                    >
                       <FormattedMessage id="header.home" />
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className={common.selectedHeaderTab === 2 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass} to="/enhance/enhanceEquip" onClick={() => common.selectHeaderTab(2)}>
+                    <Link
+                      className={common.selectedHeaderTab === 2 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      to="/enhance/enhanceEquip"
+                      onClick={() => common.selectHeaderTab(2)}
+                    >
                       <FormattedMessage id="header.enhance" />
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className={common.selectedHeaderTab === 3 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass} to="/youtube_list/youtubeList" onClick={() => common.selectHeaderTab(3)}>
+                    <Link
+                      className={common.selectedHeaderTab === 3 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      to="/youtube_list/youtubeList"
+                      onClick={() => common.selectHeaderTab(3)}
+                    >
                       <FormattedMessage id="header.youtubeList" />
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className={common.selectedHeaderTab === 4 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass} to="/notice/notice" onClick={() => common.selectHeaderTab(4)}>
+                    <Link
+                      className={common.selectedHeaderTab === 4 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      to="/notice/notice"
+                      onClick={() => common.selectHeaderTab(4)}
+                    >
                       <FormattedMessage id="header.notice" />
                     </Link>
                   </li>
@@ -69,7 +85,7 @@ class HeaderCpt extends Component {
                         <div className="dropdown-menu">
                           {
                             common.defaultLangList.map((language, i) =>
-                              <span key={i} className="dropdown-item" onClick={() => { common.selectLang(language); }}>{language}</span>)
+                              <span key={i} className="dropdown-item" onClick={() => common.selectLang(language)}>{language}</span>)
                             }
                         </div>
                       )
