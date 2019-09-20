@@ -46,13 +46,13 @@ class EnhanceLuckCard extends Component {
     const { classes, title, content } = this.props;
 
     return (
-      <Card className={classes.board_paper}>
+      <Card key="key" className={classes.board_paper}>
         <FormattedHTMLMessage
           id="enhance.todays"
           values={{
-            object: <span className="enhance-card-object-font">{title}</span>,
-            br: <br />,
-            channelNumber: <span className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>,
+            object: <span key="title" className="enhance-card-object-font">{title}</span>,
+            br: <br key="br" />,
+            channelNumber: <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>,
           }}
         >
           { (object) => <div className={classes.small_text}>{object}</div> }
