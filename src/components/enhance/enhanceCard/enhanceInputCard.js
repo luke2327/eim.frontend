@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import { Box } from '@material-ui/core';
-import { observer, inject } from 'mobx-react';
 import EnhanceInputFalse from './enhanceInput/enhanceInputFalse';
 import EnhanceInputForm from './enhanceInput/enhanceInputForm';
 
 class EnhanceInputCard extends Component {
+  constructor() {
+    super();
 
-  state = {
-    inputState: false
+    this.state = {
+      inputState: false,
+    };
   }
 
-  handleStateChange = () =>{
+  handleStateChange = () => {
     this.setState({
-      inputState: !this.state.inputState
+      inputState: !this.state.inputState,
     });
-  }
+  };
 
   render() {
     return (
       <Box>
-        { this.state.inputState ? <EnhanceInputForm/> : <EnhanceInputFalse handleStateChange={this.handleStateChange}/>  }
+        {
+          this.state.inputState ? <EnhanceInputForm /> : <EnhanceInputFalse handleStateChange={this.handleStateChange} />
+        }
       </Box>
     );
   }

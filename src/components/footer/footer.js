@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class FooterCpt extends Component {
-  render () {
+  render() {
     return (
       <div className="center-flex">
         Footer
       </div>
-    )
+    );
   }
 }
 

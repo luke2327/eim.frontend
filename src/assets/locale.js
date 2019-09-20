@@ -12,7 +12,7 @@ export default {
 
     'enhance.todays': '',
     'enhance.registerEquipPlaceholder': '',
-    'enhance.stat':'stat'
+    'enhance.stat': 'stat',
   },
   ko: {
     T000: 'Test ko',
@@ -27,7 +27,7 @@ export default {
 
     'enhance.todays': '오늘의{object}명당은 {br} {channelNumber}채널!!',
     'enhance.registerEquipPlaceholder': '등록된 장비가 없습니다 <br/> 분석할 장비를 등록해보세요',
-    'enhance.stat':'스탯'
+    'enhance.stat': '스탯',
   },
   ja: {
     T000: 'Test ja',
@@ -42,5 +42,5 @@ export default {
 
     'enhance.todays': '今日の{object}の明堂は {br} {channelNumber}チャンネルです！',
     'enhance.registerEquipPlaceholder': '登録された装備がありません　<br/>　分析する装備を登録見ましょう',
-  }
-}
+  },
+};

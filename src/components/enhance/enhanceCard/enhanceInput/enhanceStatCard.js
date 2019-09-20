@@ -3,18 +3,17 @@ import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Box, Grid, FormControl, NativeSelect, Input } from '@material-ui/core';
 
-const styles = theme => ({
+const styles = (theme) => ({
   paper: {
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-  }
+  },
 });
 
 @inject('enhance')
 @observer
 class EnhanceStatCard extends Component {
-
   handleInputChange = (e) => {
     // this.setState({
     //     [e.target.id]: e.target.value
@@ -24,7 +23,7 @@ class EnhanceStatCard extends Component {
   }
 
   render() {
-    const { classes, statName, opt, name } = this.props;
+    const { statName, opt, name } = this.props;
     return (
       <Box>
         <Grid container spacing={3}>
@@ -42,20 +41,17 @@ class EnhanceStatCard extends Component {
             </FormControl>
           </Grid>
           <Grid item xs={2}>
-            { name === 'none' ? 
-              '' 
-              : 
+            { name === 'none' ?
+              ''
+              :
               <Input
                 type="Number"
                 placeholder="먼저입력하세요"
-                onChange={ this.handleInputChange }
-                name={ name }
-              />
-            }
+                onChange={this.handleInputChange}
+                name={name}
+              />}
           </Grid>
-          <Grid item xs={2}>
-            
-          </Grid>
+          <Grid item xs={2} />
         </Grid>
       </Box>
     );

@@ -1,4 +1,4 @@
-import { observable, action, } from 'mobx';
+import { observable } from 'mobx';
 import moment from 'moment';
 
 export default class crawlingStore {
