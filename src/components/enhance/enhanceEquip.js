@@ -58,12 +58,12 @@ class EnhanceEquipCpt extends Component {
                 {(object) => <EnhanceLuckCard title={object} content="17" />}
               </FormattedHTMLMessage>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={7}>
               <Paper className={classes.middlePaper}>
                 <EnhanceInputCard />
               </Paper>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={5}>
               <Paper className={classes.middlePaper}>
                 <EnhanceEvaluateForm />
               </Paper>
