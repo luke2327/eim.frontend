@@ -34,8 +34,14 @@ html, body
   display: flex
   align-items: center
   justify-content: space-between
+.end-flex-vertical
+  display: flex
+  align-items: flex-end
+  justify-content: flex-start
 .w100p
   width: 100%
+.h100p
+  height: 100%
 .cursor-pointer
   cursor: pointer
 .remove-tmargin
@@ -110,6 +116,7 @@ html, body
   height: 900px
   width: 100%
   border: 1px solid #e0e0e8
+  overflow-y: scroll
 .temp-center-cpt
   max-width: 900px
   width: 100%
@@ -126,3 +133,30 @@ html, body
 #enhance
   .temp-side-cpt
     margin-right: 30px
+
+#youtube-list
+  #youtube-card
+    max-width: 380px
+    width: 100%
+    padding: 9px
+    .card-container
+      border: 1px solid #e0e0e8
+      border-radius: 5px
+      .yc-auth
+        padding-left: 4px
+      .yc-create-tmp
+        padding-right: 4px
+      .card-cover
+        border-radius: 5px
+        border: 1px solid #e0e0e8
+        height: 140px
+        background-position: center !important
+        background-size: cover !important
+        .yc-content-area
+          transition: all 0.2s
+          border-radius: 5px
+          padding: 5px
+          background-color: rgba(0,0,0,0.6)
+          color: white
+        .yc-content-area:hover
+          background-color: rgba(0,0,0,0.3)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from 'libs/api/vod';
-// const api = require('libs/api/common');
+import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
 @observer
@@ -16,7 +16,7 @@ class YoutubeListCpt extends Component {
   }
 
   componentDidMount() {
-    api.getYoutubeList().then((res) => {
+    api.getYoutubeList({ max: 10 }).then((res) => {
       this.props.crawling.youtubeList = res.data;
     });
   }
@@ -27,9 +27,9 @@ class YoutubeListCpt extends Component {
       crawling.youtubeList === undefined
         ? <div>loading</div>
         :
-        <div>
-          {toJS(crawling.youtubeList).map((item, i) => {
-            return <p key={i}>{item.create_tmp}</p>;
+        <div id="youtube-list" className="h100p">
+          {toJS(crawling.youtubeList).map((item) => {
+            return <YoutubeListCard key={item.vod_no} item={item} />;
           })}
         </div>
     );
