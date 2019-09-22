@@ -55,17 +55,26 @@ class HeaderCpt extends Component {
                   <li className="nav-item">
                     <Link
                       className={common.selectedHeaderTab === 3 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
-                      to="/youtube_list/youtubeList"
+                      to="/simulate/simulateEquip"
                       onClick={() => common.selectHeaderTab(3)}
+                    >
+                      <FormattedMessage id="header.simulate" />
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={common.selectedHeaderTab === 4 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      to="/youtube_list/youtubeList"
+                      onClick={() => common.selectHeaderTab(4)}
                     >
                       <FormattedMessage id="header.youtubeList" />
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link
-                      className={common.selectedHeaderTab === 4 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
+                      className={common.selectedHeaderTab === 5 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
                       to="/notice/notice"
-                      onClick={() => common.selectHeaderTab(4)}
+                      onClick={() => common.selectHeaderTab(5)}
                     >
                       <FormattedMessage id="header.notice" />
                     </Link>

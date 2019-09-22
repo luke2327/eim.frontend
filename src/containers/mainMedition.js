@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import EnhanceEquipCpt from 'components/enhance/enhanceEquip';
+import SimulateEquipCpt from 'components/simulate/simulateEquip';
 import YoutubeListCpt from 'components/youtube_list/youtubeList';
 import HeaderCpt from 'components/header/header';
 import FooterCpt from 'components/footer/footer';
@@ -18,6 +19,7 @@ class MainMedition extends Component {
           <Switch>
             <Route exact path="/" component={MainView} />
             <Route exact path="/enhance/enhanceEquip" component={EnhanceEquipCpt} />
+            <Route exact path="/simulate/simulateEquip" component={SimulateEquipCpt} />
             <Route exact path="/youtube_list/youtubeList" component={YoutubeListCpt} />
             <Route exact path="/notice/notice" component={NoticeCpt} />
           </Switch>
