@@ -55,7 +55,7 @@ class HeaderCpt extends Component {
                   <li className="nav-item">
                     <Link
                       className={common.selectedHeaderTab === 3 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
-                      to="/simulate/simulateEquip"
+                      to="/simulate"
                       onClick={() => common.selectHeaderTab(3)}
                     >
                       <FormattedMessage id="header.simulate" />

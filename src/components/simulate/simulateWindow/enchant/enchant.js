@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export default class SimulateEquipCpt extends Component {
+export default class SimulateEnchant extends Component {
   render() {
     return (
-      <div id="simulate">
+      <div id="enchant">
         this works!
       </div>
     );
