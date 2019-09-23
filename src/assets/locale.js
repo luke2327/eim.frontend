@@ -3,6 +3,7 @@ export default {
     T000: '<b>Test en</b> \n new line',
     'header.home': 'Home',
     'header.enhance': 'Enhance',
+    'header.simulate': 'Simulation',
     'header.youtubeList': 'Youtube List',
     'header.notice': 'Notice',
 
@@ -18,6 +19,7 @@ export default {
     T000: 'Test ko',
     'header.home': '홈',
     'header.enhance': '강화',
+    'header.simulate': '시뮬레이션',
     'header.youtubeList': '유튜브 리스트',
     'header.notice': '공지사항',
 
@@ -33,6 +35,7 @@ export default {
     T000: 'Test ja',
     'header.home': 'ホーム',
     'header.enhance': '強化',
+    'header.simulate': 'シミュレーション',
     'header.youtubeList': 'ユーチューブ リスト',
     'header.notice': 'ノーティス',
 
@@ -42,5 +45,6 @@ export default {
 
     'enhance.todays': '今日の{object}の明堂は {br} {channelNumber}チャンネルです！',
     'enhance.registerEquipPlaceholder': '登録された装備がありません　<br/>　分析する装備を登録見ましょう',
+    'enhance.stat': 'スタット',
   },
 };
