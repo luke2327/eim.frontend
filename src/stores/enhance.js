@@ -47,9 +47,24 @@ export default class EnhanceStore {
     hp: 0,
     mp: 0,
   };
+  @observable addOptStat = {
+    mg_atk: 0,
+    atk: 0,
+    str: 0,
+    dex: 0,
+    luk: 0,
+    int: 0,
+    hp: 0,
+    mp: 0,
+    allstat: 0,
+    chackgam: 0,
+  }
 
   @action handleChangeEnhanceStat = (name, stat) => {
     this.enhanceStat[name] = stat;
+  }
+  @action handleChangeAddOptStat = (name, stat) => {
+    this.addOptStat[name] = stat;
   }
   @action handleChangeSfStat = () => {
     this.sfStat = {
@@ -88,6 +103,67 @@ export default class EnhanceStore {
         this.sfStat.luk += sfEquip[this.item.cate][this.item.level][i].stat;
         this.sfStat.int += sfEquip[this.item.cate][this.item.level][i].stat;
       }
+    }
+  }
+
+
+  @action setClassStatFont = (statName, itemClass) => {
+    if (itemClass === 'pirate' || itemClass === 'warrior') {
+      switch (statName) {
+        case '공격력':
+        case 'str':
+        case '올스탯':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else if (itemClass === 'thief') {
+      switch (statName) {
+        case '공격력':
+        case 'luk':
+        case '올스탯':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else if (itemClass === 'wizard') {
+      switch (statName) {
+        case '마력':
+        case 'int':
+        case '올스탯':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else if (itemClass === 'archer') {
+      switch (statName) {
+        case '공격력':
+        case 'dex':
+        case '올스탯':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else if (itemClass === 'daemon') {
+      switch (statName) {
+        case '공격력':
+        case 'HP':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else if (itemClass === 'jaenon') {
+      switch (statName) {
+        case '공격력':
+        case 'luk':
+        case 'dex':
+        case '올스탯':
+          return 'red';
+        default:
+          return 'black';
+      }
+    } else {
+      return 'black';
     }
   }
 

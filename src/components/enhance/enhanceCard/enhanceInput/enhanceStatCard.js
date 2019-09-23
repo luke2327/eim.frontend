@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
-import { Box, Grid, FormControl, NativeSelect, Input } from '@material-ui/core';
+import { Box, Grid, Input } from '@material-ui/core';
 
 const styles = (theme) => ({
   paper: {
@@ -9,41 +9,49 @@ const styles = (theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  redFont: {
+    color: '#FF6C6C',
+  },
+  blackFont: {
+    color: '#000000',
+  },
 });
 
 @inject('enhance')
 @observer
 class EnhanceStatCard extends Component {
-  handleInputChange = (e) => {
+  handleEnhanceStatChange = (e) => {
     this.props.enhance.handleChangeEnhanceStat(e.target.name, Number(e.target.value));
+  }
+  handleAddOptStatChange = (e) => {
+    this.props.enhance.handleChangeAddOptStat(e.target.name, Number(e.target.value));
   }
 
   render() {
-    const { statName, opt, name, enhance } = this.props;
+    const { classes, statName, opt, name, enhance, titleColor } = this.props;
     return (
       <Box>
         <Grid container spacing={3}>
-          <Grid item xs={2}> { statName } </Grid>
+          <Grid item xs={2} className={titleColor === 'red' ? classes.redFont : classes.blackFont}> { statName } </Grid>
           <Grid item xs={2}> { opt } </Grid>
           <Grid item xs={2}> { enhance.sfStat[name] } </Grid>
           <Grid item xs={2}>
-            <FormControl>
-              <NativeSelect>
-                <option value="">32</option>
-                <option value="">43</option>
-                <option value="">62</option>
-                <option value="">48</option>
-              </NativeSelect>
-            </FormControl>
+            <Input
+              type="Number"
+              placeholder=""
+              onChange={this.handleAddOptStatChange}
+              defaultValue={0}
+              name={name}
+            />
           </Grid>
           <Grid item xs={2}>
-            { name === 'none' ?
+            { (name === 'chackgam' || name === 'allstat') ?
               ''
               :
               <Input
                 type="Number"
                 placeholder="먼저입력하세요"
-                onChange={this.handleInputChange}
+                onChange={this.handleEnhanceStatChange}
                 name={name}
               />}
           </Grid>
