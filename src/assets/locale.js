@@ -6,6 +6,7 @@ export default {
     'header.simulate': 'Simulation',
     'header.youtubeList': 'Youtube List',
     'header.notice': 'Notice',
+    'header.language': 'Language',
 
     'enhance.object.cube': 'Cube',
     'enhance.object.starforce': 'StarForce',
@@ -31,6 +32,7 @@ export default {
     'header.simulate': '시뮬레이션',
     'header.youtubeList': '유튜브 리스트',
     'header.notice': '공지사항',
+    'header.language': '언어',
 
     'enhance.object.cube': '큐브',
     'enhance.object.starforce': '스타포스',
@@ -56,6 +58,7 @@ export default {
     'header.simulate': 'シミュレーション',
     'header.youtubeList': 'ユーチューブ リスト',
     'header.notice': 'ノーティス',
+    'header.language': '言語',
 
     'enhance.object.cube': 'キューブ',
     'enhance.object.starforce': 'スターフォース',
