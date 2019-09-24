@@ -1,8 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
+import api from 'libs/api/common';
 
 export default {
   getMapleItem: async (req) => {
-    const defaultUrl = 'http://localhost:6050/';
-    return await axios.post(`${defaultUrl}api/maple/item`, req);
+    return await api.send('api/maple/item', req);
   },
 };
