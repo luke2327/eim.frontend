@@ -20,8 +20,8 @@ export default class EnhanceStore {
     atk_speed: '',
     move_speed: 0,
     jump_power: 0,
-    boss_atk: '',
-    monster_def: '',
+    boss_atk: 0,
+    monster_def: 0,
     upgrade: 0,
     starforce: '',
   };
@@ -56,6 +56,8 @@ export default class EnhanceStore {
     int: 0,
     hp: 0,
     mp: 0,
+    boss_atk: 0,
+    damage: 0,
     allstat: 0,
     chackgam: 0,
   }
@@ -110,54 +112,66 @@ export default class EnhanceStore {
   @action setClassStatFont = (statName, itemClass) => {
     if (itemClass === 'pirate' || itemClass === 'warrior') {
       switch (statName) {
-        case '공격력':
+        case 'atk':
         case 'str':
-        case '올스탯':
+        case 'allstat':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';
       }
     } else if (itemClass === 'thief') {
       switch (statName) {
-        case '공격력':
+        case 'atk':
         case 'luk':
-        case '올스탯':
+        case 'allstat':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';
       }
     } else if (itemClass === 'wizard') {
       switch (statName) {
-        case '마력':
+        case 'mg_atk':
         case 'int':
-        case '올스탯':
+        case 'allstat':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';
       }
     } else if (itemClass === 'archer') {
       switch (statName) {
-        case '공격력':
+        case 'atk':
         case 'dex':
-        case '올스탯':
+        case 'allstat':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';
       }
     } else if (itemClass === 'daemon') {
       switch (statName) {
-        case '공격력':
-        case 'HP':
+        case 'atk':
+        case 'hp':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';
       }
     } else if (itemClass === 'jaenon') {
       switch (statName) {
-        case '공격력':
+        case 'atk':
         case 'luk':
         case 'dex':
-        case '올스탯':
+        case 'allstat':
+        case 'boss_atk':
+        case 'damage':
           return 'red';
         default:
           return 'black';

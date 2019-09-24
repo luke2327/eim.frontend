@@ -9,8 +9,8 @@ const styles = (theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  redFont: {
-    color: '#FF6C6C',
+  mainStatFont: {
+    color: '#8324FF',
   },
   blackFont: {
     color: '#000000',
@@ -32,20 +32,24 @@ class EnhanceStatCard extends Component {
     return (
       <Box>
         <Grid container spacing={3}>
-          <Grid item xs={2} className={titleColor === 'red' ? classes.redFont : classes.blackFont}> { statName } </Grid>
+          <Grid item xs={2} className={titleColor === 'red' ? classes.mainStatFont : classes.blackFont}> { statName } </Grid>
           <Grid item xs={2}> { opt } </Grid>
           <Grid item xs={2}> { enhance.sfStat[name] } </Grid>
           <Grid item xs={2}>
-            <Input
-              type="Number"
-              placeholder=""
-              onChange={this.handleAddOptStatChange}
-              defaultValue={0}
-              name={name}
-            />
+
+            { name === 'monster_def' ?
+              ''
+              :
+              <Input
+                type="Number"
+                placeholder=""
+                onChange={this.handleAddOptStatChange}
+                defaultValue={0}
+                name={name}
+              />}
           </Grid>
           <Grid item xs={2}>
-            { (name === 'chackgam' || name === 'allstat') ?
+            { (name === 'chackgam' || name === 'allstat' || name === 'boss_atk' || name === 'damage' || name === 'monster_def') ?
               ''
               :
               <Input

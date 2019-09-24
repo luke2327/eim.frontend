@@ -23,7 +23,7 @@ const styles = (theme) => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 700,
+    height: 850,
     verticalAlign: 'middle',
   },
 });
