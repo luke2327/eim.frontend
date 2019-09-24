@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class NoticeCpt extends Component {
-  render () {
+  render() {
     return (
       <div>
         Notice
       </div>
-    )
+    );
   }
 }
 

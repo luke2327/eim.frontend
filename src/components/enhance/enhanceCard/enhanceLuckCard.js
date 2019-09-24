@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, Card } from '@material-ui/core';
-import {　FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { Card } from '@material-ui/core';
+import { FormattedHTMLMessage } from 'react-intl';
 
-const styles = theme => ({
+const styles = (theme) => ({
   month_text: {
     marginTop: theme.spacing(2),
-    color: "#5C90D2"
+    color: '#5C90D2',
   },
   today_text: {
     marginTop: theme.spacing(2),
-    color: "#43A047"
+    color: '#43A047',
   },
   all_text: {
     marginTop: theme.spacing(2),
-    color: "#5E35B1"
+    color: '#5E35B1',
   },
   small_text: {
     marginLeft: theme.spacing(1),
-    fontSize:"18px",
-    color: "#333333"
+    fontSize: '18px',
+    color: '#333333',
   },
   board_paper: {
     padding: theme.spacing(7),
-    textAlign: 'center',        
-  }
+    textAlign: 'center',
+  },
 });
 
 class EnhanceLuckCard extends Component {
@@ -46,14 +46,16 @@ class EnhanceLuckCard extends Component {
     const { classes, title, content } = this.props;
 
     return (
-      <Card className={classes.board_paper}>
+      <Card key="key" className={classes.board_paper}>
         <FormattedHTMLMessage
           id="enhance.todays"
-          values={{object: <span className="enhance-card-object-font">{title}</span>,
-                  br: <br></br>,
-                  channelNumber: <span className={[this.setFontColor(), "enhance-card-channel-font"].join(' ')}>{content}</span>}}
+          values={{
+            object: <span key="title" className="enhance-card-object-font">{title}</span>,
+            br: <br key="br" />,
+            channelNumber: <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>,
+          }}
         >
-          {object => <div className={classes.small_text}>{object}</div>}
+          { (object) => <div className={classes.small_text}>{object}</div> }
         </FormattedHTMLMessage>
       </Card>
     );

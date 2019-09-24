@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
+import LeftSideCpt from 'components/layout/leftSide';
+import RightSideCpt from 'components/layout/rightSide';
+import CenterTopCpt from 'components/layout/centerTop';
+import CenterCenterCpt from 'components/layout/centerCenter';
 
-class MainView extends Component {
+export default class MainView extends Component {
   render() {
     return (
-      <div className="container">
-        메인 화면
+      <div className="main-view container-default default center-flex margin-center-hori">
+        <div className="between-flex w100p">
+          <LeftSideCpt />
+          <div className="w100p flexible main-center-container">
+            <CenterTopCpt />
+            <CenterCenterCpt />
+          </div>
+          <RightSideCpt />
+        </div>
       </div>
     );
   }
 }
-
-export default MainView;

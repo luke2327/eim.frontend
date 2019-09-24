@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
-const styles = theme => ({
+const styles = (theme) => ({
   paper: {
     padding: theme.spacing(3),
     textAlign: 'center',
-    color: "#000000",
+    color: '#000000',
     height: 650,
-    backgroundColor:"#FAF4C0"
+    backgroundColor: '#FAF4C0',
   },
 });
 class EnhanceEvaluateForm extends Component {
-
   data = [
     { subject: '추옵단계', A: 120, fullMark: 150 },
     { subject: '주문서강화수치', A: 98, fullMark: 150 },
@@ -23,10 +22,9 @@ class EnhanceEvaluateForm extends Component {
   ]
 
   render() {
-    const { classes } = this.props;
     return (
       <Grid container spacing={1}>
-        <Grid item xs={6} >
+        <Grid item xs={12}>
           <RadarChart cx={270} cy={350} outerRadius={150} width={560} height={700} data={this.data}>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
@@ -34,11 +32,11 @@ class EnhanceEvaluateForm extends Component {
             <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
           </RadarChart>
         </Grid>
-        <Grid item xs={6}>
+        {/* <Grid item xs={6}>
           <Paper className={classes.paper}>
             HELLO
           </Paper>
-        </Grid>
+        </Grid> */}
       </Grid>
     );
   }

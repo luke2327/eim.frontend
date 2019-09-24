@@ -1,28 +1,55 @@
 import React, { Component } from 'react';
-import { observable, action } from 'mobx';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
+import { toJS } from 'mobx';
+import api from 'libs/api/vod';
+import mapleApi from 'libs/api/maple';
+import YoutubeListCard from './youtubeListCard';
 
+@inject('crawling')
+@inject('common')
 @observer
 class YoutubeListCpt extends Component {
-  @observable number = 0;
+  constructor() {
+    super();
 
-  @action
-  increase = () => {
-    this.number++;
+    this.state = {
+      vod: {},
+    };
   }
 
-  @action
-  decrease = () => {
-    this.number--;
+  componentDidMount() {
+    let req = {
+      max: 10,
+    };
+
+    api.getYoutubeList(req).then((res) => {
+      this.props.crawling.youtubeList = res.data;
+    });
+
+    req = {
+      minLevelFilter: 160,
+      maxLevelFilter: 170,
+      startPosition: 0,
+      locale: this.props.common.selectedLang,
+    };
+
+    // maplestory.io API 테스트
+    mapleApi.getMapleItem(req).then((res) => {
+      console.log(res);
+    });
   }
 
   render() {
+    const { crawling } = this.props;
     return (
-      <div>
-        <h1>{this.number}</h1>
-        <button onClick={this.increase}>+1</button>
-        <button onClick={this.decrease}>-1</button>
-      </div>
+      crawling.youtubeList === undefined
+        ? <div>loading</div>
+        :
+        <div id="youtube-list" className="h100p">
+          {toJS(crawling.youtubeList).map((item) => {
+            return <YoutubeListCard key={item.vod_no} item={item} />;
+          })}
+        </div>
     );
   }
 }
