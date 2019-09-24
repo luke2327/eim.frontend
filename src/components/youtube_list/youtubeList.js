@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from 'libs/api/vod';
+import mapleApi from 'libs/api/maple';
 import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
+@inject('common')
 @observer
 class YoutubeListCpt extends Component {
   constructor() {
@@ -16,8 +18,24 @@ class YoutubeListCpt extends Component {
   }
 
   componentDidMount() {
-    api.getYoutubeList({ max: 10 }).then((res) => {
+    let req = {
+      max: 10,
+    };
+
+    api.getYoutubeList(req).then((res) => {
       this.props.crawling.youtubeList = res.data;
+    });
+
+    req = {
+      minLevelFilter: 160,
+      maxLevelFilter: 170,
+      startPosition: 0,
+      locale: this.props.common.selectedLang,
+    };
+
+    // maplestory.io API 테스트
+    mapleApi.getMapleItem(req).then((res) => {
+      console.log(res);
     });
   }
 
