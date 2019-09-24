@@ -12,12 +12,13 @@ const styles = (theme) => ({
     flexGrow: 1,
     width: '100%',
     height: '100%',
-    backgroundColor: '#EAEAEA',
+    backgroundColor: '#94B0C2',
   },
   paper: {
     padding: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    backgroundColor: '#FFFFFF',
   },
   middlePaper: {
     padding: theme.spacing(3),
@@ -25,6 +26,7 @@ const styles = (theme) => ({
     color: theme.palette.text.secondary,
     height: 850,
     verticalAlign: 'middle',
+    backgroundColor: '#FFFFFF',
   },
 });
 

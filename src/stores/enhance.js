@@ -60,7 +60,21 @@ export default class EnhanceStore {
     damage: 0,
     allstat: 0,
     chackgam: 0,
-  }
+  };
+  @observable mainStatProperty = [
+    { name: 'mg_atk', status: false, type: 'weapon' },
+    { name: 'atk', status: false, type: 'weapon' },
+    { name: 'str', status: false, type: 'equip' },
+    { name: 'dex', status: false, type: 'equip' },
+    { name: 'luk', status: false, type: 'equip' },
+    { name: 'int', status: false, type: 'equip' },
+    { name: 'hp', status: false, type: 'equip' },
+    { name: 'mp', status: false, type: 'equip' },
+    { name: 'boss_atk', status: false, type: 'weapon' },
+    { name: 'damage', status: false, type: 'weapon' },
+    { name: 'allstat', status: false, type: 'equip' },
+    { name: 'chackgam', status: false, type: '' },
+  ];
 
   @action handleChangeEnhanceStat = (name, stat) => {
     this.enhanceStat[name] = stat;
