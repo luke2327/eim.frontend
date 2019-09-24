@@ -6,12 +6,20 @@ $IMAGE_PREFIX: '../static/images/'
   background-repeat: no-repeat
 
 \:lang(ko)
-  font-family: 'Noto Sans KR', sans-serif
+
 \:lang(en)
-  font-family: 'Roboto Slab', serif
+
 \:lang(ja)
+.ko
+  font-family: 'Noto Sans KR', sans-serif
+.en
+  font-family: 'Roboto Slab', serif
 html, body
   height: 100%
+.jf-center
+  justify-content: center
+.ai-center
+  align-items: center
 .flexible
   display: flex
   align-items: center
@@ -31,6 +39,10 @@ html, body
   align-items: center
   justify-content: flex-end
 .between-flex
+  display: flex
+  align-items: center
+  justify-content: space-between
+.between-flex-vertical
   display: flex
   align-items: center
   justify-content: space-between
@@ -83,6 +95,8 @@ html, body
   text-decoration: line-through
 .td-blink
   text-decoration: blink
+.cursor-pointer
+  cursor: pointer
 .fade-in
   animation: fadein .5s linear
 .linear-spc
@@ -99,7 +113,7 @@ html, body
   max-width: 1920px
 .container-default
   margin-top: 20px
-.header
+#header
   padding: 7px 0px
   .header-left
     padding-left: 10px
@@ -160,3 +174,19 @@ html, body
           color: white
         .yc-content-area:hover
           background-color: rgba(0,0,0,0.3)
+
+#simulate
+  padding: 10px
+  .s-link
+    margin: 10px
+    border-radius: 5px
+    background-color: black
+    box-shadow: 2px 2px 12px -5px rgba(0, 0, 0, 0.5)
+  .card
+    height: 380px
+    opacity: 0.4
+    transition: all 0.15s
+    .card-body
+      height: 140px
+  .card:hover
+    opacity: 1

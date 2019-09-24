@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 
 @inject('common')
 @observer
@@ -28,7 +28,7 @@ class HeaderCpt extends Component {
     const { common } = this.props;
     const navDefaultClass = 'nav-link';
     return (
-      <div className="start-flex header">
+      <div id="header" className="start-flex">
         <div className="between-flex w100p margin-center-hori hedaer-line">
           <div className="w100p">
             <ul className="nav nav-tabs header-left">
@@ -55,7 +55,7 @@ class HeaderCpt extends Component {
                   <li className="nav-item">
                     <Link
                       className={common.selectedHeaderTab === 3 ? [navDefaultClass, 'active'].join(' ') : navDefaultClass}
-                      to="/simulate/simulateEquip"
+                      to="/simulate"
                       onClick={() => common.selectHeaderTab(3)}
                     >
                       <FormattedMessage id="header.simulate" />
@@ -81,21 +81,26 @@ class HeaderCpt extends Component {
                   </li>
                 </div>
                 <div className="dropdown header-right">
-                  <button
-                    className="btn btn-outline-primary dropdown-toggle"
-                    onClick={this.showDropdownMenu}
-                    type="button"
+                  <FormattedHTMLMessage
+                    id="header.language"
                   >
-                    Dropdown button
-                  </button>
+                    {(object) =>
+                      <button
+                        className="btn btn-outline-primary dropdown-toggle"
+                        onClick={this.showDropdownMenu}
+                        type="button"
+                      >
+                        {object}
+                      </button>}
+                  </FormattedHTMLMessage>
                   {
                     this.state.showDropdownMenu
                       ? (
                         <div className="dropdown-menu">
                           {
                             common.defaultLangList.map((language, i) =>
-                              <span key={i} className="dropdown-item" onClick={() => common.selectLang(language)}>{language}</span>)
-                            }
+                              <span key={i} className="dropdown-item cursor-pointer" onClick={() => common.selectLang(language)}>{language}</span>)
+                          }
                         </div>
                       )
                       : (

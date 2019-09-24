@@ -9,7 +9,7 @@ export default class commonStore {
   @observable defaultHeaderTab = 1;
 
   @observable selectedLang = localStorage.getItem('language');
-  @observable selectedHeaderTab = parseInt(localStorage.getItem('selectedHeaderTab')) || this.defaultHeaderTab;
+  @observable selectedHeaderTab = parseInt(sessionStorage.getItem('selectedHeaderTab')) || this.defaultHeaderTab;
 
   @observable langTabState = false;
 
@@ -19,7 +19,7 @@ export default class commonStore {
   }
 
   @action selectHeaderTab = (tab) => {
-    localStorage.setItem('selectedHeaderTab', tab);
+    sessionStorage.setItem('selectedHeaderTab', tab);
     this.selectedHeaderTab = tab;
   }
 }
