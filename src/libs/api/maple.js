@@ -1,8 +1,7 @@
 import api from 'libs/api/common';
-import _ from 'lodash';
 
 const getLocale = (data) => {
-  data.locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0] || 'en';
+  data.locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];
 
   return data;
 };
@@ -10,6 +9,8 @@ const getLocale = (data) => {
 export default {
   getMapleItem: async (req) => {
     req = req.locale ? req : getLocale(req);
+
+    req.locale = '';
 
     return await api.send('api/maple/item', req);
   },
