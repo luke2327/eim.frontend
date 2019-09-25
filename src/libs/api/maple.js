@@ -10,8 +10,6 @@ export default {
   getMapleItem: async (req) => {
     req = req.locale ? req : getLocale(req);
 
-    req.locale = '';
-
     return await api.send('api/maple/item', req);
   },
 
@@ -61,5 +59,11 @@ export default {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/maple/item/name', req);
+  },
+
+  inputMapleItem: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/maple/item/input', req);
   },
 };

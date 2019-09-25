@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-import api from 'libs/api/vod';
-import mapleApi from 'libs/api/maple';
+// import api from 'libs/api/vod';
+// import mapleApi from 'libs/api/maple';
 import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
@@ -22,9 +22,9 @@ class YoutubeListCpt extends Component {
       max: 10,
     };
 
-    api.getYoutubeList(req).then((res) => {
-      this.props.crawling.youtubeList = res.data;
-    });
+    // api.getYoutubeList(req).then((res) => {
+    //   this.props.crawling.youtubeList = res.data;
+    // });
 
     req = {
       minLevelFilter: 160,
@@ -33,10 +33,26 @@ class YoutubeListCpt extends Component {
       locale: this.props.common.selectedLang,
     };
 
+    // console.log(req);
+
     // maplestory.io API 테스트
-    mapleApi.getMapleItem(req).then((res) => {
-      console.log(res);
-    });
+    // mapleApi.getMapleItem(req).then((res) => {
+    //   console.log(res);
+    // });
+
+    req = {
+      overallCategoryFilter: 'equip',
+      categoryFilter: 'Two-Handed Weapon',
+      minLevelFilter: 200,
+      maxLevelFilter: 200,
+      locale: 'ko',
+    };
+
+    console.log(req);
+
+    // mapleApi.inputMapleItem(req).then((res) => {
+    //   console.log(res);
+    // });
   }
 
   render() {
