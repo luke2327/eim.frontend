@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import axios from 'axios';
+import enhanceApi from 'libs/api/enhance';
 
 const styles = () => ({
   root: {
@@ -59,10 +59,12 @@ class EnhanceInputDialog extends Component {
   }
 
   PostSearchData = async (cate, name) => {
-    return axios.post('http://127.0.0.1:6050/api/enhance/dialog/input/search', {
+    const data = {
       cate: cate,
       name: name,
-    }).then((res) => {
+    };
+
+    return enhanceApi.getSearchItem(data).then((res) => {
       this.setState({
         itemList: res.data,
       });
