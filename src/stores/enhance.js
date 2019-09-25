@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import sfEquip from 'assets/starforceEquip';
 
+
 export default class EnhanceStore {
   @observable item = {
     item_no: 0,
@@ -75,6 +76,31 @@ export default class EnhanceStore {
     { name: 'allstat', status: false, type: 'equip' },
     { name: 'chackgam', status: false, type: '' },
   ];
+
+  @action maxAddOptEquipStat = (level, itemClass) => {
+    switch (level) {
+      case 150:
+        return itemClass === 'daemon' ? 3150 : 182;
+      case 160:
+        return itemClass === 'daemon' ? 3360 : 238;
+      case 200:
+        return itemClass === 'daemon' ? 4200 : 273;
+      default:
+        return 0;
+    }
+  }
+  @action maxAddOptWeaponStat = (level, genStat) => {
+    switch (level) {
+      case 150:
+        return genStat * (41 / 100) + (2 * 5) + (2.4 * 5);
+      case 160:
+        return genStat * (51 / 100) + (2.55 * 5) + (2.93 * 5);
+      case 200:
+        return genStat * (62 / 100) + (3.31 * 5) + (4.92 * 5);
+      default:
+        return 0;
+    }
+  }
 
   @action handleChangeEnhanceStat = (name, stat) => {
     this.enhanceStat[name] = stat;
