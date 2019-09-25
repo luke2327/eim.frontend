@@ -5,6 +5,7 @@ class NoticeCpt extends Component {
     return (
       <div>
         Notice
+        <img alt="weapon" src="https://items.maplestory.io/api/kms/323/item/1422189/icon" />
       </div>
     );
   }
