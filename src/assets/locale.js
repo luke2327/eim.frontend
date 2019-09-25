@@ -42,6 +42,10 @@ export default {
     'enhance.registerEquipPlaceholder': '등록된 장비가 없습니다 <br/> 분석할 장비를 등록해보세요',
     'enhance.stat': '스탯',
 
+    'simulate.rootAbyss': '루타비스',
+    'simulate.absolab': '앱솔랩스',
+    'simulate.arcaneUmbra': '아케인 셰이드',
+
     'simulate.cube': '큐브',
     'simulate.cube.introCard': '큐브로 잠재능력을 재설정 해보세요!',
 

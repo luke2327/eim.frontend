@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-// import api from 'libs/api/vod';
+import api from 'libs/api/vod';
 // import mapleApi from 'libs/api/maple';
 import YoutubeListCard from './youtubeListCard';
 
@@ -22,9 +22,9 @@ class YoutubeListCpt extends Component {
       max: 10,
     };
 
-    // api.getYoutubeList(req).then((res) => {
-    //   this.props.crawling.youtubeList = res.data;
-    // });
+    api.getYoutubeList(req).then((res) => {
+      this.props.crawling.youtubeList = res.data;
+    });
 
     req = {
       minLevelFilter: 160,

@@ -13,4 +13,11 @@ export default {
 
     return await api.send('api/enhance/dialog/input/search', req, 'post');
   },
+
+  getSimulateItemByCube: async (req) => {
+    console.log(req);
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/item/simulate/cube', req, 'post');
+  },
 };

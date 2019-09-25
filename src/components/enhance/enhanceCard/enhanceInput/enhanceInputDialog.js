@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import enhanceApi from 'libs/api/enhance';
+import itemApi from 'libs/api/item';
 
 const styles = () => ({
   root: {
@@ -64,7 +64,7 @@ class EnhanceInputDialog extends Component {
       name: name,
     };
 
-    return enhanceApi.getSearchItem(data).then((res) => {
+    return itemApi.getSearchItem(data).then((res) => {
       this.setState({
         itemList: res.data,
       });
