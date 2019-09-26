@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormattedHTMLMessage } from 'react-intl';
 import { toJS } from 'mobx';
 import _ from 'lodash';
-import itemApi from 'libs/api/item';
 import CubeItemModal from './cubeItemModal';
 
 class CubeMainMenu extends Component {
@@ -11,78 +10,22 @@ class CubeMainMenu extends Component {
     cubeItemModalKey: '',
   }
 
-  fillItemList = async (given, minItemLevel, maxItemLevel, category) => {
-    const req = {
-      minItemLevel: minItemLevel,
-      maxItemLevel: maxItemLevel,
-      category: category,
-      isCash: 0,
-      label: given,
-    };
-
-    this.setState({
-      cubeItemModalKey: given,
-    });
-
-    switch (given) {
-      case 'rootAbyss': {
-        if (this.props.simulate.cubeItemRootAbyss) {
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        } else {
-          const result = await itemApi.getSimulateItemByCube(req);
-
-          this.props.simulate.cubeItemRootAbyss = result.data;
-
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        }
-
-        break;
-      } case 'absolab': {
-        if (this.props.simulate.cubeItemAbsolab) {
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        } else {
-          const result = await itemApi.getSimulateItemByCube(req);
-
-          this.props.simulate.cubeItemAbsolab = result.data;
-
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        }
-
-        break;
-      } case 'arcaneUmbra': {
-        if (this.props.simulate.cubeItemArcaneUmbra) {
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        } else {
-          const result = await itemApi.getSimulateItemByCube(req);
-
-          this.props.simulate.cubeItemArcaneUmbra = result.data;
-
-          this.setState({
-            cubeItemModal: !this.state.cubeItemModal,
-          });
-        }
-
-        break;
-      }
-      default: {
-        break;
-      }
+  openSelectModal = async (given) => {
+    if (given === this.state.cubeItemModalKey) {
+      this.setState({
+        cubeItemModal: !this.state.cubeItemModal,
+        cubeItemModalKey: given,
+      });
+    } else {
+      this.setState({
+        cubeItemModal: true,
+        cubeItemModalKey: given,
+      });
     }
   };
 
   render() {
     const { simulate } = this.props;
-    console.log(simulate);
     return (
       <div className="s-item flexible">
         {
@@ -94,7 +37,7 @@ class CubeMainMenu extends Component {
               >
                 {(object) =>
                   <button
-                    onClick={() => this.fillItemList(key, data.minItemLevel, data.maxItemLevel, data.category)}
+                    onClick={() => this.openSelectModal(key)}
                     className="btn btn-outline-primary"
                     type="button"
                   >
