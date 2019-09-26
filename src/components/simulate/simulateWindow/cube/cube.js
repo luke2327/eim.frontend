@@ -12,7 +12,15 @@ class SimulateCube extends Component {
         <div className="main-cube-zone">
           <div className="cube-above center-flex margin-center-hori">
             <div className="altar-item center-flex margin-center-hori">
-              {simulate.ss ? simulate.ss : 'item'}
+              {
+                simulate.altarItem
+                  ? (
+                    <img alt="altarItem" src={simulate.generateIcon(simulate.altarItem.id)} />
+                  )
+                  : (
+                    <div>Item</div>
+                  )
+              }
             </div>
           </div>
         </div>

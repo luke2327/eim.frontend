@@ -35,7 +35,7 @@ class CubeMainMenu extends Component {
           this.props.simulate.cubeItemRootAbyss = result.data;
 
           this.setState({
-            cubeItemModal: !this.cubeItemModal,
+            cubeItemModal: !this.state.cubeItemModal,
           });
         }
 
@@ -51,7 +51,7 @@ class CubeMainMenu extends Component {
           this.props.simulate.cubeItemAbsolab = result.data;
 
           this.setState({
-            cubeItemModal: !this.cubeItemModal,
+            cubeItemModal: !this.state.cubeItemModal,
           });
         }
 
@@ -67,7 +67,7 @@ class CubeMainMenu extends Component {
           this.props.simulate.cubeItemArcaneUmbra = result.data;
 
           this.setState({
-            cubeItemModal: !this.cubeItemModal,
+            cubeItemModal: !this.state.cubeItemModal,
           });
         }
 

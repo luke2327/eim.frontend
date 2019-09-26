@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 export default class simulateStore {
   @observable defaultCubeGiven = {
@@ -22,4 +22,19 @@ export default class simulateStore {
   @observable cubeItemRootAbyss;
   @observable cubeItemAbsolb;
   @observable cubeItemAracneUmbra;
+
+  @action generateIcon = (itemId) => {
+    return `https://items.maplestory.io/api/kms/323/item/${itemId}/icon`;
+  }
+
+  @observable altarItem;
+
+  @action selectAltarItem = (item) => {
+    this.altarItem = item;
+
+    console.log(item);
+
+    // this.selectedLang = language;
+    // localStorage.setItem('language', language);
+  }
 }
