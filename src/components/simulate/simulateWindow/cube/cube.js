@@ -1,11 +1,33 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { toJS } from 'mobx';
 import CubeMainMenu from './cubeMainMenu';
 import ItemPotential from './itemPotential';
+import itemApi from 'libs/api/item';
+import _ from 'lodash';
 
 @inject('simulate')
 @observer
 class SimulateCube extends Component {
+  componentDidMount() {
+    this.loadItemList();
+  }
+
+  loadItemList = async () => {
+    _.map(toJS(this.props.simulate.defaultCubeGiven), async (req, given) => {
+      req.label = given;
+      if (given === 'rootAbyss') {
+        const result = await itemApi.getSimulateItemByCube(req);
+        this.props.simulate.cubeItemRootAbyss = result.data;
+      } else if (given === 'absolab') {
+        const result = await itemApi.getSimulateItemByCube(req);
+        this.props.simulate.cubeItemAbsolab = result.data;
+      } else if (given === 'arcaneUmbra') {
+        const result = await itemApi.getSimulateItemByCube(req);
+        this.props.simulate.cubeItemArcaneUmbra = result.data;
+      }
+    });
+  }
   render() {
     const { simulate } = this.props;
     return (
