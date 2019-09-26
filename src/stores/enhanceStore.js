@@ -24,7 +24,7 @@ export default class EnhanceStore {
     boss_atk: 0,
     monster_def: 0,
     upgrade: 0,
-    starforce: '',
+    starforce: 0,
   };
   @observable itemSf = 0;
   @observable itemClass = '';
@@ -76,6 +76,21 @@ export default class EnhanceStore {
     { name: 'allstat', status: false, type: 'equip' },
     { name: 'chackgam', status: false, type: '' },
   ];
+  @observable evaluateData = [
+    { subject: '추옵단계', A: 0, fullMark: 100 },
+    { subject: '주문서강화수치', A: 0, fullMark: 100 },
+    { subject: '시장가치', A: 0, fullMark: 100 },
+    { subject: '스타포스', A: 0, fullMark: 100 },
+    { subject: '총메인스탯', A: 0, fullMark: 100 },
+  ];
+
+  @action maxEnhanceStat = () => {
+    if (this.item.cate === 'weapon') {
+      return 99;
+    }
+
+    return this.itemClass === 'daemon' ? this.item.upgrade * 470 : this.item.upgrade * 9;
+  }
 
   @action maxAddOptEquipStat = (level, itemClass) => {
     switch (level) {
@@ -143,6 +158,82 @@ export default class EnhanceStore {
     return this.item.cate === 'weapon' ? ((stat / maxWeaponStat) * 100) : ((stat / maxEquipStat) * 100);
   }
 
+  /* 총메인스탯평가함수 */
+  @action evaluateMainStatItem = () => {
+    let maxStat = 0;
+    let currentStat = 0;
+
+    if (this.item.cate === 'equip') {
+      maxStat = this.itemClass === 'daemon' ? 8000 : 420;
+
+      this.mainStatProperty.forEach((o) => {
+        currentStat += ((o.name === 'str' ||
+                        o.name === 'dex' ||
+                        o.name === 'int' ||
+                        o.name === 'luk' ||
+                        o.name === 'hp') &&
+                        o.status) ? (this.addOptStat[o.name] + this.item[o.name] + this.sfStat[o.name] + this.enhanceStat[o.name]) : 0;
+        currentStat += (o.name === 'allstat' && o.status) ? this.addOptStat.allstat * 10 : 0;
+      });
+
+      return ((currentStat / maxStat) * 100);
+    }
+
+    const sfMaxStat = this.setSfStat(22, 99, 99);
+    maxStat = 99 +
+              (this.itemClass === 'wizard' ? sfMaxStat.mg_atk : sfMaxStat.atk) +
+              this.maxAddOptWeaponStat(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
+
+    currentStat = this.itemClass === 'wizard' ? (this.item.mg_atk + this.addOptStat.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) : (this.item.atk + this.addOptStat.atk + this.sfStat.atk + this.enhanceStat.atk);
+
+    return ((currentStat / maxStat) * 100);
+  }
+
+  /* 주문서강화수치평가함수 */
+  @action evaluateEnhanceStatItem = () => {
+    const maxStat = this.maxEnhanceStat();
+
+    if (this.item.cate === 'equip') {
+      let currentStat = 0;
+
+      this.mainStatProperty.forEach((o) => {
+        currentStat += ((o.name === 'str' ||
+                        o.name === 'dex' ||
+                        o.name === 'int' ||
+                        o.name === 'luk' ||
+                        o.name === 'hp') &&
+                        o.status) ? this.enhanceStat[o.name] : 0;
+      });
+      return (currentStat / maxStat) * 100;
+    }
+
+    return ((this.itemClass === 'wizard' ? this.enhanceStat.mg_atk : this.enhanceStat.atk) / maxStat) * 100; // 무기인경우
+  }
+
+  /* 스타포스평가함수 */
+  @action evaluateSfItem = () => {
+    return (this.itemSf / this.item.starforce) * 100;
+  }
+
+  @action evaluateSellItem = () => {
+    return ((this.evaluateAddOptItem() + this.evaluateEnhanceStatItem() + this.evaluateMainStatItem() + this.evaluateSfItem()) / 400) * 100;
+  }
+
+  @action evaluateItem = () => {
+    this.evaluateData = [
+      { subject: '추옵단계', A: this.evaluateAddOptItem(), fullMark: 100 },
+      { subject: '주문서강화수치', A: this.evaluateEnhanceStatItem(), fullMark: 100 },
+      { subject: '시장가치', A: this.evaluateSellItem(), fullMark: 100 },
+      { subject: '스타포스', A: this.evaluateSfItem(), fullMark: 100 },
+      { subject: '총메인스탯', A: this.evaluateMainStatItem(), fullMark: 100 },
+    ];
+    console.log('추옵단계      : ', this.evaluateData[0].subject, 'DATA : ', this.evaluateData[0].A);
+    console.log('주문서강화수치 : ', this.evaluateData[1].subject, 'DATA : ', this.evaluateData[1].A);
+    console.log('시장가치      : ', this.evaluateData[2].subject, 'DATA : ', this.evaluateData[2].A);
+    console.log('스타포스      : ', this.evaluateData[3].subject, 'DATA : ', this.evaluateData[3].A);
+    console.log('총메인스탯    : ', this.evaluateData[4].subject, 'DATA : ', this.evaluateData[4].A);
+  }
+
   @action handleChangeEnhanceStat = (name, stat) => {
     this.enhanceStat[name] = stat;
   }
@@ -150,7 +241,11 @@ export default class EnhanceStore {
     this.addOptStat[name] = stat;
   }
   @action handleChangeSfStat = () => {
-    this.sfStat = {
+    this.sfStat = this.setSfStat(this.itemSf, this.enhanceStat.atk, this.enhanceStat.mg_atk);
+  }
+
+  @action setSfStat = (itemSf, enhanceAtk, enhanceMgAtk) => {
+    const result = {
       mg_atk: 0,
       atk: 0,
       str: 0,
@@ -162,31 +257,33 @@ export default class EnhanceStore {
     };
 
     if (this.item.item_cate === '장갑') {
-      for (let i = 0; i < this.itemSf; i += 1) {
-        this.sfStat.mg_atk += sfEquip.glove[this.item.level][i].atkAll;
-        this.sfStat.atk += sfEquip.glove[this.item.level][i].atkAll;
-        this.sfStat.str += sfEquip.glove[this.item.level][i].stat;
-        this.sfStat.dex += sfEquip.glove[this.item.level][i].stat;
-        this.sfStat.luk += sfEquip.glove[this.item.level][i].stat;
-        this.sfStat.int += sfEquip.glove[this.item.level][i].stat;
+      for (let i = 0; i < itemSf; i += 1) {
+        result.mg_atk += sfEquip.glove[this.item.level][i].atkAll;
+        result.atk += sfEquip.glove[this.item.level][i].atkAll;
+        result.str += sfEquip.glove[this.item.level][i].stat;
+        result.dex += sfEquip.glove[this.item.level][i].stat;
+        result.luk += sfEquip.glove[this.item.level][i].stat;
+        result.int += sfEquip.glove[this.item.level][i].stat;
       }
     } else {
       if (this.item.cate === 'weapon') {
-        for (let i = 0; i < (this.itemSf && 15); i += 1) {
-          this.sfStat.atk += parseInt((this.item.atk + this.sfStat.atk + this.enhanceStat.atk) / 50 + 1, 10);
-          this.sfStat.mg_atk += parseInt((this.item.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) / 50 + 1, 10);
+        for (let i = 0; i < (itemSf && 15); i += 1) {
+          result.atk += parseInt((this.item.atk + this.sfStat.atk + enhanceAtk) / 50 + 1, 10);
+          result.mg_atk += parseInt((this.item.mg_atk + this.sfStat.mg_atk + enhanceMgAtk) / 50 + 1, 10);
         }
       }
 
-      for (let i = 0; i <= this.itemSf; i += 1) {
-        this.sfStat.mg_atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
-        this.sfStat.atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
-        this.sfStat.str += sfEquip[this.item.cate][this.item.level][i].stat;
-        this.sfStat.dex += sfEquip[this.item.cate][this.item.level][i].stat;
-        this.sfStat.luk += sfEquip[this.item.cate][this.item.level][i].stat;
-        this.sfStat.int += sfEquip[this.item.cate][this.item.level][i].stat;
+      for (let i = 0; i <= itemSf; i += 1) {
+        result.mg_atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
+        result.atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
+        result.str += sfEquip[this.item.cate][this.item.level][i].stat;
+        result.dex += sfEquip[this.item.cate][this.item.level][i].stat;
+        result.luk += sfEquip[this.item.cate][this.item.level][i].stat;
+        result.int += sfEquip[this.item.cate][this.item.level][i].stat;
       }
     }
+
+    return result;
   }
 
 

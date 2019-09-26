@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { observer, inject } from 'mobx-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import { Grid } from '@material-ui/core';
 
@@ -12,31 +13,22 @@ const styles = (theme) => ({
     backgroundColor: '#FAF4C0',
   },
 });
-class EnhanceEvaluateForm extends Component {
-  data = [
-    { subject: '추옵단계', A: 120, fullMark: 150 },
-    { subject: '주문서강화수치', A: 98, fullMark: 150 },
-    { subject: '시장가치', A: 86, fullMark: 150 },
-    { subject: '스타포스', A: 99, fullMark: 150 },
-    { subject: '추옵정확도', A: 85, fullMark: 150 },
-  ]
 
+@inject('enhance')
+@observer
+class EnhanceEvaluateForm extends Component {
   render() {
+    const { enhance } = this.props;
     return (
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <RadarChart cx={270} cy={350} outerRadius={150} width={560} height={700} data={this.data}>
+          <RadarChart cx={270} cy={350} outerRadius={150} width={560} height={700} data={enhance.evaluateData}>
             <PolarGrid />
             <PolarAngleAxis dataKey="subject" />
             <PolarRadiusAxis />
             <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
           </RadarChart>
         </Grid>
-        {/* <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            HELLO
-          </Paper>
-        </Grid> */}
       </Grid>
     );
   }
