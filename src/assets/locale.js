@@ -2,7 +2,7 @@ export default {
   en: {
     T000: '<b>Test en</b> \n new line',
     'header.home': 'Home',
-    'header.enhance': 'Enhance',
+    'header.enhance': 'Evaluate',
     'header.simulate': 'Simulation',
     'header.youtubeList': 'Youtube List',
     'header.notice': 'Notice',
@@ -28,7 +28,7 @@ export default {
   ko: {
     T000: 'Test ko',
     'header.home': '홈',
-    'header.enhance': '강화',
+    'header.enhance': '장비분석',
     'header.simulate': '시뮬레이션',
     'header.youtubeList': '유튜브 리스트',
     'header.notice': '공지사항',

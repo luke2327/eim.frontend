@@ -89,17 +89,58 @@ export default class EnhanceStore {
         return 0;
     }
   }
-  @action maxAddOptWeaponStat = (level, genStat) => {
+  // 올텟퍼 + 총데미지도 계산
+  @action maxAddOptWeaponStat = (level, genStat, itemClass) => {
     switch (level) {
       case 150:
-        return genStat * (41 / 100) + (2 * 5) + (2.4 * 5);
+        return genStat * (41 / 100) + (itemClass === 'daemon' ? 0 : (2 * 5)) + (2.4 * 5);
       case 160:
-        return genStat * (51 / 100) + (2.55 * 5) + (2.93 * 5);
+        return genStat * (51 / 100) + (itemClass === 'daemon' ? 0 : (2.55 * 5)) + (2.93 * 5);
       case 200:
-        return genStat * (62 / 100) + (3.31 * 5) + (4.92 * 5);
+        return genStat * (62 / 100) + (itemClass === 'daemon' ? 0 : (3.31 * 5)) + (4.92 * 5);
       default:
         return 0;
     }
+  }
+
+  @action calAddOptWeaponStat = (level, statName) => {
+    switch (level) {
+      case 150:
+        return statName === 'allstat' ? 2 : 2.4;
+      case 160:
+        return statName === 'allstat' ? 2.55 : 2.93;
+      case 200:
+        return statName === 'allstat' ? 3.31 : 4.92;
+      default:
+        return 0;
+    }
+  }
+
+  /* 추옵단계평가함수 */
+  @action evaluateAddOptItem = () => {
+    const maxWeaponStat = this.maxAddOptWeaponStat(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
+    const maxEquipStat = this.maxAddOptEquipStat(this.item.level, this.itemClass);
+
+    let stat = 0;
+
+    this.mainStatProperty.forEach((o) => {
+      if (this.item.cate === 'weapon') {
+        stat += (o.name === 'allstat' && o.status) ? this.calAddOptWeaponStat(this.item.level, 'allstat') * this.addOptStat.allstat : 0;
+        stat += (o.name === 'damage' && o.status) ? this.calAddOptWeaponStat(this.item.level, 'damage') * this.addOptStat.damage : 0;
+        stat += (o.name === 'atk' && o.status) ? this.addOptStat.atk : 0;
+        stat += (o.name === 'mg_atk' && o.status) ? this.addOptStat.mg_atk : 0;
+      } else {
+        stat += ((o.name === 'str' ||
+                  o.name === 'dex' ||
+                  o.name === 'int' ||
+                  o.name === 'luk' ||
+                  o.name === 'hp') &&
+                  o.status) ? this.addOptStat[o.name] : 0;
+        stat += (o.name === 'allstat' && o.status) ? this.addOptStat.allstat * 10 : 0;
+      }
+    });
+
+    return this.item.cate === 'weapon' ? ((stat / maxWeaponStat) * 100) : ((stat / maxEquipStat) * 100);
   }
 
   @action handleChangeEnhanceStat = (name, stat) => {
@@ -223,6 +264,36 @@ export default class EnhanceStore {
 
   @action setItemClass = (value) => {
     this.itemClass = value;
+
+    this.mainStatProperty.map((o) => {
+      o.status = false;
+
+      switch (this.itemClass) {
+        case 'pirate':
+        case 'warrior':
+          o.status = (o.name === 'atk' || o.name === 'str' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        case 'thief':
+          o.status = (o.name === 'atk' || o.name === 'luk' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        case 'wizard':
+          o.status = (o.name === 'mg_atk' || o.name === 'int' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        case 'archer':
+          o.status = (o.name === 'atk' || o.name === 'dex' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        case 'daemon':
+          o.status = (o.name === 'atk' || o.name === 'hp' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        case 'jaenon':
+          o.status = (o.name === 'atk' || o.name === 'luk' || o.name === 'dex' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
+          break;
+        default:
+          break;
+      }
+
+      return o;
+    });
   }
   @action setItemSf = (value) => {
     this.itemSf = value;

@@ -156,6 +156,7 @@ class EnhanceInputForm extends Component {
         <EnhanceStatCard titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)} statName={'착감'} name={'chackgam'} opt={0} starforce={this.state.getSf.value} />
         <Button
           className={classes.addButton}
+          onClick={enhance.evaluateAddOptItem}
           variant="outlined"
         >
           분석하기
