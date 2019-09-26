@@ -1,6 +1,13 @@
 import { observable, action } from 'mobx';
 
 export default class simulateStore {
+  @observable defaultPotentialLevel = 1;
+  @observable potentialListByLevel = {
+    1: ['all stat', 'atack', 'magic'],
+  }
+
+  @observable specifiedPotentialLevel = 1 || this.defaultPotentialLevel;
+
   @observable defaultCubeGiven = {
     rootAbyss: {
       minItemLevel: 150,
@@ -31,10 +38,5 @@ export default class simulateStore {
 
   @action selectAltarItem = (item) => {
     this.altarItem = item;
-
-    console.log(item);
-
-    // this.selectedLang = language;
-    // localStorage.setItem('language', language);
   }
 }

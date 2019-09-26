@@ -17,6 +17,7 @@ class CubeMainMenu extends Component {
       maxItemLevel: maxItemLevel,
       category: category,
       isCash: 0,
+      label: given,
     };
 
     this.setState({

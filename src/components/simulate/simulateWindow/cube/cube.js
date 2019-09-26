@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import CubeMainMenu from './cubeMainMenu';
+import ItemPotential from './itemPotential';
 
 @inject('simulate')
 @observer
@@ -22,6 +23,17 @@ class SimulateCube extends Component {
                   )
               }
             </div>
+          </div>
+          <div className="cube-below center-flex margin-center-hori">
+            {
+              simulate.altarItem
+                ? (
+                  <ItemPotential simulate={simulate} />
+                )
+                : (
+                  <div>option</div>
+                )
+            }
           </div>
         </div>
         <div className="hori-line" />
