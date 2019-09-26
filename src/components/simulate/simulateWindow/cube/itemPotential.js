@@ -5,11 +5,12 @@ import { toJS } from 'mobx';
 class ItemPotential extends Component {
   state = {
     potentialList: [],
+    potentialLabel: '',
   }
 
   componentDidMount() {
-    this.props.simulate.potentialListByLevel = toJS(this.props.simulate.potentialListByLevel);
     this.loadPotentialList();
+    this.loadPotentialLabel();
   }
 
   loadPotentialList = () => {
@@ -22,14 +23,34 @@ class ItemPotential extends Component {
     });
   }
 
+  loadPotentialLabel = () => {
+    _.map(toJS(this.props.simulate.potentialLabelList), (potentialLabel, potentialLevel) => {
+      if (parseInt(potentialLevel) === this.props.simulate.specifiedPotentialLevel) {
+        this.setState({
+          potentialLabel: potentialLabel,
+        });
+      }
+    });
+  }
+
   render() {
     return (
-      <div>
+      <div className="potential-zone flexible w100p">
+        {
+          this.state.potentialLabel
+            ? (
+              <div className="potential-label w100p t-align-center">{this.state.potentialLabel}</div>
+            )
+            : (
+              null
+            )
+        }
+        <div className="potential-hori-line" />
         {
           this.state.potentialList
             ? (
               _.map(this.state.potentialList, (potential, idx) => {
-                return <div key={idx}>{potential}</div>;
+                return <div className="potential-name w100p t-align-center" key={idx}>{potential}</div>;
               })
             )
             : (

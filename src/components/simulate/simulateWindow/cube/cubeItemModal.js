@@ -22,7 +22,9 @@ class CubeItemModal extends Component {
           this.props.modalKey === 'absolab'
             ? _.map(toJS(simulate.cubeItemAbsolab), (data) => {
               return (
-                <div key={data.id}>{data.name_ko}</div>
+                <div onClick={() => simulate.selectAltarItem(data)} className="flexible-inline jf-center cursor-pointer" key={data.id} style={{ margin: '5px', width: '55px', height: '55px', border: '1px solid #e0e0e8' }}>
+                  <img alt="weapon" src={simulate.generateIcon(data.id)} />
+                </div>
               );
             })
             : null
@@ -31,7 +33,9 @@ class CubeItemModal extends Component {
           this.props.modalKey === 'arcaneUmbra'
             ? _.map(toJS(simulate.cubeItemArcaneUmbra), (data) => {
               return (
-                <div key={data.id}>{data.name_ko}</div>
+                <div onClick={() => simulate.selectAltarItem(data)} className="flexible-inline jf-center cursor-pointer" key={data.id} style={{ margin: '5px', width: '55px', height: '55px', border: '1px solid #e0e0e8' }}>
+                  <img alt="weapon" src={simulate.generateIcon(data.id)} />
+                </div>
               );
             })
             : null

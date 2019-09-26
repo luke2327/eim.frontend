@@ -24,7 +24,7 @@ class SimulateCube extends Component {
               }
             </div>
           </div>
-          <div className="cube-below center-flex margin-center-hori">
+          <div className="cube-below start-flex-vertical margin-center-hori">
             {
               simulate.altarItem
                 ? (

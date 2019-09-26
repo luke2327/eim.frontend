@@ -7,6 +7,12 @@ export default class simulateStore {
   }
 
   @observable specifiedPotentialLevel = 1 || this.defaultPotentialLevel;
+  @observable potentialLabelList = {
+    1: 'rare',
+    2: 'epic',
+    3: 'unique',
+    4: 'regendary',
+  }
 
   @observable defaultCubeGiven = {
     rootAbyss: {
