@@ -48,6 +48,11 @@ class YoutubeListCpt extends Component {
       locale: 'ko',
     };
 
+    req = {
+      subCategoryFilter: 'Miracle Cube',
+      locale: 'ko',
+    };
+
     console.log(req);
 
     // mapleApi.inputMapleItem(req).then((res) => {

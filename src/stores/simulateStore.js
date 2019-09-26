@@ -13,6 +13,9 @@ export default class simulateStore {
     3: 'unique',
     4: 'regendary',
   }
+  @observable cubeList = {
+    1: 'g',
+  }
 
   @observable defaultCubeGiven = {
     rootAbyss: {
