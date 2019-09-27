@@ -15,11 +15,22 @@ class DevComponent extends Component {
 
     console.log('request data : ', req);
 
-    // maplestory.io API 테스트
     mapleApi.getMapleItem(req).then((res) => {
       console.log('response data :', res);
     });
   }
+
+  callMapleItemCube = () => {
+    const req = {
+      subCategoryFilter: 'Miracle Cube',
+      locale: 'ko',
+    };
+
+    mapleApi.inputMapleItem(req).then((res) => {
+      console.log(res);
+    });
+  }
+
   render() {
     return (
       <div
@@ -29,13 +40,24 @@ class DevComponent extends Component {
           backgroundPosition: 'center' }}
       >
         <div className="w70p h70p margin-center-hori" style={{ backgroundColor: 'rgba(255,255,255,0.6)', border: '1.5px solid #e0e0e8', padding: '200px' }}>
-          <div className="flexible">
-            maplestory.io 에 전송 테스트
+          <div className="between-flex" style={{ width: '300px' }}>
+            Call Maple Item 160 ~ 170
             <button
               type="button"
               className="btn-outline-primary btn"
               style={{ marginLeft: '15px' }}
               onClick={() => this.callMapleItem()}
+            >
+              Call
+            </button>
+          </div>
+          <div className="between-flex" style={{ width: '300px' }}>
+            Call Maple Item Cube Item
+            <button
+              type="button"
+              className="btn-outline-primary btn"
+              style={{ marginLeft: '15px' }}
+              onClick={() => this.callMapleItemCube()}
             >
               Call
             </button>

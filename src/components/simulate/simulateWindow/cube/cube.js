@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import CubeMainMenu from './cubeMainMenu';
+import CubeMethod from './cubeMethod';
 import ItemPotential from './itemPotential';
 import itemApi from 'libs/api/item';
 import _ from 'lodash';
@@ -28,11 +29,18 @@ class SimulateCube extends Component {
         this.props.simulate.cubeItemArcaneUmbra = result.data;
       }
     });
+
+    _.forEach(toJS(this.props.simulate.defaultAvailableCube), async (req) => {
+      const result = await itemApi.getSimulateAvailableByCube(req);
+      console.log(result);
+      this.props.simulate.availableCubeList.push(result.data);
+    });
   }
   render() {
     const { simulate, common } = this.props;
+    console.log(toJS(simulate.availableCubeList));
     return (
-      <div id="cube" className="default margin-center-hori start-flex-vertical">
+      <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
         <div className="main-cube-zone">
           <div>
             {
@@ -73,6 +81,8 @@ class SimulateCube extends Component {
         <div className="hori-line" />
         <div className="main-menu-zone">
           <CubeMainMenu simulate={simulate} />
+          <div className="vert-line" />
+          <CubeMethod simulate={simulate} />
         </div>
       </div>
     );

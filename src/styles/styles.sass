@@ -115,7 +115,9 @@ html, body
 .cursor-pointer
   cursor: pointer
 .fade-in
-  animation: fadein .5s linear
+  animation: fadein .2s linear
+.fade-in-short
+  animation: fadein .1s linear
 .linear-spc
   -webkit-box-decoration-break: clone
   background-image: linear-gradient(to right,#fce4ed,#ffe8cc)
@@ -241,9 +243,19 @@ html, body
           margin-bottom: 5px
   .hori-line
     width: 40px
+  .vert-line
+    height: 40px
   .main-menu-zone
-    width: 400px
+    width: 415px
+    padding: 10px
     border: 1px solid #e0e0e8
     .s-item
       flex-direction: column
       align-items: unset
+    .cube-method
+      border: 1px solid #e0e0e8
+    .item-size
+      margin: 5px
+      width: 55px 
+      height: 55px
+      border: 1px solid #e0e0e8

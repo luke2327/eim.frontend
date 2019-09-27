@@ -13,9 +13,6 @@ export default class simulateStore {
     3: 'unique',
     4: 'regendary',
   }
-  @observable cubeList = {
-    1: 'g',
-  }
 
   @observable defaultCubeGiven = {
     rootAbyss: {
@@ -35,9 +32,31 @@ export default class simulateStore {
     },
   }
 
+  @observable defaultAvailableCube = [
+    {
+      cubeName: '레드 큐브',
+      overallCategory: 'Cash',
+      category: 'Equipment Modification',
+      subCategory: 'Miracle Cube',
+    },
+    {
+      cubeName: '블랙 큐브',
+      overallCategory: 'Cash',
+      category: 'Equipment Modification',
+      subCategory: 'Miracle Cube',
+    },
+    {
+      cubeName: '에디셔널 큐브',
+      overallCategory: 'Cash',
+      category: 'Equipment Modification',
+      subCategory: 'Miracle Cube',
+    },
+  ]
+
   @observable cubeItemRootAbyss;
   @observable cubeItemAbsolb;
   @observable cubeItemAracneUmbra;
+  @observable availableCubeList = [];
 
   @action generateIcon = (itemId) => {
     return `https://items.maplestory.io/api/kms/323/item/${itemId}/icon`;

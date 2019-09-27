@@ -9,7 +9,7 @@ class SimulateCpt extends Component {
   render() {
     const { common } = this.props;
     return (
-      <div id="simulate" className="default margin-center-hori flexible jf-center" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
+      <div id="simulate" className="default margin-center-hori flexible jf-center fade-in" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
         <Link to="/simulate/simulate_equip/cube" className="s-link">
           <div className="card" style={{ width: '18rem' }}>
             <img src="https://mblogthumb-phinf.pstatic.net/20160917_54/replay_world_1474114196467NkWSu_PNG/capture-20160917-210816.png?type=w2" className="card-img-top" alt="..." />

@@ -8,16 +8,20 @@ const getLocale = (data) => {
 
 export default {
   getSearchItem: async (req) => {
-    console.log(req);
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/enhance/dialog/input/search', req, 'post');
   },
 
   getSimulateItemByCube: async (req) => {
-    console.log(req);
     req = req.locale ? req : getLocale(req);
 
-    return await api.send('api/item/simulate/cube', req, 'post');
+    return await api.send('api/item/simulate/item', req, 'post');
+  },
+
+  getSimulateAvailableByCube: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/item/simulate/available-cube', req, 'post');
   },
 };
