@@ -182,6 +182,7 @@ export default class EnhanceStore {
     const sfMaxStat = this.setSfStat(22, 99, 99);
     maxStat = 99 +
               (this.itemClass === 'wizard' ? sfMaxStat.mg_atk : sfMaxStat.atk) +
+              (this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk) +
               this.maxAddOptWeaponStat(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
 
     currentStat = this.itemClass === 'wizard' ? (this.item.mg_atk + this.addOptStat.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) : (this.item.atk + this.addOptStat.atk + this.sfStat.atk + this.enhanceStat.atk);
@@ -257,7 +258,7 @@ export default class EnhanceStore {
     };
 
     if (this.item.item_cate === '장갑') {
-      for (let i = 0; i < itemSf; i += 1) {
+      for (let i = 1; i <= itemSf; i += 1) {
         result.mg_atk += sfEquip.glove[this.item.level][i].atkAll;
         result.atk += sfEquip.glove[this.item.level][i].atkAll;
         result.str += sfEquip.glove[this.item.level][i].stat;
@@ -267,15 +268,20 @@ export default class EnhanceStore {
       }
     } else {
       if (this.item.cate === 'weapon') {
-        for (let i = 0; i < (itemSf && 15); i += 1) {
-          result.atk += parseInt((this.item.atk + this.sfStat.atk + enhanceAtk) / 50 + 1, 10);
-          result.mg_atk += parseInt((this.item.mg_atk + this.sfStat.mg_atk + enhanceMgAtk) / 50 + 1, 10);
+        for (let i = 1; i <= (itemSf > 15 ? 15 : itemSf); i += 1) {
+          result.atk += parseInt((this.item.atk + result.atk + enhanceAtk) / 50 + 1, 10);
+          result.mg_atk += parseInt((this.item.mg_atk + result.mg_atk + enhanceMgAtk) / 50 + 1, 10);
+          console.log(i, ' : ', result.atk);
+          console.log(i);
         }
       }
 
-      for (let i = 0; i <= itemSf; i += 1) {
+      console.log('-----------------------');
+
+      for (let i = 1; i <= itemSf; i += 1) {
         result.mg_atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
         result.atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
+        console.log(i, ' : ', result.atk);
         result.str += sfEquip[this.item.cate][this.item.level][i].stat;
         result.dex += sfEquip[this.item.cate][this.item.level][i].stat;
         result.luk += sfEquip[this.item.cate][this.item.level][i].stat;
