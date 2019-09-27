@@ -78,7 +78,7 @@ export default class EnhanceStore {
   ];
   @observable evaluateData = [
     { subject: '추옵단계', A: 0, fullMark: 100 },
-    { subject: '주문서강화수치', A: 0, fullMark: 100 },
+    { subject: '주흔강화', A: 0, fullMark: 100 },
     { subject: '시장가치', A: 0, fullMark: 100 },
     { subject: '스타포스', A: 0, fullMark: 100 },
     { subject: '총메인스탯', A: 0, fullMark: 100 },
