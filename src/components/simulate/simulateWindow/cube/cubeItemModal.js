@@ -6,12 +6,16 @@ class CubeItemModal extends Component {
   render() {
     const { simulate } = this.props;
     return (
-      <div className="fade-in-short">
+      <div className="item-grid fade-in-short">
         {
           this.props.modalKey === 'rootAbyss'
             ? _.map(toJS(simulate.cubeItemRootAbyss), (data) => {
               return (
-                <div onClick={() => simulate.selectAltarItem(data)} className="flexible-inline jf-center cursor-pointer fade-in-short item-size" key={data.id}>
+                <div
+                  onClick={() => simulate.selectAltarItem(data)}
+                  className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
+                  key={data.id}
+                >
                   <img alt="weapon" src={simulate.generateIcon(data.id)} />
                 </div>
               );
@@ -22,7 +26,11 @@ class CubeItemModal extends Component {
           this.props.modalKey === 'absolab'
             ? _.map(toJS(simulate.cubeItemAbsolab), (data) => {
               return (
-                <div onClick={() => simulate.selectAltarItem(data)} className="flexible-inline jf-center cursor-pointer fade-in-short item-size" key={data.id}>
+                <div
+                  onClick={() => simulate.selectAltarItem(data)}
+                  className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
+                  key={data.id}
+                >
                   <img alt="weapon" src={simulate.generateIcon(data.id)} />
                 </div>
               );
@@ -33,7 +41,11 @@ class CubeItemModal extends Component {
           this.props.modalKey === 'arcaneUmbra'
             ? _.map(toJS(simulate.cubeItemArcaneUmbra), (data) => {
               return (
-                <div onClick={() => simulate.selectAltarItem(data)} className="flexible-inline jf-center cursor-pointer fade-in-short item-size" key={data.id}>
+                <div
+                  onClick={() => simulate.selectAltarItem(data)}
+                  className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
+                  key={data.id}
+                >
                   <img alt="weapon" src={simulate.generateIcon(data.id)} />
                 </div>
               );

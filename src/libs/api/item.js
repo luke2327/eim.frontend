@@ -24,4 +24,10 @@ export default {
 
     return await api.send('api/item/simulate/available-cube', req, 'post');
   },
+
+  setPotentialByCube: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/item/simulate/set-potential', req, 'post');
+  },
 };

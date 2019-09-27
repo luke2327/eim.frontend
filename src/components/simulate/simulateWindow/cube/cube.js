@@ -32,16 +32,18 @@ class SimulateCube extends Component {
 
     _.forEach(toJS(this.props.simulate.defaultAvailableCube), async (req) => {
       const result = await itemApi.getSimulateAvailableByCube(req);
-      console.log(result);
       this.props.simulate.availableCubeList.push(result.data);
     });
   }
   render() {
     const { simulate, common } = this.props;
-    console.log(toJS(simulate.availableCubeList));
+    // 이렇게 안해주면 큐브리스트가 뜨지 않는다
+    toJS(simulate.availableCubeList);
     return (
       <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
-        <div className="main-cube-zone">
+        <div
+          className={simulate.currentPotentialStyle}
+        >
           <div>
             {
               simulate.altarItem

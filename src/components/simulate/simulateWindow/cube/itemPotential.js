@@ -9,18 +9,7 @@ class ItemPotential extends Component {
   }
 
   componentDidMount() {
-    this.loadPotentialList();
     this.loadPotentialLabel();
-  }
-
-  loadPotentialList = () => {
-    _.map(toJS(this.props.simulate.potentialListByLevel), (potentialList, potentialLevel) => {
-      if (parseInt(potentialLevel) === this.props.simulate.specifiedPotentialLevel) {
-        this.setState({
-          potentialList: potentialList,
-        });
-      }
-    });
   }
 
   loadPotentialLabel = () => {
@@ -34,12 +23,13 @@ class ItemPotential extends Component {
   }
 
   render() {
+    const { simulate } = this.props;
     return (
       <div className="potential-zone flexible w100p">
         {
           this.state.potentialLabel
             ? (
-              <div className="potential-label w100p t-align-center">{this.state.potentialLabel}</div>
+              <div className="potential-label w100p t-align-center">{simulate.potentialLabelList[simulate.currentPotentialLevel]}</div>
             )
             : (
               null
@@ -47,11 +37,13 @@ class ItemPotential extends Component {
         }
         <div className="potential-hori-line" />
         {
-          this.state.potentialList
+          simulate.currentPotentialLevel > 0
             ? (
-              _.map(this.state.potentialList, (potential, idx) => {
-                return <div className="potential-name w100p t-align-center" key={idx}>{potential}</div>;
-              })
+              <div className="w100p">
+                <div className="potential-name w100p t-align-center">{simulate.currentPotential1}</div>
+                <div className="potential-name w100p t-align-center">{simulate.currentPotential2}</div>
+                <div className="potential-name w100p t-align-center">{simulate.currentPotential3}</div>
+              </div>
             )
             : (
               <div>loading</div>
