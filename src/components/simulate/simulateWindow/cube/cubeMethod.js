@@ -7,7 +7,7 @@ class CubeMethod extends Component {
   transform = async (cube) => {
     if (this.props.simulate.altarItem) {
       const req = {
-        potentialLevel: 1, // this.props.simulate.currentPotentialLevel,
+        potentialLevel: this.props.simulate.currentPotentialLevel,
         cube: cube.item_no,
       };
 
