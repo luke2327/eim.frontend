@@ -1,4 +1,4 @@
-import { observable, action, toJS } from 'mobx';
+import { observable, action } from 'mobx';
 
 export default class simulateStore {
   @observable defaultIsHidden = 1;

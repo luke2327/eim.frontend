@@ -7,14 +7,11 @@ class CubeMethod extends Component {
   transform = async (cube) => {
     if (this.props.simulate.altarItem) {
       const req = {
-        potentialLevel: this.props.simulate.currentPotentialLevel,
+        potentialLevel: 1, // this.props.simulate.currentPotentialLevel,
         cube: cube.item_no,
       };
 
-      console.log(req);
-
       const result = await itemApi.setPotentialByCube(req);
-
       this.props.simulate.transformAltarItem(result.data);
     } else {
       console.log('우선 아이템을 선택 해 주세요');
