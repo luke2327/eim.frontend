@@ -10,6 +10,8 @@ $IMAGE_PREFIX: '../static/images/'
 \:lang(en)
 
 \:lang(ja)
+#root
+  height: 100%
 .ko
   font-family: 'Noto Sans KR', sans-serif
 .en
@@ -54,10 +56,19 @@ html, body
   display: flex
   align-items: flex-start
   justify-content: center
+.flex-vertical
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
 .w100p
   width: 100%
 .h100p
   height: 100%
+.w70p
+  width: 70%
+.h70p
+  height: 70%
 .cursor-pointer
   cursor: pointer
 .remove-tmargin

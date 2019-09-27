@@ -7,6 +7,7 @@ import itemApi from 'libs/api/item';
 import _ from 'lodash';
 
 @inject('simulate')
+@inject('common')
 @observer
 class SimulateCube extends Component {
   componentDidMount() {
@@ -29,10 +30,21 @@ class SimulateCube extends Component {
     });
   }
   render() {
-    const { simulate } = this.props;
+    const { simulate, common } = this.props;
     return (
-      <div id="cube" className="default margin-center-hori center-flex">
+      <div id="cube" className="default margin-center-hori start-flex-vertical">
         <div className="main-cube-zone">
+          <div>
+            {
+              simulate.altarItem
+                ? (
+                  toJS(simulate.altarItem[`name_${common.selectedLang}`])
+                )
+                : (
+                  <p>item name</p>
+                )
+            }
+          </div>
           <div className="cube-above center-flex margin-center-hori">
             <div className="altar-item center-flex margin-center-hori">
               {

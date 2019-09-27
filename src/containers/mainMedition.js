@@ -10,6 +10,7 @@ import HeaderCpt from 'components/header/header';
 import FooterCpt from 'components/footer/footer';
 import NoticeCpt from 'components/notice/notice';
 import MainView from './mainView';
+import DevCpt from 'components/dev/dev';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
@@ -30,6 +31,7 @@ class MainMedition extends Component {
             <Route exact path="/simulate/simulate_effect/surgery" component={SimulateSurgery} />
             <Route exact path="/youtube_list/youtubeList" component={YoutubeListCpt} />
             <Route exact path="/notice/notice" component={NoticeCpt} />
+            <Route exact path="/dev" component={DevCpt} />
           </Switch>
           <FooterCpt />
         </Router>

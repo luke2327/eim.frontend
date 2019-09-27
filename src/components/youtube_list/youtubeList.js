@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from 'libs/api/vod';
-// import mapleApi from 'libs/api/maple';
 import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
