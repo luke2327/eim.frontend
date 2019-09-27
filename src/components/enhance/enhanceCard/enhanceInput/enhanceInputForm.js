@@ -111,9 +111,6 @@ class EnhanceInputForm extends Component {
               <MenuItem name={'20성'} value={20}>20성</MenuItem>
               <MenuItem name={'21성'} value={21}>21성</MenuItem>
               <MenuItem name={'22성'} value={22}>22성</MenuItem>
-              <MenuItem name={'23성'} value={23}>23성</MenuItem>
-              <MenuItem name={'24성'} value={24}>24성</MenuItem>
-              <MenuItem name={'25성'} value={25}>25성</MenuItem>
             </Select>
           </FormControl>
           <FormControl className={classes.sfControl}>
@@ -156,6 +153,7 @@ class EnhanceInputForm extends Component {
         <EnhanceStatCard titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)} statName={'착감'} name={'chackgam'} opt={0} starforce={this.state.getSf.value} />
         <Button
           className={classes.addButton}
+          onClick={enhance.evaluateItem}
           variant="outlined"
         >
           분석하기

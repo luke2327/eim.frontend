@@ -2,7 +2,7 @@ export default {
   en: {
     T000: '<b>Test en</b> \n new line',
     'header.home': 'Home',
-    'header.enhance': 'Enhance',
+    'header.enhance': 'Evaluate',
     'header.simulate': 'Simulation',
     'header.youtubeList': 'Youtube List',
     'header.notice': 'Notice',
@@ -28,7 +28,7 @@ export default {
   ko: {
     T000: 'Test ko',
     'header.home': '홈',
-    'header.enhance': '강화',
+    'header.enhance': '장비분석',
     'header.simulate': '시뮬레이션',
     'header.youtubeList': '유튜브 리스트',
     'header.notice': '공지사항',
@@ -41,6 +41,10 @@ export default {
     'enhance.todays': '오늘의{object}명당은 {br} {channelNumber}채널!!',
     'enhance.registerEquipPlaceholder': '등록된 장비가 없습니다 <br/> 분석할 장비를 등록해보세요',
     'enhance.stat': '스탯',
+
+    'simulate.rootAbyss': '루타비스',
+    'simulate.absolab': '앱솔랩스',
+    'simulate.arcaneUmbra': '아케인 셰이드',
 
     'simulate.cube': '큐브',
     'simulate.cube.introCard': '큐브로 잠재능력을 재설정 해보세요!',

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from 'libs/api/vod';
-import mapleApi from 'libs/api/maple';
 import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
@@ -18,24 +17,12 @@ class YoutubeListCpt extends Component {
   }
 
   componentDidMount() {
-    let req = {
+    const req = {
       max: 10,
     };
 
     api.getYoutubeList(req).then((res) => {
       this.props.crawling.youtubeList = res.data;
-    });
-
-    req = {
-      minLevelFilter: 160,
-      maxLevelFilter: 170,
-      startPosition: 0,
-      locale: this.props.common.selectedLang,
-    };
-
-    // maplestory.io API 테스트
-    mapleApi.getMapleItem(req).then((res) => {
-      console.log(res);
     });
   }
 
@@ -45,7 +32,7 @@ class YoutubeListCpt extends Component {
       crawling.youtubeList === undefined
         ? <div>loading</div>
         :
-        <div id="youtube-list" className="h100p">
+        <div id="youtube-list" className="h100p fade-in">
           {toJS(crawling.youtubeList).map((item) => {
             return <YoutubeListCard key={item.vod_no} item={item} />;
           })}
