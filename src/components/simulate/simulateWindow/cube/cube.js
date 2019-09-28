@@ -60,7 +60,7 @@ class SimulateCube extends Component {
               {
                 simulate.altarItem
                   ? (
-                    <img alt="altarItem" src={simulate.generateIcon(simulate.altarItem.id)} />
+                    <img alt="altarItem" src={simulate.generateIcon(simulate.altarItem.item_no)} />
                   )
                   : (
                     <div>Item</div>

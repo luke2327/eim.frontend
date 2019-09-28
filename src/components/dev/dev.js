@@ -31,6 +31,19 @@ class DevComponent extends Component {
     });
   }
 
+  inputMapleItemMeta = () => {
+    const req = {
+      minLevelFilter: 160,
+      maxLevelFilter: 170,
+      startPosition: 0,
+      locale: this.props.common.selectedLang,
+    };
+
+    mapleApi.inputMapleItemMeta(req).then((res) => {
+      console.log('response data :', res);
+    });
+  }
+
   render() {
     return (
       <div
@@ -58,6 +71,17 @@ class DevComponent extends Component {
               className="btn-outline-primary btn"
               style={{ marginLeft: '15px' }}
               onClick={() => this.callMapleItemCube()}
+            >
+              Call
+            </button>
+          </div>
+          <div className="between-flex" style={{ width: '300px' }}>
+            Input Maple Item Meta
+            <button
+              type="button"
+              className="btn-outline-primary btn"
+              style={{ marginLeft: '15px' }}
+              onClick={() => this.inputMapleItemMeta()}
             >
               Call
             </button>

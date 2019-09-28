@@ -14,9 +14,9 @@ class CubeItemModal extends Component {
                 <div
                   onClick={() => simulate.selectAltarItem(data)}
                   className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
-                  key={data.id}
+                  key={data.item_no}
                 >
-                  <img alt="weapon" src={simulate.generateIcon(data.id)} />
+                  <img alt="weapon" src={simulate.generateIcon(data.item_no)} />
                 </div>
               );
             })
@@ -29,9 +29,9 @@ class CubeItemModal extends Component {
                 <div
                   onClick={() => simulate.selectAltarItem(data)}
                   className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
-                  key={data.id}
+                  key={data.item_no}
                 >
-                  <img alt="weapon" src={simulate.generateIcon(data.id)} />
+                  <img alt="weapon" src={simulate.generateIcon(data.item_no)} />
                 </div>
               );
             })
@@ -44,9 +44,9 @@ class CubeItemModal extends Component {
                 <div
                   onClick={() => simulate.selectAltarItem(data)}
                   className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
-                  key={data.id}
+                  key={data.item_no}
                 >
-                  <img alt="weapon" src={simulate.generateIcon(data.id)} />
+                  <img alt="weapon" src={simulate.generateIcon(data.item_no)} />
                 </div>
               );
             })
