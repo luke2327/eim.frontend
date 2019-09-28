@@ -404,4 +404,8 @@ export default class EnhanceStore {
   @action setItem = (data) => {
     this.item = data;
   }
+
+  @action comma = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 }

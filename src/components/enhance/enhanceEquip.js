@@ -72,7 +72,7 @@ class EnhanceEquipCpt extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  해당 장비 관련 각종 컨텐츠
+                  스타포스 기대비용 계산
                 </Paper>
               </Grid>
             </Grid>
