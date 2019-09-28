@@ -33,7 +33,7 @@ class MainMedition extends Component {
             <Route exact path="/notice/notice" component={NoticeCpt} />
             <Route exact path="/dev" component={DevCpt} />
           </Switch>
-          <FooterCpt />
+          {/* <FooterCpt /> */}
         </Router>
       </Fragment>
     );

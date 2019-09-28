@@ -77,11 +77,11 @@ export default class EnhanceStore {
     { name: 'chackgam', status: false, type: '' },
   ];
   @observable evaluateData = [
-    { subject: '추옵단계', A: 0, fullMark: 100 },
-    { subject: '주흔강화', A: 0, fullMark: 100 },
-    { subject: '시장가치', A: 0, fullMark: 100 },
-    { subject: '스타포스', A: 0, fullMark: 100 },
-    { subject: '총메인스탯', A: 0, fullMark: 100 },
+    { subject: '추옵단계', A: 0, B: 100, fullMark: 100 },
+    { subject: '일반강화', A: 0, B: 100, fullMark: 100 },
+    { subject: '시장가치', A: 0, B: 100, fullMark: 100 },
+    { subject: '스타포스', A: 0, B: 100, fullMark: 100 },
+    { subject: '총메인스탯', A: 0, B: 100, fullMark: 100 },
   ];
 
   @action maxEnhanceStat = () => {
@@ -222,14 +222,14 @@ export default class EnhanceStore {
 
   @action evaluateItem = () => {
     this.evaluateData = [
-      { subject: '추옵단계', A: this.evaluateAddOptItem(), fullMark: 100 },
-      { subject: '주문서강화수치', A: this.evaluateEnhanceStatItem(), fullMark: 100 },
-      { subject: '시장가치', A: this.evaluateSellItem(), fullMark: 100 },
-      { subject: '스타포스', A: this.evaluateSfItem(), fullMark: 100 },
-      { subject: '총메인스탯', A: this.evaluateMainStatItem(), fullMark: 100 },
+      { subject: '추옵단계', A: this.evaluateAddOptItem(), B: 100, fullMark: 100 },
+      { subject: '일반강화', A: this.evaluateEnhanceStatItem(), B: 100, fullMark: 100 },
+      { subject: '시장가치', A: this.evaluateSellItem(), B: 100, fullMark: 100 },
+      { subject: '스타포스', A: this.evaluateSfItem(), B: 100, fullMark: 100 },
+      { subject: '총메인스탯', A: this.evaluateMainStatItem(), B: 100, fullMark: 100 },
     ];
     console.log('추옵단계      : ', this.evaluateData[0].subject, 'DATA : ', this.evaluateData[0].A);
-    console.log('주문서강화수치 : ', this.evaluateData[1].subject, 'DATA : ', this.evaluateData[1].A);
+    console.log('일반강화 : ', this.evaluateData[1].subject, 'DATA : ', this.evaluateData[1].A);
     console.log('시장가치      : ', this.evaluateData[2].subject, 'DATA : ', this.evaluateData[2].A);
     console.log('스타포스      : ', this.evaluateData[3].subject, 'DATA : ', this.evaluateData[3].A);
     console.log('총메인스탯    : ', this.evaluateData[4].subject, 'DATA : ', this.evaluateData[4].A);
@@ -403,5 +403,9 @@ export default class EnhanceStore {
   }
   @action setItem = (data) => {
     this.item = data;
+  }
+
+  @action comma = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 }

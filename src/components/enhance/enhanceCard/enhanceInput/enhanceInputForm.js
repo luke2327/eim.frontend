@@ -135,7 +135,7 @@ class EnhanceInputForm extends Component {
           <Grid item xs={2} className={classes.nameText}>기본옵션</Grid>
           <Grid item xs={2} className={classes.nameText}>스타포스</Grid>
           <Grid item xs={2} className={classes.nameText}>추가옵션</Grid>
-          <Grid item xs={2} className={classes.nameText}>주흔강화스탯</Grid>
+          <Grid item xs={2} className={classes.nameText}>일반강화스탯</Grid>
           <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
         <EnhanceStatCard titleColor={enhance.setClassStatFont('mg_atk', this.state.getClass.value)} statName={'마력'} name={'mg_atk'} opt={enhance.item.mg_atk} starforce={this.state.getSf.value} />
