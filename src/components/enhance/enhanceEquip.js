@@ -6,6 +6,7 @@ import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
 import LeftSideCpt from 'components/layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
+import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
 
 const styles = (theme) => ({
   root: {
@@ -72,7 +73,7 @@ class EnhanceEquipCpt extends Component {
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  스타포스 기대비용 계산
+                  <EnhanceSfCostCard />
                 </Paper>
               </Grid>
             </Grid>
