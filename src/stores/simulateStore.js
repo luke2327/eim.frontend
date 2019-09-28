@@ -32,6 +32,7 @@ export default class simulateStore {
     },
   }
 
+  @observable isInitalizeCube = 0;
   @observable isHidden = this.defaultIsHidden;
   @observable currentPotentialLevel = this.defaultPotentialLevel;
   @observable currentPotentialStyle = this.defaultPotentialStyle;
