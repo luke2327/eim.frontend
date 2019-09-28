@@ -10,7 +10,30 @@ const styles = (theme) => ({
     textAlign: 'center',
     color: '#000000',
     height: 650,
-    backgroundColor: '#FAF4C0',
+    backgroundColor: '#000000',
+  },
+});
+
+const CustomTooltip = () => ({
+  getIntroOfPage(label) {
+    return label;
+  },
+
+  render() {
+    const { active } = this.props;
+
+    if (active) {
+      const { payload, label } = this.props;
+      return (
+        <div>
+          <p className="label">{`${label}`}</p>
+          <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
+          {/* <p className="desc">Anything you want can be displayed here.</p> */}
+        </div>
+      );
+    }
+
+    return null;
   },
 });
 
@@ -18,7 +41,7 @@ const styles = (theme) => ({
 @observer
 class EnhanceEvaluateForm extends Component {
   render() {
-    const { enhance } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <div>
         <Grid container spacing={1}>
@@ -28,6 +51,7 @@ class EnhanceEvaluateForm extends Component {
               <PolarAngleAxis dataKey="subject" />
               <PolarRadiusAxis />
               <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+              <Radar name="Lily" dataKey="B" stroke="#000000" fill="#000000" fillOpacity={0} />
             </RadarChart>
           </Grid>
           <Grid item xs={12}>
@@ -40,7 +64,7 @@ class EnhanceEvaluateForm extends Component {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="subject" />
               <YAxis />
-              {/* <Tooltip content={<CustomTooltip/>} /> */}
+              <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Bar dataKey="A" barSize={20} fill="#8884d8" />
             </BarChart>

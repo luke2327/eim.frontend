@@ -21,6 +21,7 @@
     "babel-preset-react-app": "^9.0.1",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
+    "create-react-class": "^15.6.3",
     "cross-env": "^5.2.1",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
@@ -84,9 +85,7 @@
     "build": "NODE_PATH=src react-scripts build",
     "test": "node scripts/test.js"
   },
-  "eslintConfig": {
-
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",
