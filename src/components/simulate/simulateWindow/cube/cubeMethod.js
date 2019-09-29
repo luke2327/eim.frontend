@@ -9,6 +9,8 @@ class CubeMethod extends Component {
       const req = {
         potentialLevel: this.props.simulate.currentPotentialLevel,
         cube: cube.item_no,
+        reqLevel: this.props.simulate.altarItem.req_level,
+        category: this.props.simulate.altarItem.category,
       };
 
       const result = await itemApi.setPotentialByCube(req);

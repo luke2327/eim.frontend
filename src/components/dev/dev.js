@@ -33,8 +33,8 @@ class DevComponent extends Component {
 
   inputMapleItemMeta = () => {
     const req = {
-      minLevelFilter: 200,
-      maxLevelFilter: 200,
+      minLevelFilter: 160,
+      maxLevelFilter: 160,
       overallCategory: 'Equip',
       category: ['One-Handed Weapon', 'Two-Handed Weapon'],
       locale: this.props.common.selectedLang,
