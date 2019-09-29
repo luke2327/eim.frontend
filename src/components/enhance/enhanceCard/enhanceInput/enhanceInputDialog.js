@@ -92,6 +92,7 @@ class EnhanceInputDialog extends Component {
 
   handleItemClick = (e, row) => {
     this.props.enhance.setItem(row);
+    this.props.enhance.setSfCostInfo();
     this.props.onClose();
   }
 

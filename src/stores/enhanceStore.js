@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import sfEquip from 'assets/starforceEquip';
+import sfCost from 'assets/starforceCost';
 
 
 export default class EnhanceStore {
@@ -83,6 +84,39 @@ export default class EnhanceStore {
     { subject: '스타포스', A: 0, B: 100, fullMark: 100 },
     { subject: '총메인스탯', A: 0, B: 100, fullMark: 100 },
   ];
+  @observable sfCostInfo = [
+    { name: '0성', cost: 0, expectCost: 0 },
+    { name: '1성', cost: 0, expectCost: 0 },
+    { name: '2성', cost: 0, expectCost: 0 },
+    { name: '3성', cost: 0, expectCost: 0 },
+    { name: '4성', cost: 0, expectCost: 0 },
+    { name: '5성', cost: 0, expectCost: 0 },
+    { name: '6성', cost: 0, expectCost: 0 },
+    { name: '7성', cost: 0, expectCost: 0 },
+    { name: '8성', cost: 0, expectCost: 0 },
+    { name: '9성', cost: 0, expectCost: 0 },
+    { name: '10성', cost: 0, expectCost: 0 },
+    { name: '11성', cost: 0, expectCost: 0 },
+    { name: '12성', cost: 0, expectCost: 0 },
+    { name: '13성', cost: 0, expectCost: 0 },
+    { name: '14성', cost: 0, expectCost: 0 },
+    { name: '15성', cost: 0, expectCost: 0 },
+    { name: '16성', cost: 0, expectCost: 0 },
+    { name: '17성', cost: 0, expectCost: 0 },
+    { name: '18성', cost: 0, expectCost: 0 },
+    { name: '19성', cost: 0, expectCost: 0 },
+    { name: '20성', cost: 0, expectCost: 0 },
+    { name: '21성', cost: 0, expectCost: 0 },
+    { name: '22성', cost: 0, expectCost: 0 },
+  ];
+  @observable cashGrade = 'bronze';
+
+  @action setSfCostInfo = () => {
+    this.sfCostInfo = this.sfCostInfo.map((o, index) => {
+      const data = sfCost[this.item.level][this.cashGrade][index];
+      return { name: o.name, cost: data.cost, expectCost: data.expectCost };
+    });
+  }
 
   @action maxEnhanceStat = () => {
     if (this.item.cate === 'weapon') {

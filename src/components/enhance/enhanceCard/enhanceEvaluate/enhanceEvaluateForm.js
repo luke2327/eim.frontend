@@ -28,7 +28,6 @@ const CustomTooltip = () => ({
         <div>
           <p className="label">{`${label}`}</p>
           <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
-          {/* <p className="desc">Anything you want can be displayed here.</p> */}
         </div>
       );
     }
