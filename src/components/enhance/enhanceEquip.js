@@ -7,6 +7,7 @@ import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateFo
 import LeftSideCpt from 'components/layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
+import itemApi from 'libs/api/item';
 
 const styles = (theme) => ({
   root: {
@@ -32,6 +33,29 @@ const styles = (theme) => ({
 });
 
 class EnhanceEquipCpt extends Component {
+  state = {
+    ch: {
+      starforce: 0,
+      cube: 0,
+      gemstone: 0,
+    },
+  }
+
+  componentDidMount() {
+    this.PostLuckyData('SEND!!');
+  }
+
+  PostLuckyData = async (msg) => {
+    const data = {
+      msg: msg,
+    };
+    return itemApi.getLuckyChannel(data).then((res) => {
+      this.setState({
+        ch: res.data,
+      });
+    });
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -44,21 +68,21 @@ class EnhanceEquipCpt extends Component {
                 <FormattedHTMLMessage
                   id="enhance.object.starforce"
                 >
-                  {(object) => <EnhanceLuckCard title={object} content="17" />}
+                  {(object) => <EnhanceLuckCard title={object} content={this.state.ch.starforce} />}
                 </FormattedHTMLMessage>
               </Grid>
               <Grid item xs={4}>
                 <FormattedHTMLMessage
                   id="enhance.object.cube"
                 >
-                  {(object) => <EnhanceLuckCard title={object} content="20" />}
+                  {(object) => <EnhanceLuckCard title={object} content={this.state.ch.cube} />}
                 </FormattedHTMLMessage>
               </Grid>
               <Grid item xs={4}>
                 <FormattedHTMLMessage
                   id="enhance.object.gemstone"
                 >
-                  {(object) => <EnhanceLuckCard title={object} content="17" />}
+                  {(object) => <EnhanceLuckCard title={object} content={this.state.ch.gemstone} />}
                 </FormattedHTMLMessage>
               </Grid>
               <Grid item xs={7}>

@@ -7,6 +7,12 @@ const getLocale = (data) => {
 };
 
 export default {
+  getLuckyChannel: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/enhance/form/lucky/channel', req, 'post');
+  },
+
   getSearchItem: async (req) => {
     req = req.locale ? req : getLocale(req);
 
