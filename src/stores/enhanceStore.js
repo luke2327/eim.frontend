@@ -170,12 +170,24 @@ export default class EnhanceStore {
 
   @action maxAddOptEquipStat = (level, itemClass) => {
     switch (level) {
+      case 100:
+        return itemClass === 'daemon' ? 2100 : (84 + 70);
+      case 110:
+        return itemClass === 'daemon' ? 2310 : (84 + 70);
+      case 120:
+        return itemClass === 'daemon' ? 2520 : (105 + 70);
+      case 130:
+        return itemClass === 'daemon' ? 2730 : (105 + 70);
+      case 135:
+        return itemClass === 'daemon' ? 2935 : (105 + 70);
+      case 140:
+        return itemClass === 'daemon' ? 2940 : (112 + 70);
       case 150:
-        return itemClass === 'daemon' ? 3150 : 182;
+        return itemClass === 'daemon' ? 3150 : (112 + 70);
       case 160:
-        return itemClass === 'daemon' ? 3360 : 238;
+        return itemClass === 'daemon' ? 3360 : (168 + 70);
       case 200:
-        return itemClass === 'daemon' ? 4200 : 273;
+        return itemClass === 'daemon' ? 4200 : (203 + 70);
       default:
         return 0;
     }
