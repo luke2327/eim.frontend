@@ -33,9 +33,10 @@ class DevComponent extends Component {
 
   inputMapleItemMeta = () => {
     const req = {
-      minLevelFilter: 160,
-      maxLevelFilter: 170,
-      startPosition: 0,
+      minLevelFilter: 200,
+      maxLevelFilter: 200,
+      overallCategory: 'Equip',
+      category: ['One-Handed Weapon', 'Two-Handed Weapon'],
       locale: this.props.common.selectedLang,
     };
 
@@ -48,7 +49,7 @@ class DevComponent extends Component {
     return (
       <div
         className="default w100p h100p margin-center-hori center-flex"
-        style={{ background: 'url(https://life-hacking.net/wp-content/uploads/2017/05/444a80ed-500x321.png)',
+        style={{ background: 'url(https://cinnamoroll-officialfanclub.com/s3/skiyaki/uploads/artist_photo/image/4286/king_cinnamon.jpg)',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center' }}
       >

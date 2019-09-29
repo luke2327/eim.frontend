@@ -12,7 +12,7 @@ import _ from 'lodash';
 @observer
 class SimulateCube extends Component {
   componentDidMount() {
-    if (!this.props.simulate.isInitalizeCube) {
+    if (!this.props.simulate.isInitializeCube) {
       this.loadItemList();
     }
   }
@@ -37,7 +37,7 @@ class SimulateCube extends Component {
       this.props.simulate.availableCubeList.push(result.data);
     });
 
-    this.props.simulate.isInitalizeCube = 1;
+    this.props.simulate.isInitializeCube = 1;
   }
   render() {
     const { simulate, common } = this.props;
