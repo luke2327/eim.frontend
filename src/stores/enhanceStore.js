@@ -118,12 +118,54 @@ export default class EnhanceStore {
     });
   }
 
+  @action setInputMaxEnhanceStat = (statName) => {
+    switch (statName) {
+      case 'mg_atk':
+        return 99;
+      case 'atk':
+        return 99;
+      case 'str':
+      case 'dex':
+      case 'int':
+      case 'luk':
+        return (this.item.upgrade + 1) * 9;
+      case 'hp':
+        return (this.item.upgrade + 1) * 470;
+      default:
+        return 0;
+    }
+  }
+
+  @action setInputMaxAddOptStat = (statName) => {
+    switch (statName) {
+      case 'mg_atk':
+        return this.maxAddOptWeaponStat(this.item.level, this.item.mg_atk);
+      case 'atk':
+        return this.maxAddOptWeaponStat(this.item.level, this.item.atk);
+      case 'hp':
+        return this.maxAddOptEquipStat(this.item.level, 'daemon');
+      case 'str':
+      case 'luk':
+      case 'int':
+      case 'dex':
+        return this.maxAddOptEquipStat(this.item.level, 'stat') - 70;
+      case 'allstat':
+        return this.item.cate === 'weapon' ? 6 : 7;
+      case 'damage':
+        return this.item.cate === 'weapon' ? 5 : 0;
+      case 'boss_atk':
+        return this.item.cate === 'weapon' ? 14 : 0;
+      default:
+        return 0;
+    }
+  }
+
   @action maxEnhanceStat = () => {
     if (this.item.cate === 'weapon') {
       return 99;
     }
 
-    return this.itemClass === 'daemon' ? this.item.upgrade * 470 : this.item.upgrade * 9;
+    return this.itemClass === 'daemon' ? (this.item.upgrade + 1) * 470 : (this.item.upgrade + 1) * 9;
   }
 
   @action maxAddOptEquipStat = (level, itemClass) => {
@@ -138,15 +180,29 @@ export default class EnhanceStore {
         return 0;
     }
   }
+
+  @action maxAddOptWeaponStat = (level, genStat) => {
+    switch (level) {
+      case 150:
+        return genStat * (41 / 100);
+      case 160:
+        return genStat * (51 / 100);
+      case 200:
+        return genStat * (62 / 100);
+      default:
+        return 0;
+    }
+  }
+
   // 올텟퍼 + 총데미지도 계산
   @action maxAddOptWeaponStat = (level, genStat, itemClass) => {
     switch (level) {
       case 150:
-        return genStat * (41 / 100) + (itemClass === 'daemon' ? 0 : (2 * 5)) + (2.4 * 5);
+        return genStat * (41 / 100) + (itemClass === 'daemon' ? 0 : (2 * 6)) + (2.4 * 5);
       case 160:
-        return genStat * (51 / 100) + (itemClass === 'daemon' ? 0 : (2.55 * 5)) + (2.93 * 5);
+        return genStat * (51 / 100) + (itemClass === 'daemon' ? 0 : (2.55 * 6)) + (2.93 * 5);
       case 200:
-        return genStat * (62 / 100) + (itemClass === 'daemon' ? 0 : (3.31 * 5)) + (4.92 * 5);
+        return genStat * (62 / 100) + (itemClass === 'daemon' ? 0 : (3.31 * 6)) + (4.92 * 5);
       default:
         return 0;
     }
@@ -262,11 +318,6 @@ export default class EnhanceStore {
       { subject: '스타포스', A: this.evaluateSfItem(), B: 100, fullMark: 100 },
       { subject: '총메인스탯', A: this.evaluateMainStatItem(), B: 100, fullMark: 100 },
     ];
-    console.log('추옵단계      : ', this.evaluateData[0].subject, 'DATA : ', this.evaluateData[0].A);
-    console.log('일반강화 : ', this.evaluateData[1].subject, 'DATA : ', this.evaluateData[1].A);
-    console.log('시장가치      : ', this.evaluateData[2].subject, 'DATA : ', this.evaluateData[2].A);
-    console.log('스타포스      : ', this.evaluateData[3].subject, 'DATA : ', this.evaluateData[3].A);
-    console.log('총메인스탯    : ', this.evaluateData[4].subject, 'DATA : ', this.evaluateData[4].A);
   }
 
   @action handleChangeEnhanceStat = (name, stat) => {
@@ -305,17 +356,12 @@ export default class EnhanceStore {
         for (let i = 1; i <= (itemSf > 15 ? 15 : itemSf); i += 1) {
           result.atk += parseInt((this.item.atk + result.atk + enhanceAtk) / 50 + 1, 10);
           result.mg_atk += parseInt((this.item.mg_atk + result.mg_atk + enhanceMgAtk) / 50 + 1, 10);
-          console.log(i, ' : ', result.atk);
-          console.log(i);
         }
       }
-
-      console.log('-----------------------');
 
       for (let i = 1; i <= itemSf; i += 1) {
         result.mg_atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
         result.atk += sfEquip[this.item.cate][this.item.level][i].atkAll;
-        console.log(i, ' : ', result.atk);
         result.str += sfEquip[this.item.cate][this.item.level][i].stat;
         result.dex += sfEquip[this.item.cate][this.item.level][i].stat;
         result.luk += sfEquip[this.item.cate][this.item.level][i].stat;
