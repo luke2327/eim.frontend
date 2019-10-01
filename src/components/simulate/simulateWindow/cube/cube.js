@@ -41,7 +41,7 @@ class SimulateCube extends Component {
   }
   render() {
     const { simulate, common } = this.props;
-    // ÀÌ·¸°Ô ¾ÈÇØÁÖ¸é Å¥ºê¸®½ºÆ®°¡ ¶ßÁö ¾Ê´Â´Ù
+    // ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ Å¥ï¿½ê¸®ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½
     toJS(simulate.availableCubeList);
     return (
       <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
@@ -76,7 +76,7 @@ class SimulateCube extends Component {
             {
               simulate.altarItem
                 ? (
-                  <ItemPotential simulate={simulate} />
+                  <ItemPotential />
                 )
                 : (
                   <div>option</div>

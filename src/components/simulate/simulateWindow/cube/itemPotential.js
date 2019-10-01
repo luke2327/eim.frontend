@@ -9,6 +9,7 @@ class ItemPotential extends Component {
   state = {
     potentialList: [],
     potentialLabel: '',
+    potential: this.props.simulate.potential,
   }
 
   componentDidMount() {
@@ -27,6 +28,7 @@ class ItemPotential extends Component {
 
   render() {
     const { simulate } = this.props;
+    console.log(simulate.potential);
     return (
       <div className="potential-zone flexible w100p">
         {
@@ -40,8 +42,11 @@ class ItemPotential extends Component {
         }
         <div className="potential-hori-line" />
         {
-          simulate.currentPotentialLevel > 0
+          simulate.potential
             ? (
+              // _.map(toJS(simulate.potential), (potential, key) => {
+              //   return <div className="potential-name w100p t-align-center" key={key}>{potential}</div>;
+              // })
               <div className="w100p">
                 <div className="potential-name w100p t-align-center">{simulate.currentPotential1}</div>
                 <div className="potential-name w100p t-align-center">{simulate.currentPotential2}</div>

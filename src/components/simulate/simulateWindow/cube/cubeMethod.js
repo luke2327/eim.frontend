@@ -14,7 +14,7 @@ class CubeMethod extends Component {
       };
 
       const result = await itemApi.setPotentialByCube(req);
-      this.props.simulate.transformAltarItem(result.data);
+      this.props.simulate.transformAltarItem(result.data, cube);
     } else {
       alert('우선 아이템을 선택 해 주세요');
     }

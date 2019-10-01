@@ -39,6 +39,9 @@ export default class simulateStore {
   @observable currentPotential1;
   @observable currentPotential2;
   @observable currentPotential3;
+  @observable pastPotential1;
+  @observable pastPotential2;
+  @observable pastPotential3;
 
   @action styleCubeAltar = () => {
     const defaultClass = 'main-cube-zone';
@@ -87,12 +90,20 @@ export default class simulateStore {
     this.styleCubeAltar();
   }
 
-  @action transformAltarItem = (data) => {
+  @action transformAltarItem = (data, cubeData) => {
+    console.log(cubeData);
     this.isHidden = 0;
     this.currentPotentialLevel = data.potentialLevel;
-    this.currentPotential1 = data['1'];
-    this.currentPotential2 = data['2'];
-    this.currentPotential3 = data['3'];
+    if (cubeData.item_no === 5062009) {
+      this.potential = data.potential;
+      this.currentPotential1 = data.potential['0'];
+      this.currentPotential2 = data.potential['1'];
+      this.currentPotential3 = data.potential['2'];
+    } else if (cubeData.item_no === 5062010) {
+      this.currentPotential1 = data.potential['0'];
+      this.currentPotential2 = data.potential['1'];
+      this.currentPotential3 = data.potential['2'];
+    }
     this.styleCubeAltar();
   }
 }
