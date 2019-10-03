@@ -102,6 +102,11 @@ class EnhanceInputForm extends Component {
     }
   }
 
+  onReset = () => {
+    this.props.handleStateChange();
+    this.props.enhance.initReset();
+  }
+
   render() {
     const { classes, enhance, handleStateChange } = this.props;
     return (
@@ -190,7 +195,7 @@ class EnhanceInputForm extends Component {
           <Grid item xs={4}>
             <Button
               className={classes.buttonClass}
-              onClick={handleStateChange}
+              onClick={this.onReset}
               variant="outlined"
             >
               초기화
