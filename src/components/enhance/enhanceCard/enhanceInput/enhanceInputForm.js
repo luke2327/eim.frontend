@@ -13,7 +13,7 @@ const styles = () => ({
     marginBottom: 40,
     marginRight: 40,
   },
-  addButton: {
+  buttonClass: {
     marginTop: 20,
     width: '100%',
   },
@@ -68,7 +68,7 @@ class EnhanceInputForm extends Component {
   }
 
   render() {
-    const { classes, enhance } = this.props;
+    const { classes, enhance, handleStateChange } = this.props;
     return (
       <div>
         <Typography
@@ -151,13 +151,26 @@ class EnhanceInputForm extends Component {
         <EnhanceStatCard titleColor={enhance.setClassStatFont('damage', this.state.getClass.value)} statName={'데미지(%)'} name={'damage'} opt={0} starforce={this.state.getSf.value} />
         <EnhanceStatCard titleColor={enhance.setClassStatFont('allstat', this.state.getClass.value)} statName={'올스탯(%)'} name={'allstat'} opt={0} starforce={this.state.getSf.value} />
         <EnhanceStatCard titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)} statName={'착감'} name={'chackgam'} opt={0} starforce={this.state.getSf.value} />
-        <Button
-          className={classes.addButton}
-          onClick={enhance.evaluateItem}
-          variant="outlined"
-        >
-          분석하기
-        </Button>
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <Button
+              className={classes.buttonClass}
+              onClick={handleStateChange}
+              variant="outlined"
+            >
+              초기화
+            </Button>
+          </Grid>
+          <Grid item xs={8}>
+            <Button
+              className={classes.buttonClass}
+              onClick={enhance.evaluateItem}
+              variant="outlined"
+            >
+              분석하기
+            </Button>
+          </Grid>
+        </Grid>
       </div>
     );
   }

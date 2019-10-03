@@ -29,6 +29,11 @@ class EnhanceInputFalse extends Component {
     this.setState({
       registDialogState: false,
     });
+  }
+  ClickItemDialog = () => {
+    this.setState({
+      registDialogState: false,
+    });
     this.props.handleStateChange();
   }
 
@@ -49,6 +54,7 @@ class EnhanceInputFalse extends Component {
         </Button>
         <EnhanceInputDialog
           open={this.state.registDialogState}
+          clickItem={this.ClickItemDialog}
           onClose={this.CloseDialog}
           name="registDialogState"
         />
