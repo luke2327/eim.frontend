@@ -496,6 +496,15 @@ export default class EnhanceStore {
   @action setItem = (data) => {
     this.item = data;
   }
+  @action checkEnhanceStat = () => {
+    const val = Object.keys(this.enhanceStat).map((o) => { return this.enhanceStat[o]; });
+    for (let i = 0; i < val.length; i += 1) {
+      if (val[i] !== 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   @action comma = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

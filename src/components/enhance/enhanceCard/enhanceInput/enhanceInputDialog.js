@@ -149,7 +149,6 @@ class EnhanceInputDialog extends Component {
                   </TableHead>
                   <TableBody>
                     {
-                      // console.log(this.rows)
                       this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map((row) => {
                         return (
                           <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={(e) => this.handleItemClick(e, row)}>

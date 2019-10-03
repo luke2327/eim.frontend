@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
+import MessageDialog from 'components/msg/messageDialog';
 
 const styles = () => ({
   nameText: {
@@ -29,7 +30,7 @@ class EnhanceInputForm extends Component {
       name: '',
     },
     getClass: {
-      value: 0,
+      value: '',
       name: '',
     },
     statName: {
@@ -44,27 +45,61 @@ class EnhanceInputForm extends Component {
       allstat: { id: 'allstat', name: '올스탯(%)' },
       chackgam: { id: 'chackgam', name: '착감' },
     },
+    msg: {
+      msgStatus: false,
+      content: '',
+    },
   }
 
-  handleSfChange = async (e) => {
-    await this.setState({
-      getSf: {
-        value: e.target.value,
-        name: e.target.name,
+  closeMsgDialog = () => {
+    this.setState({
+      msg: {
+        msgStatus: false,
       },
     });
-    this.props.enhance.setItemSf(e.target.value);
-    this.props.enhance.handleChangeSfStat();
   }
 
-  handleClassChange = async (e) => {
-    await this.setState({
+  handleSfChange = (e) => {
+    if (this.props.enhance.checkEnhanceStat()) {
+      this.setState({
+        getSf: {
+          value: e.target.value,
+          name: e.target.name,
+        },
+      });
+      this.props.enhance.setItemSf(e.target.value);
+      this.props.enhance.handleChangeSfStat();
+    } else {
+      this.setState({
+        msg: {
+          msgStatus: true,
+          content: '일반강화 스탯을 먼저 입력해주세요',
+        },
+      });
+    }
+  }
+
+  handleClassChange = (e) => {
+    this.setState({
       getClass: {
         value: e.target.value,
         name: e.target.name,
       },
     });
     this.props.enhance.setItemClass(e.target.value);
+  }
+
+  handleEvaluate = () => {
+    if (this.state.getClass.value === '') {
+      this.setState({
+        msg: {
+          msgStatus: true,
+          content: '직업을 선택해주세요',
+        },
+      });
+    } else {
+      this.props.enhance.evaluateItem();
+    }
   }
 
   render() {
@@ -164,13 +199,18 @@ class EnhanceInputForm extends Component {
           <Grid item xs={8}>
             <Button
               className={classes.buttonClass}
-              onClick={enhance.evaluateItem}
+              onClick={this.handleEvaluate}
               variant="outlined"
             >
               분석하기
             </Button>
           </Grid>
         </Grid>
+        <MessageDialog
+          open={this.state.msg.msgStatus}
+          onClose={this.closeMsgDialog}
+          content={this.state.msg.content}
+        />
       </div>
     );
   }
