@@ -61,6 +61,11 @@ html, body
   flex-direction: column
   align-items: center
   justify-content: center
+.flex-vertical-start
+  display: flex
+  flex-direction: column
+  align-items: start
+  justify-content: center
 .w100p
   width: 100%
 .h100p
@@ -212,10 +217,11 @@ html, body
     opacity: 1
 
 #cube
-  .main-cube-zone
+  .main-cube-zone, .main-menu-zone, .side-view
     border: 1px solid #e0e0e8
-    width: 400px
     padding: 10px
+  .main-cube-zone
+    width: 400px
     .cube-above
       width: 100%
       height: 400px
@@ -247,17 +253,17 @@ html, body
   .vert-line
     height: 40px
   .hidden
-    border: 1px solid rgb(210, 21, 109)
+    border: 1px solid rgb(210, 21, 109) !important
   .rare
-    border: 1px solid rgb(84, 142, 213)
+    border: 1px solid rgb(84, 142, 213) !important
   .epic
-    border: 1px solid rgb(165, 96, 214)
+    border: 1px solid rgb(165, 96, 214) !important
   .unique
-    border: 1px solid rgb(199, 165, 42)
+    border: 1px solid rgb(199, 165, 42) !important
   .regendary
+    border: 1px solid rgb(87, 162, 98) !important
   .main-menu-zone
-    padding: 10px
-    border: 1px solid #e0e0e8
+    min-width: 350px
     .s-item
       flex-direction: column
       align-items: unset
@@ -271,3 +277,95 @@ html, body
     .item-grid
       display: grid
       grid-template-columns: repeat(5, 1fr)
+.side-view
+  #cube-calc
+    border: 1px solid #e0e0e8
+    padding: 7px
+    .calc-hori-line
+      width: 100%
+      height: 2px
+      background-color: #e0e0e8
+      margin: 10px 0px
+    .cube-icon
+      width: 42px
+      height: 42px
+      border: 1px solid #e0e0e8
+      margin: 4px
+    .use-m
+      height: 50px
+#wearing-equip
+  display: grid
+  grid-template-columns: repeat(5, 55px)
+  grid-template-rows: repeat(6, 55px)
+  grid-row-gap: 5px
+  grid-column-gap: 5px
+  border: 1px solid #e0e0e8
+  padding: 7px
+  .equipment-item
+    border: 1px solid #e0e0e8
+    border-radius: 3px
+    padding: 4px
+    font-size: 9px
+    .caption
+      position: absolute
+      z-index: 0
+    .item-cover
+      position: relative
+  #ring-1
+    grid-row-start: 1
+  #ring-2
+    grid-row-start: 2
+  #ring-3
+    grid-row-start: 3
+  #ring-4
+    grid-row-start: 4
+  #pocket
+    grid-row-start: 5
+  #pendant-1, #pendant-2, #weapon, #belt
+    grid-column-start: 2
+  #pendant-1
+    grid-row-start: 2
+  #pendant-2
+    grid-row-start: 3
+  #weapon
+    grid-row-start: 4
+  #belt
+    grid-row-start: 5
+  #hat, #face-acc, #eye-deco, #top, #bottom, #shoes
+    grid-column-start: 3
+  #hat
+    grid-row-start: 1
+  #face-acc
+    grid-row-start: 2
+  #eye-deco
+    grid-row-start: 3
+  #top
+    grid-row-start: 4
+  #bottom
+    grid-row-start: 5
+  #shoes
+    grid-row-start: 6
+  #earring, #shoulder, #glove, #android
+    grid-column-start: 4
+  #earring
+    grid-row-start: 3
+  #shoulder
+    grid-row-start: 4
+  #glove
+    grid-row-start: 5
+  #android
+    grid-row-start: 6
+  #emblem, #badge, #medal, #sub-weapon, #cape, #heart
+    grid-column-start: 5
+  #emblem
+    grid-row-start: 1
+  #badge
+    grid-row-start: 2
+  #medal
+    grid-row-start: 3
+  #sub-weapon
+    grid-row-start: 4
+  #cape
+    grid-row-start: 5
+  #heart
+    grid-row-start: 6

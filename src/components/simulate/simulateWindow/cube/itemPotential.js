@@ -28,7 +28,6 @@ class ItemPotential extends Component {
 
   render() {
     const { simulate } = this.props;
-    console.log(simulate.potential);
     return (
       <div className="potential-zone flexible w100p">
         {

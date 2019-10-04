@@ -26,7 +26,7 @@ class CubeMethod extends Component {
         {
           simulate.availableCubeList
             ? (
-              _.map(_.flatten(toJS(simulate.availableCubeList)), (data, key) => {
+              _.map(simulate.availableCubeList, (data, key) => {
                 return (
                   <div
                     className="flexible-inline jf-center cursor-pointer fade-in-short item-size"

@@ -3,9 +3,17 @@ import { Link } from 'react-router-dom';
 import { FormattedHTMLMessage } from 'react-intl';
 import { inject, observer } from 'mobx-react';
 
+@inject('simulate')
 @inject('common')
 @observer
 class SimulateCpt extends Component {
+  componentDidMount() {
+    this.initialize();
+  }
+
+  initialize = async () => {
+    await this.props.simulate.init();
+  }
   render() {
     const { common } = this.props;
     return (

@@ -3,7 +3,9 @@ import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import CubeMainMenu from './cubeMainMenu';
 import CubeMethod from './cubeMethod';
+import CubeCalc from './cubeCalc';
 import ItemPotential from './itemPotential';
+import WearingEquip from '../wearingEquip';
 import itemApi from 'libs/api/item';
 import _ from 'lodash';
 
@@ -12,6 +14,7 @@ import _ from 'lodash';
 @observer
 class SimulateCube extends Component {
   componentDidMount() {
+    this.initialize();
     if (!this.props.simulate.isInitializeCube) {
       this.loadItemList();
     }
@@ -32,21 +35,30 @@ class SimulateCube extends Component {
       }
     });
 
-    _.forEach(toJS(this.props.simulate.defaultAvailableCube), async (req) => {
-      const result = await itemApi.getSimulateAvailableByCube(req);
-      this.props.simulate.availableCubeList.push(result.data);
-    });
+    const req = {
+      item_no: this.props.simulate.defaultAvailableCubeList,
+    };
+
+    const result = await itemApi.getSimulateAvailableByCube(req);
+    this.props.simulate.availableCubeList = result.data;
 
     this.props.simulate.isInitializeCube = 1;
   }
+
+  initialize = async () => {
+    await this.props.simulate.init();
+  }
   render() {
     const { simulate, common } = this.props;
-    // �̷��� �����ָ� ť�긮��Ʈ�� ���� �ʴ´�
     toJS(simulate.availableCubeList);
     return (
       <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
         <div
-          className={simulate.currentPotentialStyle}
+          className={
+            simulate.currentPotentialStyle
+              ? ['main-cube-zone', simulate.currentPotentialStyle].join(' ')
+              : 'main-cube-zone'
+          }
         >
           <div>
             {
@@ -89,6 +101,12 @@ class SimulateCube extends Component {
           <CubeMainMenu simulate={simulate} />
           <div className="vert-line" />
           <CubeMethod simulate={simulate} />
+        </div>
+        <div className="hori-line" />
+        <div className="side-view">
+          <WearingEquip />
+          <div className="vert-line" />
+          <CubeCalc />
         </div>
       </div>
     );
