@@ -43,17 +43,12 @@ class ItemPotential extends Component {
         {
           simulate.potential
             ? (
-              // _.map(toJS(simulate.potential), (potential, key) => {
-              //   return <div className="potential-name w100p t-align-center" key={key}>{potential}</div>;
-              // })
-              <div className="w100p">
-                <div className="potential-name w100p t-align-center">{simulate.currentPotential1}</div>
-                <div className="potential-name w100p t-align-center">{simulate.currentPotential2}</div>
-                <div className="potential-name w100p t-align-center">{simulate.currentPotential3}</div>
-              </div>
+              _.map(toJS(simulate.potential), (potential, key) => {
+                return <div className="potential-name w100p t-align-center" key={key}>{potential}</div>;
+              })
             )
             : (
-              <div>loading</div>
+              null
             )
         }
       </div>

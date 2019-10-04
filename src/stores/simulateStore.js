@@ -2,6 +2,8 @@ import { observable, action, toJS } from 'mobx';
 import _ from 'lodash';
 
 export default class simulateStore {
+  @observable altarItem;
+
   @observable defaultIsHidden = 1;
   @observable defaultPotentialLevel = 0;
   @observable defaultPotentialStyle = 'main-cube-zone';
@@ -84,27 +86,6 @@ export default class simulateStore {
     },
   }
 
-  @observable isInitializeCube = 0;
-  @observable isHidden = this.defaultIsHidden;
-  @observable currentPotentialLevel = this.defaultPotentialLevel;
-  @observable currentPotentialStyle = this.defaultPotentialStyle;
-  @observable currentPotential1;
-  @observable currentPotential2;
-  @observable currentPotential3;
-  @observable pastPotential1;
-  @observable pastPotential2;
-  @observable pastPotential3;
-  @observable currentOverallCategory;
-  @observable currentCategory;
-
-  @action styleCubeAltar = () => {
-    if (this.isHidden) {
-      this.currentPotentialStyle = 'hidden';
-    } else if (this.altarItem) {
-      this.currentPotentialStyle = this.potentialLabelList[this.currentPotentialLevel];
-    }
-  }
-
   @observable defaultAvailableCube = [
     {
       cubeName: '레드 큐브',
@@ -127,61 +108,123 @@ export default class simulateStore {
   ]
   @observable defaultAvailableCubeList = '5062009, 5062010, 5062500';
 
+  @observable isInitializeCube = 0;
+  @observable isHidden = this.defaultIsHidden;
+  @observable potential;
+  @observable currentPotentialLevel = this.defaultPotentialLevel;
+  @observable currentPotentialStyle = this.defaultPotentialStyle;
+  @observable currentPotential1;
+  @observable currentPotential2;
+  @observable currentPotential3;
+  @observable pastPotential1;
+  @observable pastPotential2;
+  @observable pastPotential3;
+  @observable currentOverallCategory;
+  @observable currentCategory;
+
   @observable cubeItemRootAbyss;
   @observable cubeItemAbsolab;
   @observable cubeItemAracneUmbra;
   @observable availableCubeList = [];
 
+  @action styleCubeAltar = () => {
+    if (this.isHidden) {
+      this.currentPotentialStyle = 'hidden';
+    } else if (this.altarItem) {
+      this.currentPotentialStyle = this.potentialLabelList[this.currentPotentialLevel];
+    }
+  }
+
+  @action styleWearing = (item, category, overallCategory) => {
+    let wearing;
+
+    if (category && overallCategory) {
+      wearing = this.wearingEquipment[overallCategory][category];
+    } else {
+      const c = this.getCategory(item);
+      wearing = this.wearingEquipment[c.overallCategory][c.category];
+    }
+
+    if (wearing.currentPotentialLevel) {
+      wearing.currentPotentialStyle = this.potentialLabelList[wearing.currentPotentialLevel];
+    } else {
+      wearing.currentPotentialStyle = 'hidden';
+    }
+  }
+
   @action generateIcon = (itemId) => {
     return `https://items.maplestory.io/api/kms/323/item/${itemId}/icon`;
   }
 
-  @action setWearingEquipment = (item) => {
-    const overallCategory = item.overall_category.toLowerCase();
-    // const category = item.category.replace(/^./, (str) => str.toLowerCase()).replace(/\s/, '').replace(/-/, '');
-    let category;
-    if (_.includes(item.category.toLowerCase), 'weapon') {
-      category = 'weapon';
+  @action getCategory = (item) => {
+    const result = {};
+    result.overallCategory = item.overall_category.toLowerCase();
+    if (_.includes(item.category.toLowerCase(), 'weapon')) {
+      result.category = 'weapon';
     }
-    console.log(item);
 
-    this.currentOverallCategory = overallCategory;
-    this.currentCategory = category;
-    this.wearingEquipment[overallCategory][category] = item;
+    return result;
+  }
+
+  @action setWearingEquipment = (item) => {
+    const c = this.getCategory(item);
+
+    this.currentOverallCategory = c.overallCategory;
+    this.currentCategory = c.category;
+    this.wearingEquipment[c.overallCategory][c.category] = item;
+  }
+
+  @action setPotential = (data, category, overallCategory) => {
+    this.currentPotentialLevel = data.potentialLevel;
+    this.potential = data.potential;
+    if (category && overallCategory) {
+      this.wearingEquipment[overallCategory][category].currentPotentialLevel = data.potentialLevel;
+      this.wearingEquipment[overallCategory][category].potential = data.potential;
+    }
   }
 
   @action initWearingEquipment = (item) => {
 
   }
+
   @action init = () => {
     this.currentPotentialStyle = '';
   }
 
-  @observable altarItem;
+  @action clearItem = (itemNo, overallCategory, category) => {
+    if (this.altarItem.item_no === itemNo) {
+      this.altarItem = undefined;
+      this.currentPotentialStyle = undefined;
+    }
+
+    this.wearingEquipment[overallCategory][category] = {};
+  }
+
+  @action clearPotential = () => {
+    this.potential = undefined;
+    this.currentPotentialStyle = this.defaultPotentialStyle;
+    this.currentPotentialLevel = this.defaultPotentialLevel;
+  }
 
   @action selectAltarItem = (item) => {
     this.altarItem = item;
+    this.clearPotential();
     this.setWearingEquipment(item);
     this.styleCubeAltar();
+    this.styleWearing(item);
   }
 
   @action transformAltarItem = (data, cubeData) => {
     this.useCubeCount += 1;
     this.isHidden = 0;
-    this.currentPotentialLevel = data.potentialLevel;
     if (cubeData.item_no === 5062009) {
       this.useRedCubeCount += 1;
-      this.potential = data.potential;
-      this.currentPotential1 = data.potential['0'];
-      this.currentPotential2 = data.potential['1'];
-      this.currentPotential3 = data.potential['2'];
     } else if (cubeData.item_no === 5062010) {
       this.useBlackCubeCount += 1;
-      this.currentPotential1 = data.potential['0'];
-      this.currentPotential2 = data.potential['1'];
-      this.currentPotential3 = data.potential['2'];
     }
     this.useTotalCount = this.useRedCubeCount * this.defaultRedPrice + this.useBlackCubeCount * this.defaultBlackPrice;
+    this.setPotential(data, this.currentCategory, this.currentOverallCategory);
+    this.styleWearing(data, this.currentCategory, this.currentOverallCategory);
     this.styleCubeAltar();
   }
 }

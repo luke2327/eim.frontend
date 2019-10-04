@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { toJS } from 'mobx';
 import _ from 'lodash';
 import WearingTooltip from './wearingTooltip';
 import { Close } from '@material-ui/icons';
+import ReactTooltip from 'react-tooltip';
 
+const ClearButton = () => ({
+  clear: (param) => {
+    const item = param.simulate.wearingEquipment[param.overallCategory][param.category];
+    param.simulate.clearItem(item.item_no, param.overallCategory, param.category);
+  },
+  render() {
+    const { param } = this.props;
+    return (
+      <React.Fragment>
+        <Close
+          className="equip-clear cursor-pointer"
+          data-for={param.category}
+          data-tip="X버튼을 누르면 해당 아이템을 삭제합니다."
+          onClick={() => { this.clear(param); }}
+        />
+        <ReactTooltip effect="solid" place="right" id={param.category} />
+      </React.Fragment>
+    );
+  },
+});
 
 @inject('simulate')
 @observer
 class WearingEquip extends Component {
   render() {
     const { simulate } = this.props;
+    console.log(toJS(simulate.wearingEquipment.equip.weapon));
     return (
       <div id="wearing-equip" className="wrapper">
         {/* line 1 */}
@@ -21,13 +44,14 @@ class WearingEquip extends Component {
         {/* line 2 */}
         <div className="equipment-item" id="pendant-1">PENDANT</div>
         <div className="equipment-item" id="pendant-2">PENDANT</div>
-        <div className={['equipment-item', simulate.currentPotentialStyle].join(' ')} id="weapon">
+        <div className={['equipment-item', simulate.wearingEquipment.equip.weapon.currentPotentialStyle].join(' ')} id="weapon">
           <p className="caption">WEAPON</p>
           {
             !_.isEmpty(simulate.wearingEquipment.equip.weapon)
               ?
                 <div className="item-cover center-flex w100p h100p">
                   <WearingTooltip simulate={simulate} />
+                  <ClearButton param={{ category: 'weapon', overallCategory: 'equip', simulate: simulate }} />
                 </div>
               : null
           }

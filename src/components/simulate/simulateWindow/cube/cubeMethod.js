@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { toJS } from 'mobx';
 import itemApi from 'libs/api/item';
+import { observer, inject } from 'mobx-react';
 import _ from 'lodash';
 
+@inject('simulate')
+@observer
 class CubeMethod extends Component {
   transform = async (cube) => {
     if (this.props.simulate.altarItem) {
@@ -21,6 +23,7 @@ class CubeMethod extends Component {
   }
   render() {
     const { simulate } = this.props;
+    console.log(simulate);
     return (
       <div className="cube-method item-grid w100p">
         {
@@ -39,7 +42,7 @@ class CubeMethod extends Component {
               })
             )
             : (
-              <p>loading</p>
+              null
             )
         }
       </div>
