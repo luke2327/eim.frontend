@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import _ from 'lodash';
+import WearingTooltip from './wearingTooltip';
 
 @inject('simulate')
 @observer
@@ -24,7 +25,7 @@ class WearingEquip extends Component {
             !_.isEmpty(simulate.wearingEquipment.equip.weapon)
               ?
                 <div className="item-cover center-flex w100p h100p">
-                  <img alt="altarItem" src={simulate.generateIcon(simulate.wearingEquipment.equip.weapon.item_no)} />
+                  <WearingTooltip simulate={simulate} />
                 </div>
               : null
           }

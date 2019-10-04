@@ -94,6 +94,8 @@ export default class simulateStore {
   @observable pastPotential1;
   @observable pastPotential2;
   @observable pastPotential3;
+  @observable currentOverallCategory;
+  @observable currentCategory;
 
   @action styleCubeAltar = () => {
     if (this.isHidden) {
@@ -141,6 +143,10 @@ export default class simulateStore {
     if (_.includes(item.category.toLowerCase), 'weapon') {
       category = 'weapon';
     }
+    console.log(item);
+
+    this.currentOverallCategory = overallCategory;
+    this.currentCategory = category;
     this.wearingEquipment[overallCategory][category] = item;
   }
 

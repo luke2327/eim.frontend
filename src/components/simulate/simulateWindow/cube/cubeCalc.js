@@ -18,7 +18,7 @@ class CubeCalc extends Component {
             {
               _.map(simulate.availableCubeList, (data, key) => {
                 return (
-                  <div className="cube-icon flexible-inline jf-center">
+                  <div key={key} className="cube-icon flexible-inline jf-center">
                     <img key={key} alt="cube" src={simulate.generateIcon(data.item_no)} />
                   </div>
                 );
