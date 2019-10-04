@@ -49,7 +49,7 @@ class SimulateEnchant extends Component {
   render() {
     const { simulate, common } = this.props;
     return (
-      <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
+      <div id="enchant" className="default margin-center-hori start-flex-vertical fade-in">
         <div className="main-menu-zone">
           <CubeMainMenu simulate={simulate} />
         </div>
