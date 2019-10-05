@@ -1,38 +1,51 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { toJS } from 'mobx';
 import _ from 'lodash';
 import WearingTooltip from './wearingTooltip';
 import { Close } from '@material-ui/icons';
 import ReactTooltip from 'react-tooltip';
 
-const ClearButton = () => ({
-  clear: (param) => {
-    const item = param.simulate.wearingEquipment[param.overallCategory][param.category];
-    param.simulate.clearItem(item.item_no, param.overallCategory, param.category);
-  },
-  render() {
-    const { param } = this.props;
+const clear = ({ simulate, overallCategory, category }) => {
+  const item = simulate.wearingEquipment[overallCategory][category];
+  simulate.clearItem(item.item_no, overallCategory, category);
+};
+
+const ClearButton = (props) => {
+  const { category } = props;
+
+  return (
+    <React.Fragment>
+      <Close
+        className="equip-clear cursor-pointer"
+        data-for={category}
+        data-tip="X버튼을 누르면 해당 아이템을 삭제합니다."
+        onClick={() => { clear(props.param); }}
+      />
+      <ReactTooltip effect="solid" place="right" id={category} />
+    </React.Fragment>
+  );
+};
+
+const GenerateWearingIcon = (props) => {
+  const { simulate, overallCategory, category } = props.param;
+
+  if (!_.isEmpty(simulate.wearingEquipment[overallCategory][category])) {
     return (
-      <React.Fragment>
-        <Close
-          className="equip-clear cursor-pointer"
-          data-for={param.category}
-          data-tip="X버튼을 누르면 해당 아이템을 삭제합니다."
-          onClick={() => { this.clear(param); }}
-        />
-        <ReactTooltip effect="solid" place="right" id={param.category} />
-      </React.Fragment>
+      <div className="item-cover center-flex w100p h100p">
+        <WearingTooltip simulate={simulate} />
+        <ClearButton param={props.param} />
+      </div>
     );
-  },
-});
+  }
+
+  return null;
+};
 
 @inject('simulate')
 @observer
 class WearingEquip extends Component {
   render() {
     const { simulate } = this.props;
-    console.log(toJS(simulate.wearingEquipment.equip.weapon));
     return (
       <div id="wearing-equip" className="wrapper">
         {/* line 1 */}
@@ -46,15 +59,7 @@ class WearingEquip extends Component {
         <div className="equipment-item" id="pendant-2">PENDANT</div>
         <div className={['equipment-item', simulate.wearingEquipment.equip.weapon.currentPotentialStyle].join(' ')} id="weapon">
           <p className="caption">WEAPON</p>
-          {
-            !_.isEmpty(simulate.wearingEquipment.equip.weapon)
-              ?
-                <div className="item-cover center-flex w100p h100p">
-                  <WearingTooltip simulate={simulate} />
-                  <ClearButton param={{ category: 'weapon', overallCategory: 'equip', simulate: simulate }} />
-                </div>
-              : null
-          }
+          <GenerateWearingIcon param={{ simulate: simulate, overallCategory: 'equip', category: 'weapon' }} />
         </div>
         <div className="equipment-item" id="belt">BELT</div>
         {/* line 3 */}
