@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import { observer, inject } from 'mobx-react';
+import _ from 'lodash';
 
+@inject('simulate')
+@observer
 class WearingTooltip extends Component {
   render() {
     const HtmlTooltip = withStyles((theme) => ({
@@ -70,6 +74,29 @@ class WearingTooltip extends Component {
               <div className="inc-opt">{ item.imd_r ? `몬스터 방어율 무시 : +${item.imd_r}%` : null}</div>
               <div className="inc-opt">{ item.tuc ? `업그레이드 가능 횟수 : ${item.tuc}` : null}</div>
             </div>
+            {
+              item.potential
+                ? (
+                  <React.Fragment>
+                    <div className="vertical-line" />
+                    <div className="bottom-line">
+                      <div className="p-above">
+                        {
+                          _.map(item.potential, (potential, key) => {
+                            return (
+                              <p key={key}>
+                                {potential}
+                              </p>
+                            );
+                          })
+                        }
+                      </div>
+                    </div>
+                  </React.Fragment>
+                )
+                : null
+            }
+
           </React.Fragment>
         }
       >
