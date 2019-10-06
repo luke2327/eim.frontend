@@ -14,27 +14,25 @@ const styles = (theme) => ({
   },
 });
 
-const CustomTooltip = () => ({
-  getIntroOfPage(label) {
+const CustomTooltip = (props) => {
+  const getIntroOfPage = (label) => {
     return label;
-  },
+  };
 
-  render() {
-    const { active } = this.props;
+  const { active } = props;
 
-    if (active) {
-      const { payload, label } = this.props;
-      return (
-        <div>
-          <p className="label">{`${label}`}</p>
-          <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
-        </div>
-      );
-    }
+  if (active) {
+    const { payload, label } = props;
+    return (
+      <div>
+        <p className="label">{`${label}`}</p>
+        <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
+      </div>
+    );
+  }
 
-    return null;
-  },
-});
+  return null;
+};
 
 @inject('enhance')
 @observer

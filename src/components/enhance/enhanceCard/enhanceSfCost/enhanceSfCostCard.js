@@ -13,30 +13,30 @@ const styles = (theme) => ({
   },
 });
 
-const CustomTooltip = () => ({
-  getIntroOfPage(label) {
+const CustomTooltip = (props) => {
+  const getIntroOfPage = (label) => {
     return label;
-  },
-  comma(x) {
+  };
+
+  const comma = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  },
+  };
 
-  render() {
-    const { active } = this.props;
+  const { active } = props;
 
-    if (active) {
-      const { payload, label } = this.props;
-      return (
-        <div>
-          <p className="label">{`스타포스 : ${label}`}</p>
-          <p className="intro">{`${this.comma(payload[0].value)}메소`}</p>
-        </div>
-      );
-    }
+  if (active) {
+    const { payload, label } = props;
+    return (
+      <div>
+        <p className="label">스타포스</p>
+        <p className="label">{label}</p>
+        <p className="intro">{`${comma(payload[0].value)}메소`}</p>
+      </div>
+    );
+  }
 
-    return null;
-  },
-});
+  return null;
+};
 
 @inject('enhance')
 @observer
