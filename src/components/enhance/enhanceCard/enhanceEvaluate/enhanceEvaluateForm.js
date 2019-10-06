@@ -24,7 +24,7 @@ const CustomTooltip = (props) => {
   if (active) {
     const { payload, label } = props;
     return (
-      <div>
+      <div className="eh-tooltip">
         <p className="label">{`${label}`}</p>
         <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
       </div>

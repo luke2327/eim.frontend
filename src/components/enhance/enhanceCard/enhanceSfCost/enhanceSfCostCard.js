@@ -27,7 +27,7 @@ const CustomTooltip = (props) => {
   if (active) {
     const { payload, label } = props;
     return (
-      <div>
+      <div className="eh-tooltip">
         <p className="label">스타포스</p>
         <p className="label">{label}</p>
         <p className="intro">{`${comma(payload[0].value)}메소`}</p>
