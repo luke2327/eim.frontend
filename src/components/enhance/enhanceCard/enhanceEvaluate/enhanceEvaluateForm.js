@@ -15,10 +15,6 @@ const styles = (theme) => ({
 });
 
 const CustomTooltip = (props) => {
-  const getIntroOfPage = (label) => {
-    return label;
-  };
-
   const { active } = props;
 
   if (active) {
@@ -38,7 +34,7 @@ const CustomTooltip = (props) => {
 @observer
 class EnhanceEvaluateForm extends Component {
   render() {
-    const { classes, enhance } = this.props;
+    const { enhance } = this.props;
     return (
       <div>
         <Grid container spacing={1}>

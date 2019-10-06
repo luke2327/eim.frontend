@@ -108,7 +108,7 @@ class EnhanceInputForm extends Component {
   }
 
   render() {
-    const { classes, enhance, handleStateChange } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <div>
         <Typography

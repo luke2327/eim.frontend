@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, FormControl, InputLabel, NativeSelect, Typography } from '@material-ui/core';
+import { Grid, FormControl, NativeSelect, Typography } from '@material-ui/core';
 
 
 const styles = (theme) => ({
@@ -14,10 +14,6 @@ const styles = (theme) => ({
 });
 
 const CustomTooltip = (props) => {
-  const getIntroOfPage = (label) => {
-    return label;
-  };
-
   const comma = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
@@ -27,7 +23,7 @@ const CustomTooltip = (props) => {
   if (active) {
     const { payload, label } = props;
     return (
-      <div className="eh-tooltip">
+      <div className="eh-tooltip" align="center">
         <p className="label">스타포스</p>
         <p className="label">{label}</p>
         <p className="intro">{`${comma(payload[0].value)}메소`}</p>
