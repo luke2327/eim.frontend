@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class GMSNoticeCpt extends Component {
-  render () {
+  render() {
     return (
       <div>
         GMS Notice
       </div>
-    )
+    );
   }
 }
 

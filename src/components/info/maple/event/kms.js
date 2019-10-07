@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class KMSEventCpt extends Component {
-  render () {
+  render() {
     return (
       <div>
         KMS Event
       </div>
-    )
+    );
   }
 }
 

@@ -22,7 +22,6 @@ class CubeMethod extends Component {
   }
   render() {
     const { simulate } = this.props;
-    console.log(simulate);
     return (
       <div className="cube-method item-grid w100p">
         {
