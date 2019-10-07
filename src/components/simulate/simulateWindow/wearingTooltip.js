@@ -3,7 +3,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { observer, inject } from 'mobx-react';
-import _ from 'lodash';
 
 @inject('simulate')
 @observer

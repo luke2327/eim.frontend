@@ -3,6 +3,9 @@
         "airbnb",
         "react-app"
     ],
+    "globals": {
+        "_": true
+    },
     "rules": {
         "react/prefer-stateless-function": 0,
         "react/jsx-filename-extension": 0,

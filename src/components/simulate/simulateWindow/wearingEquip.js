@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import _ from 'lodash';
 import WearingTooltip from './wearingTooltip';
 import { Close } from '@material-ui/icons';
 import ReactTooltip from 'react-tooltip';

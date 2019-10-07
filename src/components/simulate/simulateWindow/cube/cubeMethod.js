@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import itemApi from 'libs/api/item';
 import { observer, inject } from 'mobx-react';
-import _ from 'lodash';
 
 @inject('simulate')
 @observer

@@ -7,7 +7,6 @@ import CubeCalc from './cubeCalc';
 import ItemPotential from './itemPotential';
 import WearingEquip from '../wearingEquip';
 import itemApi from 'libs/api/item';
-import _ from 'lodash';
 
 @inject('simulate')
 @inject('common')

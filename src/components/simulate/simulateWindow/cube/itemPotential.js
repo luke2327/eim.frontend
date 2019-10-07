@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { toJS } from 'mobx';
 import { inject, observer } from 'mobx-react';
 

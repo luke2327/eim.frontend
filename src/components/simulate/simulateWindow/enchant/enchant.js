@@ -3,7 +3,6 @@ import { observer, inject } from 'mobx-react';
 import CubeMainMenu from '../cube/cubeMainMenu';
 import { toJS } from 'mobx';
 import itemApi from 'libs/api/item';
-import _ from 'lodash';
 
 
 @inject('simulate')

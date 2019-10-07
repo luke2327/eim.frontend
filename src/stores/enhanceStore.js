@@ -2,7 +2,6 @@ import { observable, action } from 'mobx';
 import sfEquip from 'assets/starforceEquip';
 import sfCost from 'assets/starforceCost';
 
-
 export default class EnhanceStore {
   @observable item = {
     item_no: 0,

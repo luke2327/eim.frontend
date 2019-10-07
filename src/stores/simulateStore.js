@@ -1,5 +1,4 @@
-import { observable, action, toJS } from 'mobx';
-import _ from 'lodash';
+import { observable, action } from 'mobx';
 
 export default class simulateStore {
   @observable altarItem;

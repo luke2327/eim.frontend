@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { toJS } from 'mobx';
-import _ from 'lodash';
 
 class CubeItemModal extends Component {
   render() {
