@@ -5,6 +5,13 @@ $IMAGE_PREFIX: '../static/images/'
   background-position: center
   background-repeat: no-repeat
 
+$mainBackgroundColor: rgb(30, 30, 30)
+$mainTypoColor: rgb(255, 255, 255)
+
+p, h1, h2, h3, h4, h5, h6
+  color: $mainTypoColor
+
+
 \:lang(ko)
 
 \:lang(en)
@@ -12,6 +19,7 @@ $IMAGE_PREFIX: '../static/images/'
 \:lang(ja)
 #root
   height: 100%
+  background-color: $mainBackgroundColor
 .ko
   font-family: 'Noto Sans KR', sans-serif
 .en
@@ -162,6 +170,7 @@ html, body
   height: 40%
   border: 1px solid #e0e0e8
   margin: 0 auto
+  overflow: hidden
 
 .enhance-card-object-font
   font-size: 40px

@@ -4,11 +4,11 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { Close } from '@material-ui/icons';
+import ReactTooltip from 'react-tooltip';
 
-export default {
+const commonUtil = {
   TooltipMessage: (Method) => {
     const { Param } = Method;
-    console.log(Param);
     function arrowGenerator(color) {
       return {
         '&[x-placement*="bottom"] $arrow': {
@@ -122,4 +122,14 @@ export default {
       </BootstrapTooltip>
     );
   },
+
+  ItemIconTooltip: (data) => {
+    const { props, simulate } = data;
+
+    return (
+      <img alt="weapon" src={simulate.generateIcon(props.item_no)} />
+    );
+  },
 };
+
+export default commonUtil;

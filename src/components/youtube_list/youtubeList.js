@@ -34,7 +34,7 @@ class YoutubeListCpt extends Component {
         :
         <div id="youtube-list" className="h100p fade-in">
           {toJS(crawling.youtubeList).map((item) => {
-            return !item.del_field
+            return Number(item.del_field) === 0
               ? <YoutubeListCard key={item.vod_no} item={item} />
               : null;
           })}
