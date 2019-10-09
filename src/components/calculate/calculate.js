@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Box } from '@material-ui/core';
 import LeftSideCpt from 'components/layout/leftSide';
+import CalMesoCard from './calMeso/calMesoCard';
+import CalCubeCard from './calCube/calCubeCard';
+import CalMileageCard from './calMileage/calMileageCard';
+import CalBossMesoCard from './calBossMeso/calBossMesoCard';
+import CalSimbolCard from './calSimbol/calSimbolCard';
 
 const styles = (theme) => ({
   root: {
@@ -36,27 +41,27 @@ class Calculate extends Component {
             <Grid container spacing={2}>
               <Grid item xs={8}>
                 <Paper className={classes.paper}>
-                  메소
+                  <CalMesoCard />
                 </Paper>
               </Grid>
               <Grid item xs={4}>
                 <Paper className={classes.paper}>
-                  큐브
+                  <CalCubeCard />
                 </Paper>
               </Grid>
               <Grid item xs={6}>
                 <Paper className={classes.paper}>
-                  마일리지
+                  <CalMileageCard />
                 </Paper>
               </Grid>
               <Grid item xs={6}>
                 <Paper className={classes.paper}>
-                  보스메소
+                  <CalBossMesoCard />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  심볼계산
+                  <CalSimbolCard />
                 </Paper>
               </Grid>
             </Grid>
