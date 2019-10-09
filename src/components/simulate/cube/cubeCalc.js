@@ -25,9 +25,15 @@ class CubeCalc extends Component {
             }
           </div>
           <div className="flex-vertical-start">
-            <p className="use-m center-flex">{simulate.useRedCubeCount} : {simulate.useRedCubeCount * simulate.defaultRedPrice}</p>
-            <p className="use-m center-flex">{simulate.useBlackCubeCount} : {simulate.useBlackCubeCount * simulate.defaultBlackPrice}</p>
-            <p className="use-m center-flex">아직 추가 안됨</p>
+            <p className="use-m center-flex">
+              {simulate.useRedCubeCount} : {simulate.useRedCubeCount * simulate.defaultRedPrice}
+            </p>
+            <p className="use-m center-flex">
+              {simulate.useBlackCubeCount} : {simulate.useBlackCubeCount * simulate.defaultBlackPrice}
+            </p>
+            <p className="use-m center-flex">
+              아직 추가 안됨
+            </p>
           </div>
         </div>
       </div>

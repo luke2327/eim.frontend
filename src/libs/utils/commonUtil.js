@@ -127,7 +127,15 @@ const commonUtil = {
     const { props, simulate } = data;
 
     return (
-      <img alt="weapon" src={simulate.generateIcon(props.item_no)} />
+      <React.Fragment>
+        <img
+          alt="weapon"
+          src={simulate.generateIcon(props.item_no)}
+          data-for={props.sub_category}
+          data-tip={props.name_ko}
+        />
+        <ReactTooltip effect="solid" place="right" id={props.sub_category} />
+      </React.Fragment>
     );
   },
 };

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-import CubeMainMenu from './cubeMainMenu';
-import CubeMethod from './cubeMethod';
-import CubeCalc from './cubeCalc';
-import ItemPotential from './itemPotential';
-import WearingEquip from '../wearingEquip';
+import CubeMainMenu from 'components/simulate/cube/cubeMainMenu';
+import CubeMethod from 'components/simulate/cube/cubeMethod';
+import CubeCalc from 'components/simulate/cube/cubeCalc';
+import ItemPotential from 'components/simulate/cube/itemPotential';
+import WearingEquip from 'components/simulate/wearingEquip';
 import itemApi from 'libs/api/item';
 
 @inject('simulate')

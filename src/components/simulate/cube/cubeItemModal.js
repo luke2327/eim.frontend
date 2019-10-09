@@ -32,7 +32,7 @@ class CubeItemModal extends Component {
                   className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
                   key={data.item_no}
                 >
-                  <img alt="weapon" src={simulate.generateIcon(data.item_no)} />
+                  <commonUtil.ItemIconTooltip props={data} simulate={simulate} />
                 </div>
               );
             })
@@ -47,7 +47,7 @@ class CubeItemModal extends Component {
                   className="flexible-inline jf-center cursor-pointer fade-in-short item-size"
                   key={data.item_no}
                 >
-                  <img alt="weapon" src={simulate.generateIcon(data.item_no)} />
+                  <commonUtil.ItemIconTooltip props={data} simulate={simulate} />
                 </div>
               );
             })

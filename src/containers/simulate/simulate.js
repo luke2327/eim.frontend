@@ -40,7 +40,11 @@ class SimulateCpt extends Component {
         </Link>
         <Link to="/simulate/simulate_equip/enchant" className="s-link" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
           <div className="card" style={{ width: '18rem' }}>
-            <img src="https://mblogthumb-phinf.pstatic.net/20160824_109/replay_world_1472038751864Uc9Uf_PNG/capture-20160824-203858.png?type=w2" className="card-img-top" alt="..." />
+            <img
+              src="https://mblogthumb-phinf.pstatic.net/20160824_109/replay_world_1472038751864Uc9Uf_PNG/capture-20160824-203858.png?type=w2"
+              className="card-img-top"
+              alt="..."
+            />
             <div className="card-body end-flex-vertical">
               <div className="s-air" />
               <div className="below">
@@ -60,7 +64,11 @@ class SimulateCpt extends Component {
         </Link>
         <Link to="/simulate/simulate_equip/starforce" className="s-link" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
           <div className="card" style={{ width: '18rem' }}>
-            <img src="https://mblogthumb-phinf.pstatic.net/20160905_78/replay_world_14730315598139FBKo_PNG/capture-20160905-082549.png?type=w2" className="card-img-top" alt="..." />
+            <img
+              src="https://mblogthumb-phinf.pstatic.net/20160905_78/replay_world_14730315598139FBKo_PNG/capture-20160905-082549.png?type=w2"
+              className="card-img-top"
+              alt="..."
+            />
             <div className="card-body end-flex-vertical">
               <div className="s-air" />
               <div className="below">
