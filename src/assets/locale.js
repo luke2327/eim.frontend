@@ -31,6 +31,7 @@ export default {
     'header.enhance': '장비분석',
     'header.simulate': '시뮬레이션',
     'header.youtubeList': '유튜브 리스트',
+    'header.calculate': '계산기',
     'header.notice': '공지사항',
     'header.language': '언어',
 

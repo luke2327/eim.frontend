@@ -6,6 +6,7 @@ import SimulateEnchant from 'components/simulate/simulateWindow/enchant/enchant'
 import SimulateSurgery from 'components/simulate/simulateWindow/surgery/surgery';
 import SimulateStarforce from 'components/simulate/simulateWindow/starforce/starforce';
 import YoutubeListCpt from 'components/youtube_list/youtubeList';
+import CalculateCpt from 'components/calculate/calculate';
 import HeaderCpt from 'components/header/header';
 import FooterCpt from 'components/footer/footer';
 import NoticeCpt from 'components/notice/notice';
@@ -24,6 +25,7 @@ class MainMedition extends Component {
           <Switch>
             <Route exact path="/" component={MainView} />
             <Route exact path="/enhance/enhanceEquip" component={EnhanceEquipCpt} />
+            <Route exact path="/calculate" component={CalculateCpt} />
             <Route exact path="/simulate" component={SimulateCpt} />
             <Route exact path="/simulate/simulate_equip/cube" component={SimulateCube} />
             <Route exact path="/simulate/simulate_equip/enchant" component={SimulateEnchant} />
