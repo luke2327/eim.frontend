@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import itemApi from 'libs/api/item';
 
 export default class simulateStore {
   @observable altarItem;
@@ -42,6 +43,17 @@ export default class simulateStore {
       category: 'equip',
     },
   }
+
+  @observable equipmentStorage = {
+    equip: {
+      Beginner: {},
+      Warrior: {},
+      Bowman: {},
+      Magician: {},
+      Thief: {},
+      Pirate: {},
+    },
+  };
 
   @observable wearingEquipment = {
     equip: {
@@ -134,6 +146,43 @@ export default class simulateStore {
     }
   }
 
+  @action loadItemList = async () => {
+    if (!this.isInitializeCube) {
+      _.map(this.defaultCubeGiven, async (req, given) => {
+        req.label = given;
+        if (given === 'rootAbyss') {
+          const result = await itemApi.getSimulateItemByCube(req);
+          this.cubeItemRootAbyss = result.data;
+        } else if (given === 'absolab') {
+          const result = await itemApi.getSimulateItemByCube(req);
+          this.cubeItemAbsolab = result.data;
+        } else if (given === 'arcaneUmbra') {
+          const result = await itemApi.getSimulateItemByCube(req);
+          this.cubeItemArcaneUmbra = result.data;
+        }
+      });
+
+      const req = {
+        item_no: this.defaultAvailableCubeList,
+      };
+
+      const result = await itemApi.getSimulateAvailableByCube(req);
+      this.availableCubeList = result.data;
+      this.isInitializeCube = 1;
+    }
+  }
+
+  @action fillEquipmentStorage = async () => {
+    const req = {
+      minItemLevel: 150,
+      maxItemLevel: 200,
+      tradeAvailable: 2,
+    };
+
+    const result = await itemApi.getEquipmentItem(req);
+    console.log(result);
+  }
+
   @action styleWearing = (item, category, overallCategory) => {
     let wearing;
 
@@ -188,6 +237,7 @@ export default class simulateStore {
 
   @action init = () => {
     this.currentPotentialStyle = '';
+    this.fillEquipmentStorage();
   }
 
   @action clearItem = (itemNo, overallCategory, category) => {

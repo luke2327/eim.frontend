@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { toJS } from 'mobx';
 import { FormattedHTMLMessage } from 'react-intl';
 import { inject, observer } from 'mobx-react';
+import itemApi from 'libs/api/item';
 
 @inject('simulate')
 @inject('common')
@@ -11,8 +13,9 @@ class SimulateCpt extends Component {
     this.initialize();
   }
 
-  initialize = async () => {
-    await this.props.simulate.init();
+  initialize = () => {
+    this.props.simulate.init();
+    this.props.simulate.loadItemList();
   }
   render() {
     const { common } = this.props;

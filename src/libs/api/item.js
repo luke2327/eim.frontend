@@ -36,4 +36,10 @@ export default {
 
     return await api.send('api/item/simulate/set-potential', req, 'post');
   },
+
+  getEquipmentItem: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/item/simulate/equipment-item', req, 'post');
+  },
 };
