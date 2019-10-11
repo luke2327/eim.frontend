@@ -39,6 +39,11 @@ class Calculate extends Component {
           <LeftSideCpt />
           <div className={[classes.root, 'fade-in'].join(' ')}>
             <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <CalBossMesoCard />
+                </Paper>
+              </Grid>
               <Grid item xs={7}>
                 <Paper className={classes.paper}>
                   <CalMesoCard />
@@ -47,16 +52,6 @@ class Calculate extends Component {
               <Grid item xs={5}>
                 <Paper className={classes.paper}>
                   <CalCubeCard />
-                </Paper>
-              </Grid>
-              <Grid item xs={6}>
-                <Paper className={classes.paper}>
-                  <CalMileageCard />
-                </Paper>
-              </Grid>
-              <Grid item xs={6}>
-                <Paper className={classes.paper}>
-                  <CalBossMesoCard />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
