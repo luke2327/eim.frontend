@@ -6,7 +6,6 @@ export default {
         { rank: 'easy', meso: 200000 },
         { rank: 'normal', meso: 612500 },
         { rank: 'chaos', meso: 16200000 },
-        { rank: 'hard', meso: 16200000 },
       ],
     },
     {
