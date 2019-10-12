@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, TextField, Button } from '@material-ui/core';
+import { Grid, TextField, Button, Typography, Divider } from '@material-ui/core';
 
 class CalMesoCard extends Component {
   state = {
@@ -17,7 +17,7 @@ class CalMesoCard extends Component {
   render() {
     return (
       <div>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className="col-2-height">
           <Grid item xs={12}> 메소 계산기 </Grid>
           <Grid item xs={6} className="flex-vertical">
             <TextField
@@ -56,8 +56,41 @@ class CalMesoCard extends Component {
             </Button>
           </Grid>
           <Grid item xs={6} className="meso-result-form">
-            <p>경험치 1억당 얻는 메소</p>
-            <p>목표 경험치 도달시 얻는 메소</p>
+            <Typography
+              variant="overline"
+              display="block"
+              gutterBottom
+              className="black-font"
+            >
+              천만메소당 잡아야 하는 몹 수
+            </Typography>
+            <div className="meso-result">
+              172 마리
+            </div>
+            <div className="divider-margin" />
+            <Divider />
+            <Typography
+              variant="overline"
+              display="block"
+              gutterBottom
+              className="black-font"
+            >
+              경험치 1억당 얻는 메소
+            </Typography>
+            <div className="meso-result">
+              12,150,000 메소
+            </div>
+            <Typography
+              variant="overline"
+              display="block"
+              gutterBottom
+              className="black-font"
+            >
+              목표 경험치 도달시 얻는 메소
+            </Typography>
+            <div className="meso-result">
+              12,150,000 메소
+            </div>
           </Grid>
         </Grid>
       </div>

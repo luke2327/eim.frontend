@@ -20,12 +20,10 @@ const styles = (theme) => ({
     color: theme.palette.text.secondary,
     backgroundColor: '#FFFFFF',
   },
-  middlePaper: {
-    padding: theme.spacing(3),
+  bossMesoPaper: {
+    padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    height: 850,
-    verticalAlign: 'middle',
     backgroundColor: '#FFFFFF',
   },
 });
@@ -40,7 +38,7 @@ class Calculate extends Component {
           <div className={[classes.root, 'fade-in'].join(' ')}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>
+                <Paper className={classes.bossMesoPaper}>
                   <CalBossMesoCard />
                 </Paper>
               </Grid>

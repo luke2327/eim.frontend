@@ -17,7 +17,7 @@ class CalCubeCard extends Component {
   render() {
     return (
       <div>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className="col-2-height">
           <Grid item xs={12}> 큐브비용 계산기 </Grid>
           <Grid item xs={6} className="flex-vertical">
             <TextField
@@ -50,12 +50,11 @@ class CalCubeCard extends Component {
             </Button>
           </Grid>
           <Grid item xs={12}>
-            <Typography
-              className="black-font"
-              variant="h5"
+            <div
+              className="meso-result"
             >
               120,000 메소
-            </Typography>
+            </div>
           </Grid>
         </Grid>
       </div>
