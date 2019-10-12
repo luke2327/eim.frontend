@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, toJS } from 'mobx';
 import itemApi from 'libs/api/item';
 
 export default class simulateStore {
@@ -45,7 +45,7 @@ export default class simulateStore {
   }
 
   @observable equipmentStorage = {
-    equip: {
+    Equip: {
       Beginner: {},
       Warrior: {},
       Bowman: {},
@@ -176,11 +176,19 @@ export default class simulateStore {
     const req = {
       minItemLevel: 150,
       maxItemLevel: 200,
-      tradeAvailable: 2,
+      category: 'Armor',
     };
 
     const result = await itemApi.getEquipmentItem(req);
-    console.log(result);
+    _.forEach(result.data, (value) => {
+      if (_.isArray(this.equipmentStorage[value.overall_category][value.req_jobs][value.category])) {
+        this.equipmentStorage[value.overall_category][value.req_jobs][value.category].push(value);
+      } else {
+        this.equipmentStorage[value.overall_category][value.req_jobs][value.category] = [];
+      }
+    });
+
+    console.log(toJS(this.equipmentStorage));
   }
 
   @action styleWearing = (item, category, overallCategory) => {
