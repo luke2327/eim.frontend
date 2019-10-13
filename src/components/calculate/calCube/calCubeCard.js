@@ -14,6 +14,27 @@ class CalCubeCard extends Component {
     });
   }
 
+  setCubeCost = (level) => {
+    if (level < 30) {
+      return 0;
+    } if (level < 71) {
+      return level * level * 0.5;
+    } if (level < 121) {
+      return level * level * 2.5;
+    }
+    return level * level * 20;
+  }
+
+  calResult = () => {
+    this.setState({
+      meso: parseInt(this.setCubeCost(this.state.level), 10) * this.state.cubeCount,
+    });
+  }
+
+  comma = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   render() {
     return (
       <div>
@@ -42,6 +63,7 @@ class CalCubeCard extends Component {
           <Grid item xs={6}>
             <Button
               className="cube-result-button"
+              onClick={this.calResult}
               color="primary"
               variant="outlined"
               fullWidth
@@ -53,7 +75,7 @@ class CalCubeCard extends Component {
             <div
               className="meso-result"
             >
-              120,000 메소
+              {this.comma(this.state.meso)} 메소
             </div>
           </Grid>
         </Grid>

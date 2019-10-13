@@ -6,11 +6,30 @@ class CalMesoCard extends Component {
     monsterExp: 0,
     monsterMeso: 0,
     goalExp: 0,
+    result: {
+      mob10Million: 0,
+      mesoExp100Million: 0,
+      mesoGoalExp: 0,
+    },
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
+    });
+  }
+
+  comma = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  calResult = () => {
+    this.setState({
+      result: {
+        mob10Million: parseInt((10000000 / this.state.monsterMeso), 10),
+        mesoExp100Million: parseInt((100000000 / this.state.monsterExp) * this.state.monsterMeso, 10),
+        mesoGoalExp: parseInt((this.state.goalExp / this.state.monsterExp) * this.state.monsterMeso, 10),
+      },
     });
   }
 
@@ -51,6 +70,7 @@ class CalMesoCard extends Component {
               className="result-button"
               color="primary"
               variant="outlined"
+              onClick={this.calResult}
             >
               계산하기
             </Button>
@@ -65,7 +85,7 @@ class CalMesoCard extends Component {
               천만메소당 잡아야 하는 몹 수
             </Typography>
             <div className="meso-result">
-              172 마리
+              {this.comma(this.state.result.mob10Million)} 마리
             </div>
             <div className="divider-margin" />
             <Divider />
@@ -78,7 +98,7 @@ class CalMesoCard extends Component {
               경험치 1억당 얻는 메소
             </Typography>
             <div className="meso-result">
-              12,150,000 메소
+              {this.comma(this.state.result.mesoExp100Million)} 메소
             </div>
             <Typography
               variant="overline"
@@ -89,7 +109,7 @@ class CalMesoCard extends Component {
               목표 경험치 도달시 얻는 메소
             </Typography>
             <div className="meso-result">
-              12,150,000 메소
+              {this.comma(this.state.result.mesoGoalExp)} 메소
             </div>
           </Grid>
         </Grid>
