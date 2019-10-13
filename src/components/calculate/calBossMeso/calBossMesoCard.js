@@ -17,10 +17,9 @@ class CalBossMesoCard extends Component {
     return (
       <div>
         <Grid container spacing={1}>
-          <Grid item xs={12}>보스 메소 계산기</Grid>
           <Grid item xs={4}>
             <div className="boss-meso-log">
-              로그공간
+              보스 메소 계산로그
             </div>
           </Grid>
           <Grid item xs={8}>
