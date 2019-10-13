@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import image from 'assets/bossImage/eim_dusk.png';
 import { Button, Card, CardMedia, Typography, Divider } from '@material-ui/core';
 
 const styles = (theme) => ({
@@ -16,7 +17,7 @@ class BossCard extends Component {
       <Card className="boss-card">
         <CardMedia
           className="boss-card-cover"
-          image="https://images.mypetlife.co.kr/content/uploads/2019/04/11132622/dog-3397110_960_720.jpg"
+          image={data.image}
         />
         <div className="boss-card-detail">
           <Typography variant="h5" className="black-font">{data.name}</Typography>
