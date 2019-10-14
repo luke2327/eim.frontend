@@ -1,7 +1,15 @@
 import api from 'libs/api/common';
 
 const getLocale = (data) => {
-  data.locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];
+  const locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];
+
+  if (_.isArray(data)) {
+    _.forEach(data, (iterData) => {
+      iterData.locale = locale;
+    });
+  } else {
+    data.locale = locale;
+  }
 
   return data;
 };

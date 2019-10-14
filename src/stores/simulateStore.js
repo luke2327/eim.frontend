@@ -173,15 +173,22 @@ export default class simulateStore {
   }
 
   @action fillEquipmentStorage = async () => {
-    const req = {
-      minItemLevel: 150,
-      maxItemLevel: 200,
-      category: 'Armor',
-    };
+    const req = [
+      {
+        minItemLevel: 150,
+        maxItemLevel: 200,
+        category: ['Armor'],
+      },
+      {
+        minItemLevel: 150,
+        maxItemLevel: 200,
+        category: ['OneHandedWeapon', 'TwoHandedWeapon'],
+      },
+    ];
 
     const result = await itemApi.getEquipmentItem(req);
     _.forEach(result.data, (value) => {
-      if (_.isArray(this.equipmentStorage[value.overall_category][value.req_jobs][value.category])) {
+      if (!_.isUndefined(this.equipmentStorage[value.overall_category][value.req_jobs][value.category])) {
         this.equipmentStorage[value.overall_category][value.req_jobs][value.category].push(value);
       } else {
         this.equipmentStorage[value.overall_category][value.req_jobs][value.category] = [];
