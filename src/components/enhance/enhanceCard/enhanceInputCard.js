@@ -22,7 +22,7 @@ class EnhanceInputCard extends Component {
     return (
       <Box>
         {
-          this.state.inputState ? <EnhanceInputForm /> : <EnhanceInputFalse handleStateChange={this.handleStateChange} />
+          this.state.inputState ? <EnhanceInputForm handleStateChange={this.handleStateChange} /> : <EnhanceInputFalse handleStateChange={this.handleStateChange} />
         }
       </Box>
     );

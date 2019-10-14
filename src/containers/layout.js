@@ -8,6 +8,16 @@ import { observer, inject } from 'mobx-react';
 import style from 'styles/styles.sass';
 // eslint-disable-next-line no-unused-vars
 import customBootstrap from 'styles/custom_bootstrap.sass';
+// eslint-disable-next-line no-unused-vars
+import customMaterial from 'styles/custom_material.sass';
+// eslint-disable-next-line no-unused-vars
+import enhance from 'styles/enhance.sass';
+// eslint-disable-next-line no-unused-vars
+import simulate from 'styles/simulate.sass';
+// eslint-disable-next-line no-unused-vars
+import vod from 'styles/vod.sass';
+// eslint-disable-next-line no-unused-vars
+import calculate from 'styles/calculate.sass';
 
 @inject('common')
 @observer

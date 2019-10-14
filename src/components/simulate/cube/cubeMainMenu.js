@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedHTMLMessage } from 'react-intl';
 import { toJS } from 'mobx';
-import _ from 'lodash';
 import CubeItemModal from './cubeItemModal';
 
 class CubeMainMenu extends Component {

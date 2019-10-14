@@ -21,9 +21,13 @@ const styles = (theme) => ({
 @observer
 class EnhanceStatCard extends Component {
   handleEnhanceStatChange = (e) => {
+    e.target.value = (e.target.value >= this.props.enhance.setInputMaxEnhanceStat(this.props.name)) ? this.props.enhance.setInputMaxEnhanceStat(this.props.name) : e.target.value;
+    e.target.value = (e.target.value < 0) ? 0 : e.target.value;
     this.props.enhance.handleChangeEnhanceStat(e.target.name, Number(e.target.value));
   }
   handleAddOptStatChange = (e) => {
+    e.target.value = parseInt((e.target.value >= this.props.enhance.setInputMaxAddOptStat(this.props.name)) ? this.props.enhance.setInputMaxAddOptStat(this.props.name) : e.target.value, 10);
+    e.target.value = (e.target.value < 0) ? 0 : e.target.value;
     this.props.enhance.handleChangeAddOptStat(e.target.name, Number(e.target.value));
   }
 
@@ -55,6 +59,7 @@ class EnhanceStatCard extends Component {
               <Input
                 type="Number"
                 placeholder="먼저입력하세요"
+                rowsMax={99}
                 onChange={this.handleEnhanceStatChange}
                 name={name}
               />}

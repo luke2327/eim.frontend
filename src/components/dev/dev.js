@@ -31,15 +31,61 @@ class DevComponent extends Component {
     });
   }
 
+  inputMapleItemMeta = () => {
+    const req = {
+      minLevelFilter: 160,
+      maxLevelFilter: 160,
+      overallCategory: 'Equip',
+      category: ['One-Handed Weapon', 'Two-Handed Weapon'],
+      locale: this.props.common.selectedLang,
+    };
+
+    mapleApi.inputMapleItemMeta(req).then((res) => {
+      console.log('response data :', res);
+    });
+  }
+
+  inputMapleItemArmor = () => {
+    const req = {
+      minLevelFilter: 200,
+      maxLevelFilter: 200,
+      overallCategoryFilter: 'Equip',
+      categoryFilter: 'Armor',
+    };
+
+    mapleApi.inputMapleItem(req).then((res) => {
+      console.log(res);
+    });
+  }
+
+  inputMapleItemArmorMeta = () => {
+    const req = {
+      minLevelFilter: 150,
+      maxLevelFilter: 150,
+      overallCategory: 'Equip',
+      category: 'Armor',
+      locale: this.props.common.selectedLang,
+    };
+
+    mapleApi.inputMapleItemMeta(req).then((res) => {
+      console.log('response data :', res);
+    });
+  }
+
   render() {
     return (
       <div
         className="default w100p h100p margin-center-hori center-flex"
-        style={{ background: 'url(https://life-hacking.net/wp-content/uploads/2017/05/444a80ed-500x321.png)',
+        style={{ background: 'url(https://cinnamoroll-officialfanclub.com/s3/skiyaki/uploads/artist_photo/image/4286/king_cinnamon.jpg)',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center' }}
       >
-        <div className="w70p h70p margin-center-hori" style={{ backgroundColor: 'rgba(255,255,255,0.6)', border: '1.5px solid #e0e0e8', padding: '200px' }}>
+        <div
+          className="w70p h70p margin-center-hori"
+          style={{ backgroundColor: 'rgba(255,255,255,0.6)',
+            border: '1.5px solid #e0e0e8',
+            padding: '200px' }}
+        >
           <div className="between-flex" style={{ width: '300px' }}>
             Call Maple Item 160 ~ 170
             <button
@@ -58,6 +104,39 @@ class DevComponent extends Component {
               className="btn-outline-primary btn"
               style={{ marginLeft: '15px' }}
               onClick={() => this.callMapleItemCube()}
+            >
+              Call
+            </button>
+          </div>
+          <div className="between-flex" style={{ width: '300px' }}>
+            Input Maple Item Weapon Meta
+            <button
+              type="button"
+              className="btn-outline-primary btn"
+              style={{ marginLeft: '15px' }}
+              onClick={() => this.inputMapleItemMeta()}
+            >
+              Call
+            </button>
+          </div>
+          <div className="between-flex" style={{ width: '300px' }}>
+            Input Maple Item Armor
+            <button
+              type="button"
+              className="btn-outline-primary btn"
+              style={{ marginLeft: '15px' }}
+              onClick={() => this.inputMapleItemArmor()}
+            >
+              Call
+            </button>
+          </div>
+          <div className="between-flex" style={{ width: '300px' }}>
+            Input Maple Item Armor Meta
+            <button
+              type="button"
+              className="btn-outline-primary btn"
+              style={{ marginLeft: '15px' }}
+              onClick={() => this.inputMapleItemArmorMeta()}
             >
               Call
             </button>

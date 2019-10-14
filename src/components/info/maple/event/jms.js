@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class JMSEventCpt extends Component {
-  render () {
+  render() {
     return (
       <div>
         JMS Event
       </div>
-    )
+    );
   }
 }
 

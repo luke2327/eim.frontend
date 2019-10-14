@@ -10,9 +10,25 @@ const styles = (theme) => ({
     textAlign: 'center',
     color: '#000000',
     height: 650,
-    backgroundColor: '#FAF4C0',
+    backgroundColor: '#000000',
   },
 });
+
+const CustomTooltip = (props) => {
+  const { active } = props;
+
+  if (active) {
+    const { payload, label } = props;
+    return (
+      <div className="eh-tooltip">
+        <p className="label">{`${label}`}</p>
+        <p className="intro">{`${parseInt(payload[0].value, 10)}%`}</p>
+      </div>
+    );
+  }
+
+  return null;
+};
 
 @inject('enhance')
 @observer
@@ -28,6 +44,7 @@ class EnhanceEvaluateForm extends Component {
               <PolarAngleAxis dataKey="subject" />
               <PolarRadiusAxis />
               <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+              <Radar name="Lily" dataKey="B" stroke="#000000" fill="#000000" fillOpacity={0} />
             </RadarChart>
           </Grid>
           <Grid item xs={12}>
@@ -40,7 +57,7 @@ class EnhanceEvaluateForm extends Component {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="subject" />
               <YAxis />
-              {/* <Tooltip content={<CustomTooltip/>} /> */}
+              <Tooltip content={<CustomTooltip />} />
               <Legend />
               <Bar dataKey="A" barSize={20} fill="#8884d8" />
             </BarChart>

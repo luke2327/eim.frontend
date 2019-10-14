@@ -13,6 +13,8 @@ const enhance = new EnhanceStore(),
   crawling = new CrawlingStore(),
   simulate = new SimulateStore();
 
+global._ = require('lodash');
+
 ReactDOM.render(
   <Provider
     enhance={enhance}

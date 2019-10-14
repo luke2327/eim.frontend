@@ -1,6 +1,6 @@
 // temp component
 import React, { Component } from 'react';
-import SimulateCpt from 'components/simulate/simulate';
+import SimulateCpt from 'containers/simulate/simulate';
 
 export default class CenterTopCpt extends Component {
   render() {

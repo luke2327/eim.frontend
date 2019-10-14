@@ -64,6 +64,12 @@ export default {
   inputMapleItem: async (req) => {
     req = req.locale ? req : getLocale(req);
 
-    return await api.send('api/maple/item/input', req);
+    return await api.send('api/maple/input/item', req);
+  },
+
+  inputMapleItemMeta: async (req) => {
+    req = req.locale ? req : getLocale(req);
+
+    return await api.send('api/maple/input/item-meta', req);
   },
 };

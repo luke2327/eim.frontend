@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import CubeMainMenu from '../cube/cubeMainMenu';
 import { toJS } from 'mobx';
-import CubeMainMenu from './cubeMainMenu';
-import CubeMethod from './cubeMethod';
-import ItemPotential from './itemPotential';
 import itemApi from 'libs/api/item';
-import _ from 'lodash';
+
 
 @inject('simulate')
 @inject('common')
 @observer
-class SimulateCube extends Component {
+class SimulateEnchant extends Component {
   componentDidMount() {
-    this.loadItemList();
+    this.initialize();
+    if (!this.props.simulate.isInitializeCube) {
+      this.loadItemList();
+    }
   }
 
   loadItemList = async () => {
@@ -30,18 +31,35 @@ class SimulateCube extends Component {
       }
     });
 
-    _.forEach(toJS(this.props.simulate.defaultAvailableCube), async (req) => {
-      const result = await itemApi.getSimulateAvailableByCube(req);
-      console.log(result);
-      this.props.simulate.availableCubeList.push(result.data);
-    });
+    const req = {
+      item_no: this.props.simulate.defaultAvailableCubeList,
+    };
+
+    const result = await itemApi.getSimulateAvailableByCube(req);
+    this.props.simulate.availableCubeList = result.data;
+
+    this.props.simulate.isInitializeCube = 1;
   }
+
+  initialize = async () => {
+    await this.props.simulate.init();
+  }
+
   render() {
     const { simulate, common } = this.props;
-    console.log(toJS(simulate.availableCubeList));
     return (
-      <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
-        <div className="main-cube-zone">
+      <div id="enchant" className="default margin-center-hori start-flex-vertical fade-in">
+        <div className="main-menu-zone">
+          <CubeMainMenu simulate={simulate} />
+        </div>
+        <div className="hori-line" />
+        <div
+          className={
+            simulate.currentPotentialStyle
+              ? ['main-cube-zone', simulate.currentPotentialStyle].join(' ')
+              : 'main-cube-zone'
+          }
+        >
           <div>
             {
               simulate.altarItem
@@ -58,7 +76,7 @@ class SimulateCube extends Component {
               {
                 simulate.altarItem
                   ? (
-                    <img alt="altarItem" src={simulate.generateIcon(simulate.altarItem.id)} />
+                    <img alt="altarItem" src={simulate.generateIcon(simulate.altarItem.item_no)} />
                   )
                   : (
                     <div>Item</div>
@@ -66,27 +84,10 @@ class SimulateCube extends Component {
               }
             </div>
           </div>
-          <div className="cube-below start-flex-vertical margin-center-hori">
-            {
-              simulate.altarItem
-                ? (
-                  <ItemPotential simulate={simulate} />
-                )
-                : (
-                  <div>option</div>
-                )
-            }
-          </div>
-        </div>
-        <div className="hori-line" />
-        <div className="main-menu-zone">
-          <CubeMainMenu simulate={simulate} />
-          <div className="vert-line" />
-          <CubeMethod simulate={simulate} />
         </div>
       </div>
     );
   }
 }
 
-export default SimulateCube;
+export default SimulateEnchant;

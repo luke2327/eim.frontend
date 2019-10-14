@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
+import MessageDialog from 'components/msg/messageDialog';
 
 const styles = () => ({
   nameText: {
@@ -13,7 +14,7 @@ const styles = () => ({
     marginBottom: 40,
     marginRight: 40,
   },
-  addButton: {
+  buttonClass: {
     marginTop: 20,
     width: '100%',
   },
@@ -29,7 +30,7 @@ class EnhanceInputForm extends Component {
       name: '',
     },
     getClass: {
-      value: 0,
+      value: '',
       name: '',
     },
     statName: {
@@ -44,27 +45,66 @@ class EnhanceInputForm extends Component {
       allstat: { id: 'allstat', name: '올스탯(%)' },
       chackgam: { id: 'chackgam', name: '착감' },
     },
+    msg: {
+      msgStatus: false,
+      content: '',
+    },
   }
 
-  handleSfChange = async (e) => {
-    await this.setState({
-      getSf: {
-        value: e.target.value,
-        name: e.target.name,
+  closeMsgDialog = () => {
+    this.setState({
+      msg: {
+        msgStatus: false,
       },
     });
-    this.props.enhance.setItemSf(e.target.value);
-    this.props.enhance.handleChangeSfStat();
   }
 
-  handleClassChange = async (e) => {
-    await this.setState({
+  handleSfChange = (e) => {
+    if (this.props.enhance.checkEnhanceStat()) {
+      this.setState({
+        getSf: {
+          value: e.target.value,
+          name: e.target.name,
+        },
+      });
+      this.props.enhance.setItemSf(e.target.value);
+      this.props.enhance.handleChangeSfStat();
+    } else {
+      this.setState({
+        msg: {
+          msgStatus: true,
+          content: '일반강화 스탯을 먼저 입력해주세요',
+        },
+      });
+    }
+  }
+
+  handleClassChange = (e) => {
+    this.setState({
       getClass: {
         value: e.target.value,
         name: e.target.name,
       },
     });
     this.props.enhance.setItemClass(e.target.value);
+  }
+
+  handleEvaluate = () => {
+    if (this.state.getClass.value === '') {
+      this.setState({
+        msg: {
+          msgStatus: true,
+          content: '직업을 선택해주세요',
+        },
+      });
+    } else {
+      this.props.enhance.evaluateItem();
+    }
+  }
+
+  onReset = () => {
+    this.props.handleStateChange();
+    this.props.enhance.initReset();
   }
 
   render() {
@@ -135,7 +175,7 @@ class EnhanceInputForm extends Component {
           <Grid item xs={2} className={classes.nameText}>기본옵션</Grid>
           <Grid item xs={2} className={classes.nameText}>스타포스</Grid>
           <Grid item xs={2} className={classes.nameText}>추가옵션</Grid>
-          <Grid item xs={2} className={classes.nameText}>주흔강화스탯</Grid>
+          <Grid item xs={2} className={classes.nameText}>일반강화스탯</Grid>
           <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
         <EnhanceStatCard titleColor={enhance.setClassStatFont('mg_atk', this.state.getClass.value)} statName={'마력'} name={'mg_atk'} opt={enhance.item.mg_atk} starforce={this.state.getSf.value} />
@@ -151,13 +191,31 @@ class EnhanceInputForm extends Component {
         <EnhanceStatCard titleColor={enhance.setClassStatFont('damage', this.state.getClass.value)} statName={'데미지(%)'} name={'damage'} opt={0} starforce={this.state.getSf.value} />
         <EnhanceStatCard titleColor={enhance.setClassStatFont('allstat', this.state.getClass.value)} statName={'올스탯(%)'} name={'allstat'} opt={0} starforce={this.state.getSf.value} />
         <EnhanceStatCard titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)} statName={'착감'} name={'chackgam'} opt={0} starforce={this.state.getSf.value} />
-        <Button
-          className={classes.addButton}
-          onClick={enhance.evaluateItem}
-          variant="outlined"
-        >
-          분석하기
-        </Button>
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <Button
+              className={classes.buttonClass}
+              onClick={this.onReset}
+              variant="outlined"
+            >
+              초기화
+            </Button>
+          </Grid>
+          <Grid item xs={8}>
+            <Button
+              className={classes.buttonClass}
+              onClick={this.handleEvaluate}
+              variant="outlined"
+            >
+              분석하기
+            </Button>
+          </Grid>
+        </Grid>
+        <MessageDialog
+          open={this.state.msg.msgStatus}
+          onClose={this.closeMsgDialog}
+          content={this.state.msg.content}
+        />
       </div>
     );
   }
