@@ -1,0 +1,1 @@
+export type CASH_GRADE = 'bronze' | 'silver' | 'gold' | 'diamond';

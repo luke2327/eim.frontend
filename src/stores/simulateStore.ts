@@ -1,8 +1,9 @@
 import { observable, action, toJS } from 'mobx';
-import itemApi from 'libs/api/item';
+import itemApi from '../libs/api/item';
+import { AltarItem } from '../models/altarItem.interface';
 
 export default class simulateStore {
-  @observable altarItem;
+  @observable altarItem: AltarItem | null = null;
 
   @observable defaultIsHidden = 1;
   @observable defaultPotentialLevel = 0;
@@ -135,7 +136,7 @@ export default class simulateStore {
 
   @observable cubeItemRootAbyss;
   @observable cubeItemAbsolab;
-  @observable cubeItemAracneUmbra;
+  @observable cubeItemArcaneUmbra;
   @observable availableCubeList = [];
 
   @action styleCubeAltar = () => {
@@ -148,19 +149,16 @@ export default class simulateStore {
 
   @action loadItemList = async () => {
     if (!this.isInitializeCube) {
-      _.map(this.defaultCubeGiven, async (req, given) => {
-        req.label = given;
-        if (given === 'rootAbyss') {
-          const result = await itemApi.getSimulateItemByCube(req);
+      await Promise.all(Object.entries(this.defaultCubeGiven).map(async ([label, req]) => {
+        const result = await itemApi.getSimulateItemByCube({ ...req, label });
+        if (label === 'rootAbyss') {
           this.cubeItemRootAbyss = result.data;
-        } else if (given === 'absolab') {
-          const result = await itemApi.getSimulateItemByCube(req);
+        } else if (label === 'absolab') {
           this.cubeItemAbsolab = result.data;
-        } else if (given === 'arcaneUmbra') {
-          const result = await itemApi.getSimulateItemByCube(req);
+        } else if (label === 'arcaneUmbra') {
           this.cubeItemArcaneUmbra = result.data;
         }
-      });
+      }));
 
       const req = {
         item_no: this.defaultAvailableCubeList,
@@ -255,7 +253,7 @@ export default class simulateStore {
     this.fillEquipmentStorage();
   }
 
-  @action clearItem = (itemNo, overallCategory, category) => {
+  @action clearItem = (itemNo: number, overallCategory, category) => {
     if (this.altarItem.item_no === itemNo) {
       this.altarItem = undefined;
       this.currentPotentialStyle = undefined;

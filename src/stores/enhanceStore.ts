@@ -1,14 +1,21 @@
 import { observable, action } from 'mobx';
-import sfEquip from 'assets/starforceEquip';
-import sfCost from 'assets/starforceCost';
+import sfEquip from '../assets/starforceEquip';
+import sfCost from '../assets/starforceCost';
+import { CostInfo } from '../models/costInfo.interface';
+import { STAT_NAME_BASIC, STAT_NAME_ADDITIONAL } from '../models/statName.type';
+import { ITEM_CLASS } from '../models/itemClass.type';
+import { Item } from '../models/item.interface';
+import { CATEGORY } from '../models/category.type';
+import { ITEM_CATEGORY } from '../models/itemCategory.type';
+import { CASH_GRADE } from '../models/cashGrade.type';
 
 export default class EnhanceStore {
-  @observable item = {
+  @observable item: Item = { // TODO: 초기값을 넣어두는게 타입과 안맞아서 임시로 as문 사용, 초기값을 비울 방법 고려해야함
     item_no: 0,
-    cate: '',
+    cate: '' as CATEGORY,
     name: '',
-    item_cate: '',
-    level: 0,
+    item_cate: '' as ITEM_CATEGORY,
+    level: 0 as any,
     mg_atk: 0,
     atk: 0,
     def: 0,
@@ -27,8 +34,8 @@ export default class EnhanceStore {
     starforce: 0,
   };
   @observable itemSf = 0;
-  @observable itemClass = '';
-  @observable enhanceStat = {
+  @observable itemClass: ITEM_CLASS = '' as ITEM_CLASS;
+  @observable enhanceStat: Record<STAT_NAME_BASIC, number> = {
     mg_atk: 0,
     atk: 0,
     str: 0,
@@ -38,7 +45,7 @@ export default class EnhanceStore {
     hp: 0,
     mp: 0,
   };
-  @observable sfStat = {
+  @observable sfStat: Record<STAT_NAME_BASIC, number> = {
     mg_atk: 0,
     atk: 0,
     str: 0,
@@ -48,7 +55,7 @@ export default class EnhanceStore {
     hp: 0,
     mp: 0,
   };
-  @observable addOptStat = {
+  @observable addOptStat: Record<STAT_NAME_ADDITIONAL, number> = {
     mg_atk: 0,
     atk: 0,
     str: 0,
@@ -83,7 +90,7 @@ export default class EnhanceStore {
     { subject: '스타포스', A: 0, B: 100, fullMark: 100 },
     { subject: '총메인스탯', A: 0, B: 100, fullMark: 100 },
   ];
-  @observable sfCostInfo = [
+  @observable sfCostInfo: CostInfo[] = [
     { name: '0성', cost: 0, expectCost: 0 },
     { name: '1성', cost: 0, expectCost: 0 },
     { name: '2성', cost: 0, expectCost: 0 },
@@ -108,7 +115,7 @@ export default class EnhanceStore {
     { name: '21성', cost: 0, expectCost: 0 },
     { name: '22성', cost: 0, expectCost: 0 },
   ];
-  @observable cashGrade = 'bronze';
+  @observable cashGrade: CASH_GRADE = 'bronze';
 
   @action setSfCostInfo = () => {
     this.sfCostInfo = this.sfCostInfo.map((o, index) => {
@@ -117,7 +124,7 @@ export default class EnhanceStore {
     });
   }
 
-  @action setInputMaxEnhanceStat = (statName) => {
+  @action setInputMaxEnhanceStat = (statName: STAT_NAME_BASIC) => {
     switch (statName) {
       case 'mg_atk':
         return 99;
@@ -135,19 +142,19 @@ export default class EnhanceStore {
     }
   }
 
-  @action setInputMaxAddOptStat = (statName) => {
+  @action setInputMaxAddOptStat = (statName: STAT_NAME_ADDITIONAL) => {
     switch (statName) {
       case 'mg_atk':
-        return this.maxAddOptWeaponStat(this.item.level, this.item.mg_atk);
+        return this.maxAddOptWeaponStatInput(this.item.level, this.item.mg_atk);
       case 'atk':
-        return this.maxAddOptWeaponStat(this.item.level, this.item.atk);
+        return this.maxAddOptWeaponStatInput(this.item.level, this.item.atk);
       case 'hp':
         return this.maxAddOptEquipStat(this.item.level, 'daemon');
       case 'str':
       case 'luk':
       case 'int':
       case 'dex':
-        return this.maxAddOptEquipStat(this.item.level, 'stat') - 70;
+        return this.maxAddOptEquipStat(this.item.level, 'warrior') - 70; // daemon 외의 직업을 넣는것이 목적, warrior인 것에는 별 의미 없음
       case 'allstat':
         return this.item.cate === 'weapon' ? 6 : 7;
       case 'damage':
@@ -167,7 +174,7 @@ export default class EnhanceStore {
     return this.itemClass === 'daemon' ? (this.item.upgrade + 1) * 470 : (this.item.upgrade + 1) * 9;
   }
 
-  @action maxAddOptEquipStat = (level, itemClass) => {
+  @action maxAddOptEquipStat = (level: number, itemClass: ITEM_CLASS) => {
     switch (level) {
       case 100:
         return itemClass === 'daemon' ? 2100 : (84 + 70);
@@ -192,7 +199,7 @@ export default class EnhanceStore {
     }
   }
 
-  @action maxAddOptWeaponStat = (level, genStat) => {
+  @action maxAddOptWeaponStatInput = (level: number, genStat: number) => {
     switch (level) {
       case 150:
         return genStat * (41 / 100);
@@ -206,7 +213,7 @@ export default class EnhanceStore {
   }
 
   // 올텟퍼 + 총데미지도 계산
-  @action maxAddOptWeaponStat = (level, genStat, itemClass) => {
+  @action maxAddOptWeaponStatEvaluate = (level: number, genStat: number, itemClass: ITEM_CLASS) => {
     switch (level) {
       case 150:
         return genStat * (41 / 100) + (itemClass === 'daemon' ? 0 : (2 * 6)) + (2.4 * 5);
@@ -219,7 +226,7 @@ export default class EnhanceStore {
     }
   }
 
-  @action calAddOptWeaponStat = (level, statName) => {
+  @action calAddOptWeaponStat = (level: number, statName: STAT_NAME_ADDITIONAL) => {
     switch (level) {
       case 150:
         return statName === 'allstat' ? 2 : 2.4;
@@ -234,7 +241,7 @@ export default class EnhanceStore {
 
   /* 추옵단계평가함수 */
   @action evaluateAddOptItem = () => {
-    const maxWeaponStat = this.maxAddOptWeaponStat(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
+    const maxWeaponStat = this.maxAddOptWeaponStatEvaluate(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
     const maxEquipStat = this.maxAddOptEquipStat(this.item.level, this.itemClass);
 
     let stat = 0;
@@ -247,11 +254,11 @@ export default class EnhanceStore {
         stat += (o.name === 'mg_atk' && o.status) ? this.addOptStat.mg_atk : 0;
       } else {
         stat += ((o.name === 'str' ||
-                  o.name === 'dex' ||
-                  o.name === 'int' ||
-                  o.name === 'luk' ||
-                  o.name === 'hp') &&
-                  o.status) ? this.addOptStat[o.name] : 0;
+          o.name === 'dex' ||
+          o.name === 'int' ||
+          o.name === 'luk' ||
+          o.name === 'hp') &&
+          o.status) ? this.addOptStat[o.name] : 0;
         stat += (o.name === 'allstat' && o.status) ? this.addOptStat.allstat * 10 : 0;
       }
     });
@@ -269,11 +276,11 @@ export default class EnhanceStore {
 
       this.mainStatProperty.forEach((o) => {
         currentStat += ((o.name === 'str' ||
-                        o.name === 'dex' ||
-                        o.name === 'int' ||
-                        o.name === 'luk' ||
-                        o.name === 'hp') &&
-                        o.status) ? (this.addOptStat[o.name] + this.item[o.name] + this.sfStat[o.name] + this.enhanceStat[o.name]) : 0;
+          o.name === 'dex' ||
+          o.name === 'int' ||
+          o.name === 'luk' ||
+          o.name === 'hp') &&
+          o.status) ? (this.addOptStat[o.name] + this.item[o.name] + this.sfStat[o.name] + this.enhanceStat[o.name]) : 0;
         currentStat += (o.name === 'allstat' && o.status) ? this.addOptStat.allstat * 10 : 0;
       });
 
@@ -282,9 +289,9 @@ export default class EnhanceStore {
 
     const sfMaxStat = this.setSfStat(22, 99, 99);
     maxStat = 99 +
-              (this.itemClass === 'wizard' ? sfMaxStat.mg_atk : sfMaxStat.atk) +
-              (this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk) +
-              this.maxAddOptWeaponStat(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
+      (this.itemClass === 'wizard' ? sfMaxStat.mg_atk : sfMaxStat.atk) +
+      (this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk) +
+      this.maxAddOptWeaponStatEvaluate(this.item.level, this.itemClass === 'wizard' ? this.item.mg_atk : this.item.atk, this.itemClass);
 
     currentStat = this.itemClass === 'wizard' ? (this.item.mg_atk + this.addOptStat.mg_atk + this.sfStat.mg_atk + this.enhanceStat.mg_atk) : (this.item.atk + this.addOptStat.atk + this.sfStat.atk + this.enhanceStat.atk);
 
@@ -300,11 +307,11 @@ export default class EnhanceStore {
 
       this.mainStatProperty.forEach((o) => {
         currentStat += ((o.name === 'str' ||
-                        o.name === 'dex' ||
-                        o.name === 'int' ||
-                        o.name === 'luk' ||
-                        o.name === 'hp') &&
-                        o.status) ? this.enhanceStat[o.name] : 0;
+          o.name === 'dex' ||
+          o.name === 'int' ||
+          o.name === 'luk' ||
+          o.name === 'hp') &&
+          o.status) ? this.enhanceStat[o.name] : 0;
       });
       return (currentStat / maxStat) * 100;
     }
@@ -331,17 +338,17 @@ export default class EnhanceStore {
     ];
   }
 
-  @action handleChangeEnhanceStat = (name, stat) => {
+  @action handleChangeEnhanceStat = (name: STAT_NAME_BASIC, stat: number) => {
     this.enhanceStat[name] = stat;
   }
-  @action handleChangeAddOptStat = (name, stat) => {
+  @action handleChangeAddOptStat = (name: STAT_NAME_ADDITIONAL, stat: number) => {
     this.addOptStat[name] = stat;
   }
   @action handleChangeSfStat = () => {
     this.sfStat = this.setSfStat(this.itemSf, this.enhanceStat.atk, this.enhanceStat.mg_atk);
   }
 
-  @action setSfStat = (itemSf, enhanceAtk, enhanceMgAtk) => {
+  @action setSfStat = (itemSf: number, enhanceAtk: number, enhanceMgAtk: number) => {
     const result = {
       mg_atk: 0,
       atk: 0,
@@ -365,8 +372,8 @@ export default class EnhanceStore {
     } else {
       if (this.item.cate === 'weapon') {
         for (let i = 1; i <= (itemSf > 15 ? 15 : itemSf); i += 1) {
-          result.atk += parseInt((this.item.atk + result.atk + enhanceAtk) / 50 + 1, 10);
-          result.mg_atk += parseInt((this.item.mg_atk + result.mg_atk + enhanceMgAtk) / 50 + 1, 10);
+          result.atk += Math.floor((this.item.atk + result.atk + enhanceAtk) / 50 + 1);
+          result.mg_atk += Math.floor((this.item.mg_atk + result.mg_atk + enhanceMgAtk) / 50 + 1);
         }
       }
 
@@ -384,7 +391,7 @@ export default class EnhanceStore {
   }
 
 
-  @action setClassStatFont = (statName, itemClass) => {
+  @action setClassStatFont = (statName: STAT_NAME_ADDITIONAL, itemClass: ITEM_CLASS) => { // TODO: 정확한 스탯 목록 타입 작성할 것
     if (itemClass === 'pirate' || itemClass === 'warrior') {
       switch (statName) {
         case 'atk':
@@ -456,7 +463,7 @@ export default class EnhanceStore {
     }
   }
 
-  @action setItemClass = (value) => {
+  @action setItemClass = (value: ITEM_CLASS) => {
     this.itemClass = value;
 
     this.mainStatProperty.map((o) => {
@@ -489,14 +496,14 @@ export default class EnhanceStore {
       return o;
     });
   }
-  @action setItemSf = (value) => {
+  @action setItemSf = (value: number) => {
     this.itemSf = value;
   }
-  @action setItem = (data) => {
+  @action setItem = (data: Item) => {
     this.item = data;
   }
   @action checkEnhanceStat = () => {
-    const val = Object.keys(this.enhanceStat).map((o) => { return this.enhanceStat[o]; });
+    const val = Object.values(this.enhanceStat);
     for (let i = 0; i < val.length; i += 1) {
       if (val[i] !== 0) {
         return true;
@@ -537,27 +544,23 @@ export default class EnhanceStore {
       { name: '21성', cost: 0, expectCost: 0 },
       { name: '22성', cost: 0, expectCost: 0 },
     ];
-    Object.keys(this.enhanceStat).map((o) => {
-      this.enhanceStat[o] = 0;
-      return this.enhanceStat[o];
+    Object.keys(this.enhanceStat).forEach((o) => {
+      this.enhanceStat[o as STAT_NAME_BASIC] = 0;
     });
-    Object.keys(this.sfStat).map((o) => {
-      this.sfStat[o] = 0;
-      return this.sfStat[o];
+    Object.keys(this.sfStat).forEach((o) => {
+      this.sfStat[o as STAT_NAME_BASIC] = 0;
     });
-    Object.keys(this.addOptStat).map((o) => {
-      this.addOptStat[o] = 0;
-      return this.addOptStat[o];
+    Object.keys(this.addOptStat).forEach((o) => {
+      this.addOptStat[o as STAT_NAME_ADDITIONAL] = 0;
     });
-    this.mainStatProperty.map((o) => {
+    this.mainStatProperty.forEach((o) => {
       o.status = true;
-      return o;
     });
     this.itemSf = 0;
-    this.itemClass = '';
+    this.itemClass = '' as ITEM_CLASS;
   }
 
-  @action comma = (x) => {
+  @action comma = (x: string | number) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 }

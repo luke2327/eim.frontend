@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'mobx-react';
-import Layout from 'containers/layout';
+import Layout from './containers/layout';
 import * as serviceWorker from './serviceWorker';
-import EnhanceStore from 'stores/enhanceStore';
-import CommonStore from 'stores/commonStore';
-import CrawlingStore from 'stores/crawlingStore';
-import SimulateStore from 'stores/simulateStore';
+import EnhanceStore from './stores/enhanceStore';
+import CommonStore from './stores/commonStore';
+import CrawlingStore from './stores/crawlingStore';
+import SimulateStore from './stores/simulateStore';
 
 const enhance = new EnhanceStore(),
   common = new CommonStore(),
