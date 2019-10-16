@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Head from '../head';
-import MainMedition from '../containers/mainMedition';
+import MainMedition from './mainMedition';
 import { IntlProvider } from 'react-intl';
 import locale from '../assets/locale';
 import { observer, inject } from 'mobx-react';
