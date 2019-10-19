@@ -1,4 +1,4 @@
-import api from 'libs/api/common';
+import api from './common';
 
 const getLocale = (data) => {
   data.locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];

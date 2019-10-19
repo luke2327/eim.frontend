@@ -1,10 +1,11 @@
-import api from 'libs/api/common';
+import api from './common';
+import { isArray } from 'util';
 
-const getLocale = (data) => {
+const getLocale = (data: { locale: any; forEach?: any; }) => {
   const locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];
 
-  if (_.isArray(data)) {
-    _.forEach(data, (iterData) => {
+  if (isArray(data)) {
+  data.forEach((iterData: { locale: string; }) => {
       iterData.locale = locale;
     });
   } else {
@@ -15,37 +16,37 @@ const getLocale = (data) => {
 };
 
 export default {
-  getLuckyChannel: async (req) => {
+  getLuckyChannel: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/enhance/form/lucky/channel', req, 'post');
   },
 
-  getSearchItem: async (req) => {
+  getSearchItem: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/enhance/dialog/input/search', req, 'post');
   },
 
-  getSimulateItemByCube: async (req) => {
+  getSimulateItemByCube: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/item/simulate/item', req, 'post');
   },
 
-  getSimulateAvailableByCube: async (req) => {
+  getSimulateAvailableByCube: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/item/simulate/available-cube', req, 'post');
   },
 
-  setPotentialByCube: async (req) => {
+  setPotentialByCube: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/item/simulate/set-potential', req, 'post');
   },
 
-  getEquipmentItem: async (req) => {
+  getEquipmentItem: async (req: { locale: any; }) => {
     req = req.locale ? req : getLocale(req);
 
     return await api.send('api/item/simulate/equipment-item', req, 'post');

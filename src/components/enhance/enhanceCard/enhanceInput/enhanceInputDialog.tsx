@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction, createStyles } from '@material-ui/core';
-import itemApi from '../libs/api/item';
 import EnhanceStore from '../../../../stores/enhanceStore';
+import { Item } from '../../../../models/item.interface';
+import itemApi from '../../../../libs/api/item';
 
 const styles = () => (
   createStyles({
@@ -31,10 +32,18 @@ interface Props{
     toggleSize: string,
   },
   enhance: EnhanceStore,
-  open: () => void,
+  open: boolean,
   clickItem: () => void,
   onClose: () => void,
   name: string,
+}
+
+interface Column {
+  id: string; //이부분 약간 바꿔야하지 않을까?? (루쏘의견)
+  label: string;
+  minWidth?: number;
+  align?: 'right';
+  format?: (value: number) => string;
 }
 
 class EnhanceInputDialog extends Component<Props> {
@@ -53,7 +62,7 @@ class EnhanceInputDialog extends Component<Props> {
     itemList: [],
   }
 
-  columns = [
+  columns: Column[] = [
     { id: 'name', label: '이름', minWidth: 200 },
     { id: 'item_cate', label: '분류', minWidth: 100 },
     { id: 'level', label: '레벨', minWidth: 60, align: 'right' },
@@ -71,10 +80,10 @@ class EnhanceInputDialog extends Component<Props> {
     this.PostSearchData('all', '');
   }
 
-  PostSearchData = async (cate, name) => {
+  PostSearchData = async (cate: string, name: string) => {
     const data = {
-      cate: cate,
-      name: name,
+      cate: cate as string,
+      name: name as string,
     };
 
     return itemApi.getSearchItem(data).then((res) => {
