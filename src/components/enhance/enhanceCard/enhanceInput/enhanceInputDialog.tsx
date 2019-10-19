@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import itemApi from 'libs/api/item';
+import itemApi from '../libs/api/item';
 
 const styles = () => ({
   root: {

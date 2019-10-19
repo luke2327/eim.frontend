@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, createStyles } from '@material-ui/core';
 import EnhanceInputDialog from './enhanceInputDialog';
 
-const styles = () => ({
+const styles = () => (
+  createStyles({
   root: {
     flexGrow: 1,
     textAlign: 'center',
@@ -12,9 +13,17 @@ const styles = () => ({
   text_margin: {
     margin: 10,
   },
-});
+}));
 
-class EnhanceInputFalse extends Component {
+interface Props{
+  classes: {
+    root: string,
+    text_margin: string,
+  },
+  handleStateChange: () => void,
+}
+
+class EnhanceInputFalse extends Component<Props> {
   state = {
     registDialogState: false,
   }

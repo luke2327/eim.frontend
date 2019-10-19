@@ -7,8 +7,10 @@ import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateFo
 import LeftSideCpt from '../layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
-import itemApi from '../libs/api/item';
+import EnhanceStore from '../../stores/enhanceStore';
+import itemApi from '../../libs/api/item';
 import { WithStyles } from '@material-ui/styles';
+import { inject, observer } from 'mobx-react';
 
 const styles = (theme: Theme) => (
   createStyles({
@@ -38,9 +40,12 @@ interface Props {
     root: string,
     paper: string,
     middlePaper: string,
-  }
+  },
+  enhance: EnhanceStore,
 }
 
+@inject('enhanceStore')
+@observer
 class EnhanceEquipCpt extends Component<Props>{
   state = {
     ch: {
@@ -66,7 +71,7 @@ class EnhanceEquipCpt extends Component<Props>{
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <Box className={classes.root}>
         <div id="enhance" className="flexible container-default default margin-center-hori">
@@ -101,12 +106,12 @@ class EnhanceEquipCpt extends Component<Props>{
               </Grid>
               <Grid item xs={5}>
                 <Paper className={classes.middlePaper}>
-                  <EnhanceEvaluateForm />
+                  <EnhanceEvaluateForm enhance={enhance} />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  <EnhanceSfCostCard />
+                  <EnhanceSfCostCard enhance={enhance} />
                 </Paper>
               </Grid>
             </Grid>

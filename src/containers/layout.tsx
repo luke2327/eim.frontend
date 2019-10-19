@@ -21,6 +21,8 @@ import vod from 'styles/vod.sass';
 // eslint-disable-next-line no-unused-vars
 import calculate from 'styles/calculate.sass';
 
+@inject('commonStore')
+@observer
 class Layout extends Component<{common: commonStore}> {
   render() {
     const { common } = this.props;

@@ -2,16 +2,25 @@ import React, { Component } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, FormControl, NativeSelect, Typography } from '@material-ui/core';
+import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from '@material-ui/core';
+import enhanceStore from '../../../../stores/enhanceStore';
 
 
-const styles = (theme) => ({
+const styles = (theme: Theme) => (
+  createStyles({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
     marginBottom: 30,
   },
-});
+}));
+
+interface Props {
+  classes: {
+    formControl: string,
+  },
+  enhance: enhanceStore,
+}
 
 const CustomTooltip = (props) => {
   const comma = (x) => {
@@ -34,9 +43,8 @@ const CustomTooltip = (props) => {
   return null;
 };
 
-@inject('enhance')
-@observer
-class EnhanceSfCostCard extends Component {
+
+class EnhanceSfCostCard extends Component<Props> {
   state = {
     grade: 'bronze',
   }

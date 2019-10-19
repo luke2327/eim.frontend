@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { observer, inject } from 'mobx-react';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
-import MessageDialog from 'components/msg/messageDialog';
+import MessageDialog from '../msg/messageDialog';
+import EnhanceStore from '../../../../stores/enhanceStore';
 
 const styles = () => ({
   nameText: {
@@ -20,9 +20,17 @@ const styles = () => ({
   },
 });
 
-@inject('enhance')
-@observer
-class EnhanceInputForm extends Component {
+interface Props{
+  classes: {
+    nameText: string,
+    sfControl: string,
+    buttonClass: string,
+  },
+  enhance: EnhanceStore,
+  handleStateChange: () => void,
+}
+
+class EnhanceInputForm extends Component<Props> {
   state={
     level: 150,
     getSf: {

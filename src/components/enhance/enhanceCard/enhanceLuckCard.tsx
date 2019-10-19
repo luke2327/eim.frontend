@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, createStyles, Theme } from '@material-ui/core';
 import { FormattedHTMLMessage } from 'react-intl';
@@ -37,8 +37,8 @@ interface Props {
     small_text: string,
     board_paper: string,
   },
-  title: string,
-  content: string,
+  title: string | number | ReactNode,
+  content: string | number,
 }
 
 class EnhanceLuckCard extends Component<Props> {
