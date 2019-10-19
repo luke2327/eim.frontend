@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { observer, inject } from 'mobx-react';
-import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction } from '@material-ui/core';
+import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction, createStyles } from '@material-ui/core';
 import itemApi from '../libs/api/item';
+import EnhanceStore from '../../../../stores/enhanceStore';
 
-const styles = () => ({
+const styles = () => (
+  createStyles({
   root: {
     width: '100%',
   },
@@ -20,11 +21,23 @@ const styles = () => ({
   toggleSize: {
     width: '100%',
   },
-});
+}));
 
-@inject('enhance')
-@observer
-class EnhanceInputDialog extends Component {
+interface Props{
+  classes: {
+    root: string,
+    tableWrapper: string,
+    inputStyle: string,
+    toggleSize: string,
+  },
+  enhance: EnhanceStore,
+  open: () => void,
+  clickItem: () => void,
+  onClose: () => void,
+  name: string,
+}
+
+class EnhanceInputDialog extends Component<Props> {
   state = {
     searchInput: '',
     contentCount: 0,

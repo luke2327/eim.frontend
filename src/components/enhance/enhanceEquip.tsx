@@ -101,7 +101,7 @@ class EnhanceEquipCpt extends Component<Props>{
               </Grid>
               <Grid item xs={7}>
                 <Paper className={classes.middlePaper}>
-                  <EnhanceInputCard />
+                  <EnhanceInputCard enhance={enhance} />
                 </Paper>
               </Grid>
               <Grid item xs={5}>
