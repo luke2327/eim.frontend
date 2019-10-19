@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Box } from '@material-ui/core';
+import { Grid, Paper, Box, Theme, createStyles } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
-import LeftSideCpt from 'components/layout/leftSide';
+import LeftSideCpt from '../layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
-import itemApi from 'libs/api/item';
+import itemApi from '../libs/api/item';
+import { WithStyles } from '@material-ui/styles';
 
-const styles = (theme) => ({
+const styles = (theme: Theme) => (
+  createStyles({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -29,9 +31,17 @@ const styles = (theme) => ({
     verticalAlign: 'middle',
     backgroundColor: '#FFFFFF',
   },
-});
+}));
 
-class EnhanceEquipCpt extends Component {
+interface Props {
+  classes: {
+    root: string,
+    paper: string,
+    middlePaper: string,
+  }
+}
+
+class EnhanceEquipCpt extends Component<Props>{
   state = {
     ch: {
       starforce: 0,

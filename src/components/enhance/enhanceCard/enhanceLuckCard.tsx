@@ -1,33 +1,47 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Card } from '@material-ui/core';
+import { Card, createStyles, Theme } from '@material-ui/core';
 import { FormattedHTMLMessage } from 'react-intl';
 
-const styles = (theme) => ({
-  month_text: {
-    marginTop: theme.spacing(2),
-    color: '#5C90D2',
-  },
-  today_text: {
-    marginTop: theme.spacing(2),
-    color: '#43A047',
-  },
-  all_text: {
-    marginTop: theme.spacing(2),
-    color: '#5E35B1',
-  },
-  small_text: {
-    marginLeft: theme.spacing(1),
-    fontSize: '18px',
-    color: '#333333',
-  },
-  board_paper: {
-    padding: theme.spacing(7),
-    textAlign: 'center',
-  },
-});
+const styles = (theme: Theme) => (
+  createStyles({
+    month_text: {
+      marginTop: theme.spacing(2),
+      color: '#5C90D2',
+    },
+    today_text: {
+      marginTop: theme.spacing(2),
+      color: '#43A047',
+    },
+    all_text: {
+      marginTop: theme.spacing(2),
+      color: '#5E35B1',
+    },
+    small_text: {
+      marginLeft: theme.spacing(1),
+      fontSize: '18px',
+      color: '#333333',
+    },
+    board_paper: {
+      padding: theme.spacing(7),
+      textAlign: 'center',
+    },
+  })
+);
 
-class EnhanceLuckCard extends Component {
+interface Props {
+  classes: {
+    month_text: string,
+    today_text: string,
+    all_text: string,
+    small_text: string,
+    board_paper: string,
+  },
+  title: string,
+  content: string,
+}
+
+class EnhanceLuckCard extends Component<Props> {
   setFontColor = () => {
     switch (this.props.title) {
       case '스타포스':
