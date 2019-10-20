@@ -59,7 +59,7 @@ class EnhanceEquipCpt extends Component<Props>{
     this.PostLuckyData('SEND!!');
   }
 
-  PostLuckyData = async (msg) => {
+  PostLuckyData = async (msg: string) => {
     const data = {
       msg: msg,
     };

@@ -13,3 +13,5 @@ export type STAT_NAME_ADDITIONAL = STAT_NAME_BASIC
     | 'boss_atk'
     | 'chackgam'
     | 'monster_def';
+
+export type ALL_STAT_NAME = STAT_NAME_ADDITIONAL;

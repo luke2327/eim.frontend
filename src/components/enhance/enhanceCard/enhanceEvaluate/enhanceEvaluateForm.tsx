@@ -23,7 +23,7 @@ interface Props {
   enhance: enhanceStore,
 }
 
-const CustomTooltip = (props) => {
+const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
   const { active } = props;
 
   if (active) {

@@ -1,4 +1,5 @@
-export type ITEM_CLASS = 'daemon' 
+export type ITEM_CLASS = ''
+  | 'daemon' 
   | 'wizard' 
   | 'pirate' 
   | 'warrior' 

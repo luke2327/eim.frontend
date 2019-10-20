@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Box, Button, createStyles } from '@material-ui/core';
 import EnhanceInputDialog from './enhanceInputDialog';
+import EnhanceStore from '../../../../stores/enhanceStore';
 
 const styles = () => (
   createStyles({
@@ -20,6 +21,7 @@ interface Props{
     root: string,
     text_margin: string,
   },
+  enhance: EnhanceStore,
   handleStateChange: () => void,
 }
 
@@ -47,7 +49,7 @@ class EnhanceInputFalse extends Component<Props> {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <Box className={classes.root}>
         <Box className={classes.text_margin}>
@@ -62,6 +64,7 @@ class EnhanceInputFalse extends Component<Props> {
           장비등록하기
         </Button>
         <EnhanceInputDialog
+          enhance={enhance}
           open={this.state.registDialogState}
           clickItem={this.ClickItemDialog}
           onClose={this.CloseDialog}

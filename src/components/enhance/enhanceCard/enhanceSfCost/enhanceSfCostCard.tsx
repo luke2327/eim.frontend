@@ -3,7 +3,8 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from '@material-ui/core';
-import enhanceStore from '../../../../stores/enhanceStore';
+import EnhanceStore from '../../../../stores/enhanceStore';
+import { CASH_GRADE } from '../../../../models/cashGrade.type';
 
 
 const styles = (theme: Theme) => (
@@ -19,11 +20,11 @@ interface Props {
   classes: {
     formControl: string,
   },
-  enhance: enhanceStore,
+  enhance: EnhanceStore,
 }
 
-const CustomTooltip = (props) => {
-  const comma = (x) => {
+const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
+  const comma = (x: number) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
@@ -46,7 +47,7 @@ const CustomTooltip = (props) => {
 
 class EnhanceSfCostCard extends Component<Props> {
   state = {
-    grade: 'bronze',
+    grade: 'bronze' as CASH_GRADE,
   }
 
   handleGradeChange = async (e) => {

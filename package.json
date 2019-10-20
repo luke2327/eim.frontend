@@ -170,6 +170,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-helmet": "^5.0.12"
+    "@types/react-helmet": "^5.0.12",
+    "@types/recharts": "^1.7.1"
   }
 }

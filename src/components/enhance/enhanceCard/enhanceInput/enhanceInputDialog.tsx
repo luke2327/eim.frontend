@@ -4,6 +4,8 @@ import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, T
 import EnhanceStore from '../../../../stores/enhanceStore';
 import { Item } from '../../../../models/item.interface';
 import itemApi from '../../../../libs/api/item';
+import { SEARCH_ITEM } from '../../../../models/searchItem.type';
+import { ITEM_TYPE } from '../../../../models/item.type';
 
 const styles = () => (
   createStyles({
@@ -39,7 +41,7 @@ interface Props{
 }
 
 interface Column {
-  id: string; //이부분 약간 바꿔야하지 않을까?? (루쏘의견)
+  id: ITEM_TYPE; //이부분 약간 바꿔야하지 않을까?? (루쏘의견)
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -81,38 +83,38 @@ class EnhanceInputDialog extends Component<Props> {
   }
 
   PostSearchData = async (cate: string, name: string) => {
-    const data = {
-      cate: cate as string,
-      name: name as string,
+    const data: Record<SEARCH_ITEM, string> = {
+      cate: cate,
+      name: name,
     };
 
-    return itemApi.getSearchItem(data).then((res) => {
+    return itemApi.getSearchItem(data).then((res: any) => {
       this.setState({
         itemList: res.data,
       });
     });
   }
 
-  handleInputChange = (e) => {
+  handleInputChange = (e: any) => {
     this.setState({
       [e.target.id]: e.target.value,
     });
   }
 
-  handleSetToggle = async (event, value) => {
+  handleSetToggle = async (event: any, value: string) => {
     await this.setState({
       setToggle: value,
     });
     await this.PostSearchData(this.state.setToggle, this.state.searchInput);
   }
 
-  handleEnterKeyPress = async (e) => {
+  handleEnterKeyPress = async (e: any) => {
     if (e.key === 'Enter') {
       await this.PostSearchData(this.state.setToggle, this.state.searchInput);
     }
   }
 
-  handleItemClick = (e, row) => {
+  handleItemClick = (e: any, row: Item) => {
     this.props.enhance.setItem(row);
     this.props.enhance.setSfCostInfo();
     this.props.clickItem();
@@ -171,7 +173,7 @@ class EnhanceInputDialog extends Component<Props> {
                   </TableHead>
                   <TableBody>
                     {
-                      this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map((row) => {
+                      this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map((row: Item) => {
                         return (
                           <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={(e) => this.handleItemClick(e, row)}>
                             {

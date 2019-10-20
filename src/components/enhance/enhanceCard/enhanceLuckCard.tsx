@@ -61,16 +61,9 @@ class EnhanceLuckCard extends Component<Props> {
 
     return (
       <Card key="key" className={classes.board_paper}>
-        <FormattedHTMLMessage
-          id="enhance.todays"
-          values={{
-            object: <span key="title" className="enhance-card-object-font">{title}</span>,
-            br: <br key="br" />,
-            channelNumber: <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>,
-          }}
-        >
-          { (object) => <div className={classes.small_text}>{object}</div> }
-        </FormattedHTMLMessage>
+        <span key="title" className="enhance-card-object-font">{title}</span>,
+        <br key="br" />
+        <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>
       </Card>
     );
   }
