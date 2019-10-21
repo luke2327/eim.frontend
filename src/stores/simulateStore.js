@@ -1,6 +1,7 @@
 import { observable, action, toJS } from 'mobx';
 import itemApi from '../libs/api/item';
 import { AltarItem } from '../models/altarItem.interface';
+import _ from '../../../../../Library/Caches/typescript/3.5/node_modules/@types/lodash/ts3.1';
 
 export default class simulateStore {
   @observable altarItem = null;
