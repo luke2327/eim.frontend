@@ -26,9 +26,9 @@ class CalMesoCard extends Component {
   calResult = () => {
     this.setState({
       result: {
-        mob10Million: parseInt((10000000 / this.state.monsterMeso), 10),
-        mesoExp100Million: parseInt((100000000 / this.state.monsterExp) * this.state.monsterMeso, 10),
-        mesoGoalExp: parseInt((this.state.goalExp / this.state.monsterExp) * this.state.monsterMeso, 10),
+        mob10Million: Math.floor((10000000 / this.state.monsterMeso)),
+        mesoExp100Million: Math.floor((100000000 / this.state.monsterExp) * this.state.monsterMeso),
+        mesoGoalExp: Math.floor((this.state.goalExp / this.state.monsterExp) * this.state.monsterMeso),
       },
     });
   }

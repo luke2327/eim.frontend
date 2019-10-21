@@ -6,7 +6,7 @@ export interface Item {
     cate: CATEGORY,
     name: string,
     item_cate: ITEM_CATEGORY,
-    level: number,
+    level: 0 | 150 | 160 | 200,
     mg_atk: number,
     atk: number,
     def: number,
