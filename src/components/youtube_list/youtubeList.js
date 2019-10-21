@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-import api from 'libs/api/vod';
+import api from '../../libs/api/vod';
 import YoutubeListCard from './youtubeListCard';
 
 @inject('crawling')
 @inject('common')
 @observer
 class YoutubeListCpt extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      vod: {},
-    };
-  }
+  state = {
+    vod: {},
+  };
 
   componentDidMount() {
     const req = {

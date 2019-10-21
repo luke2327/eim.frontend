@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
-import MessageDialog from '../msg/messageDialog';
+import MessageDialog from '../../../msg/messageDialog';
 import EnhanceStore from '../../../../stores/enhanceStore';
 import { ITEM_CLASS } from '../../../../models/itemClass.type';
 
@@ -122,9 +122,9 @@ class EnhanceInputForm extends Component<Props> {
         >
           {enhance.item.name}
         </Typography>
-        <div align="left">
-          <div align="right">
-              LV{enhance.item.level}
+        <div>
+          <div>
+            LV{enhance.item.level}
           </div>
           <FormControl className={classes.sfControl}>
             <InputLabel>스타포스</InputLabel>

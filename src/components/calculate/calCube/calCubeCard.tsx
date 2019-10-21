@@ -8,7 +8,7 @@ class CalCubeCard extends Component {
     meso: 0,
   }
 
-  handleChange = (e) => {
+  handleChange = (e: any) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -31,7 +31,7 @@ class CalCubeCard extends Component {
     });
   }
 
-  comma = (x) => {
+  comma = (x: number) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 

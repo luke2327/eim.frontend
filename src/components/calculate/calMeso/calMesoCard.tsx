@@ -13,13 +13,13 @@ class CalMesoCard extends Component {
     },
   }
 
-  handleChange = (e) => {
+  handleChange = (e: any) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
 
-  comma = (x) => {
+  comma = (x: number) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
