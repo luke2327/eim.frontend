@@ -12,7 +12,7 @@ class EnhanceInputCard extends Component<Props>{
   state = {
     inputState: false as boolean,
   }
-  
+
   handleStateChange = () => {
     this.setState({
       inputState: !this.state.inputState,
