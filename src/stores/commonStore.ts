@@ -18,6 +18,7 @@ export default class commonStore {
   }
 
   @action selectHeaderTab = (tab: number) => {
+    console.log('TAB : ', tab);
     sessionStorage.setItem('selectedHeaderTab', tab.toString());
     this.selectedHeaderTab = tab;
   }

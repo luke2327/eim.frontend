@@ -44,7 +44,7 @@ interface Props {
   enhance: EnhanceStore,
 }
 
-@inject('enhanceStore')
+@inject('enhance')
 @observer
 class EnhanceEquipCpt extends Component<Props>{
   state = {

@@ -185,7 +185,7 @@ export default class simulateStore {
     ];
 
     const result = await itemApi.getEquipmentItem(req);
-    result.data.forEach((value) => {
+    Array.from(result.data).forEach((value) => {
       if (!_.isUndefined(this.equipmentStorage[value.overall_category][value.req_jobs][value.category])) {
         this.equipmentStorage[value.overall_category][value.req_jobs][value.category].push(value);
       } else {

@@ -26,7 +26,7 @@ interface Props {
   common?: commonStore;
 }
 
-@inject('commonStore')
+@inject('common')
 @observer
 class Layout extends Component<Props, {}> {
   render() {

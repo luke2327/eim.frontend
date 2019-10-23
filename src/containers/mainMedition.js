@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import EnhanceEquipCpt from 'components/enhance/enhanceEquip';
-import SimulateCpt from 'containers/simulate/simulate';
-import SimulateCube from 'containers/simulate/cube/cube';
-import SimulateEnchant from 'components/simulate/enchant/enchant';
-import SimulateSurgery from 'components/simulate/surgery/surgery';
-import SimulateStarforce from 'components/simulate/starforce/starforce';
-import YoutubeListCpt from 'components/youtube_list/youtubeList';
-import CalculateCpt from 'components/calculate/calculate';
-import HeaderCpt from 'containers/header/header';
-import FooterCpt from 'containers/footer/footer';
-import NoticeCpt from 'components/notice/notice';
+import EnhanceEquipCpt from '../components/enhance/enhanceEquip';
+import SimulateCpt from '../containers/simulate/simulate';
+import SimulateCube from '../containers/simulate/cube/cube';
+import SimulateEnchant from '../components/simulate/enchant/enchant';
+import SimulateSurgery from '../components/simulate/surgery/surgery';
+import SimulateStarforce from '../components/simulate/starforce/starforce';
+import YoutubeListCpt from '../components/youtube_list/youtubeList';
+import CalculateCpt from '../components/calculate/calculate';
+import HeaderCpt from '../containers/header/header';
+import FooterCpt from '../containers/footer/footer';
+import NoticeCpt from '../components/notice/notice';
 import MainView from './mainView';
-import DevCpt from 'components/dev/dev';
+import DevCpt from '../components/dev/dev';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';

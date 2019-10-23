@@ -61,9 +61,9 @@ class EnhanceLuckCard extends Component<Props> {
 
     return (
       <Card key="key" className={classes.board_paper}>
-        <span key="title" className="enhance-card-object-font">{title}</span>,
+        <span key="title" className="enhance-card-object-font">오늘의 {title} 명당은</span>,
         <br key="br" />
-        <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>
+        <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span> 채널
       </Card>
     );
   }
