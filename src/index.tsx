@@ -9,19 +9,19 @@ import CrawlingStore from './stores/crawlingStore';
 import SimulateStore from './stores/simulateStore';
 import _ from 'lodash';
 
-const enhance = new EnhanceStore(),
-  common = new CommonStore(),
-  crawling = new CrawlingStore(),
-  simulate = new SimulateStore();
+const enhance = new EnhanceStore();
+const common = new CommonStore();
+const crawling = new CrawlingStore();
+const simulate = new SimulateStore();
 
 ReactDOM.render(
   <Provider
     enhance={enhance}
-    common={common}
     crawling={crawling}
     simulate={simulate}
+    common={common}
   >
-    <Layout common={common} />
+    <Layout />
   </Provider>,
   document.getElementById('root'),
 );

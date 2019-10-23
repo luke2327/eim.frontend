@@ -21,11 +21,16 @@ import vod from 'styles/vod.sass';
 // eslint-disable-next-line no-unused-vars
 import calculate from 'styles/calculate.sass';
 
+
+interface Props {
+  common?: commonStore;
+}
+
 @inject('commonStore')
 @observer
-class Layout extends Component<{common: commonStore}> {
+class Layout extends Component<Props, {}> {
   render() {
-    const { common } = this.props;
+    const common = this.props.common as commonStore;
     const defaultLang = common.selectedLang || common.defaultLang as SUPPORTED_LANGUAGE;
 
     return (
