@@ -27,7 +27,8 @@ const styles = (theme: Theme) => (
       color: theme.palette.text.secondary,
       backgroundColor: '#FFFFFF',
     },
-}));
+  })
+);
 
 interface Props {
   classes: {

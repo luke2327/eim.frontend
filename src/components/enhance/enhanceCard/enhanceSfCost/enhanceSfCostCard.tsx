@@ -9,12 +9,13 @@ import { CASH_GRADE } from '../../../../models/cashGrade.type';
 
 const styles = (theme: Theme) => (
   createStyles({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    marginBottom: 30,
-  },
-}));
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+      marginBottom: 30,
+    },
+  })
+);
 
 interface Props {
   classes: {

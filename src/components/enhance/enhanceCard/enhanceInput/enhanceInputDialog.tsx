@@ -9,22 +9,23 @@ import { ITEM_TYPE } from '../../../../models/item.type';
 
 const styles = () => (
   createStyles({
-  root: {
-    width: '100%',
-  },
-  tableWrapper: {
-    maxHeight: 407,
-    overflow: 'auto',
-  },
-  inputStyle: {
-    width: '30%',
-    marginBottom: 20,
-    marginRight: 10,
-  },
-  toggleSize: {
-    width: '100%',
-  },
-}));
+    root: {
+      width: '100%',
+    },
+    tableWrapper: {
+      maxHeight: 407,
+      overflow: 'auto',
+    },
+    inputStyle: {
+      width: '30%',
+      marginBottom: 20,
+      marginRight: 10,
+    },
+    toggleSize: {
+      width: '100%',
+    },
+  })
+);
 
 interface Props{
   classes: {
@@ -41,7 +42,7 @@ interface Props{
 }
 
 interface Column {
-  id: ITEM_TYPE; //이부분 약간 바꿔야하지 않을까?? (루쏘의견)
+  id: ITEM_TYPE;
   label: string;
   minWidth?: number;
   align?: 'right';

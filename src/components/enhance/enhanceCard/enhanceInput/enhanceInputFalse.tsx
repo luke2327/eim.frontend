@@ -6,20 +6,21 @@ import EnhanceStore from '../../../../stores/enhanceStore';
 
 const styles = () => (
   createStyles({
-  root: {
-    flexGrow: 1,
-    textAlign: 'center',
-    marginTop: 350,
-  },
-  text_margin: {
-    margin: 10,
-  },
-}));
+    root: {
+      flexGrow: 1,
+      textAlign: 'center',
+      marginTop: 350,
+    },
+    textMargin: {
+      margin: 10,
+    },
+  })
+);
 
 interface Props{
   classes: {
     root: string,
-    text_margin: string,
+    textMargin: string,
   },
   enhance: EnhanceStore,
   handleStateChange: () => void,
@@ -52,7 +53,7 @@ class EnhanceInputFalse extends Component<Props> {
     const { classes, enhance } = this.props;
     return (
       <Box className={classes.root}>
-        <Box className={classes.text_margin}>
+        <Box className={classes.textMargin}>
           <div>등록된 장비가 없습니다</div>
           <div>분석할 장비를 등록해보세요</div>
         </Box>

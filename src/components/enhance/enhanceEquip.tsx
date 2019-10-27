@@ -9,31 +9,31 @@ import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
 import EnhanceStore from '../../stores/enhanceStore';
 import itemApi from '../../libs/api/item';
-import { WithStyles } from '@material-ui/styles';
 import { inject, observer } from 'mobx-react';
 
 const styles = (theme: Theme) => (
   createStyles({
-  root: {
-    flexGrow: 1,
-    width: '100%',
-    height: '100%',
-  },
-  paper: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    backgroundColor: '#FFFFFF',
-  },
-  middlePaper: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: 850,
-    verticalAlign: 'middle',
-    backgroundColor: '#FFFFFF',
-  },
-}));
+    root: {
+      flexGrow: 1,
+      width: '100%',
+      height: '100%',
+    },
+    paper: {
+      padding: theme.spacing(3),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      backgroundColor: '#FFFFFF',
+    },
+    middlePaper: {
+      padding: theme.spacing(3),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      height: 850,
+      verticalAlign: 'middle',
+      backgroundColor: '#FFFFFF',
+    },
+  })
+);
 
 interface Props {
   classes: {

@@ -18,7 +18,8 @@ const styles = (theme: Theme) => (
     blackFont: {
       color: '#000000',
     },
-}));
+  })
+);
 
 interface Props {
   classes: {

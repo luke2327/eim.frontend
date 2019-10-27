@@ -11,7 +11,7 @@ const getLocale = (data: { locale: any; forEach?: any; }) => {
   const locale = localStorage.getItem('language') || navigator.language.split(/[-_]/)[0];
 
   if (isArray(data)) {
-  data.forEach((iterData: { locale: string; }) => {
+    data.forEach((iterData: { locale: string; }) => {
       iterData.locale = locale;
     });
   } else {

@@ -3199,6 +3199,11 @@ configstore@^3.0.0:
     write-file-atomic "^2.0.0"
     xdg-basedir "^3.0.0"
 
+confusing-browser-globals@^1.0.7:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.9.tgz#72bc13b483c0276801681871d4898516f8f54fdd"
+  integrity sha512-KbS1Y0jMtyPgIxjO7ZzMAuUpAKMt1SzCL9fsrKsX6b0zJPTaT0SiSPmewwVZg9UAO83HVIlEhZF84LIjZ0lmAw==
+
 confusing-browser-globals@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.8.tgz#93ffec1f82a6e2bf2bc36769cc3a92fa20e502f3"
@@ -4351,6 +4356,24 @@ escodegen@^1.11.0, escodegen@^1.9.1:
     optionator "^0.8.1"
   optionalDependencies:
     source-map "~0.6.1"
+
+eslint-config-airbnb-base@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.0.0.tgz#8a7bcb9643d13c55df4dd7444f138bf4efa61e17"
+  integrity sha512-2IDHobw97upExLmsebhtfoD3NAKhV4H0CJWP3Uprd/uk+cHuWYOczPVxQ8PxLFUAw7o3Th1RAU8u1DoUpr+cMA==
+  dependencies:
+    confusing-browser-globals "^1.0.7"
+    object.assign "^4.1.0"
+    object.entries "^1.1.0"
+
+eslint-config-airbnb@^18.0.1:
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb/-/eslint-config-airbnb-18.0.1.tgz#a3a74cc29b46413b6096965025381df8fb908559"
+  integrity sha512-hLb/ccvW4grVhvd6CT83bECacc+s4Z3/AEyWQdIT2KeTsG9dR7nx1gs7Iw4tDmGKozCNHFn4yZmRm3Tgy+XxyQ==
+  dependencies:
+    eslint-config-airbnb-base "^14.0.0"
+    object.assign "^4.1.0"
+    object.entries "^1.1.0"
 
 eslint-config-react-app@^5.0.1:
   version "5.0.1"
@@ -10069,6 +10092,11 @@ react-app-polyfill@^1.0.4:
     raf "3.4.1"
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
+
+react-app@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-app/-/react-app-1.1.2.tgz#ae608159bdbdb166bc5fcc9c0d97b2219365dc1f"
+  integrity sha1-rmCBWb29sWa8X8ycDZeyIZNl3B8=
 
 react-dev-utils@^9.0.3:
   version "9.0.3"
