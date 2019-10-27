@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { toJS } from 'mobx';
 import { FormattedHTMLMessage } from 'react-intl';
 import { inject, observer } from 'mobx-react';
-import itemApi from 'libs/api/item';
+import itemApi from '../../libs/api/item';
 
 @inject('simulate')
 @inject('common')
@@ -16,6 +16,7 @@ class SimulateCpt extends Component {
   initialize = () => {
     this.props.simulate.init();
     this.props.simulate.loadItemList();
+    console.log('COMMON : ', this.props.common);
   }
   render() {
     const { common } = this.props;
