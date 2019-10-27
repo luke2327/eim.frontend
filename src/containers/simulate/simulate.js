@@ -16,7 +16,6 @@ class SimulateCpt extends Component {
   initialize = () => {
     this.props.simulate.init();
     this.props.simulate.loadItemList();
-    console.log('COMMON : ', this.props.common);
   }
   render() {
     const { common } = this.props;
