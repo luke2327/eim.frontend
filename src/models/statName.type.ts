@@ -11,4 +11,7 @@ export type STAT_NAME_ADDITIONAL = STAT_NAME_BASIC
     | 'allstat'
     | 'damage'
     | 'boss_atk'
-    | 'chackgam';
+    | 'chackgam'
+    | 'monster_def';
+
+export type ALL_STAT_NAME = STAT_NAME_ADDITIONAL;

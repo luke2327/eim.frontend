@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, createStyles } from '@material-ui/core';
 import EnhanceInputDialog from './enhanceInputDialog';
+import EnhanceStore from '../../../../stores/enhanceStore';
 
-const styles = () => ({
+const styles = () => (
+  createStyles({
   root: {
     flexGrow: 1,
     textAlign: 'center',
@@ -12,9 +14,18 @@ const styles = () => ({
   text_margin: {
     margin: 10,
   },
-});
+}));
 
-class EnhanceInputFalse extends Component {
+interface Props{
+  classes: {
+    root: string,
+    text_margin: string,
+  },
+  enhance: EnhanceStore,
+  handleStateChange: () => void,
+}
+
+class EnhanceInputFalse extends Component<Props> {
   state = {
     registDialogState: false,
   }
@@ -38,7 +49,7 @@ class EnhanceInputFalse extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <Box className={classes.root}>
         <Box className={classes.text_margin}>
@@ -53,6 +64,7 @@ class EnhanceInputFalse extends Component {
           장비등록하기
         </Button>
         <EnhanceInputDialog
+          enhance={enhance}
           open={this.state.registDialogState}
           clickItem={this.ClickItemDialog}
           onClose={this.CloseDialog}

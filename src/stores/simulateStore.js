@@ -1,9 +1,10 @@
 import { observable, action, toJS } from 'mobx';
 import itemApi from '../libs/api/item';
 import { AltarItem } from '../models/altarItem.interface';
+import _ from '../../../../../Library/Caches/typescript/3.5/node_modules/@types/lodash/ts3.1';
 
 export default class simulateStore {
-  @observable altarItem: AltarItem | null = null;
+  @observable altarItem = null;
 
   @observable defaultIsHidden = 1;
   @observable defaultPotentialLevel = 0;
@@ -253,7 +254,7 @@ export default class simulateStore {
     this.fillEquipmentStorage();
   }
 
-  @action clearItem = (itemNo: number, overallCategory, category) => {
+  @action clearItem = (itemNo, overallCategory, category) => {
     if (this.altarItem.item_no === itemNo) {
       this.altarItem = undefined;
       this.currentPotentialStyle = undefined;

@@ -14,7 +14,7 @@ class CalCubeCard extends Component {
     });
   }
 
-  setCubeCost = (level) => {
+  setCubeCost = (level: number) => {
     if (level < 30) {
       return 0;
     } if (level < 71) {
@@ -27,7 +27,7 @@ class CalCubeCard extends Component {
 
   calResult = () => {
     this.setState({
-      meso: parseInt(this.setCubeCost(this.state.level), 10) * this.state.cubeCount,
+      meso: Math.floor(this.setCubeCost(this.state.level)) * this.state.cubeCount,
     });
   }
 

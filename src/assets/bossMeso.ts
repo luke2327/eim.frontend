@@ -1,5 +1,4 @@
 import akailumImage from 'assets/bossImage/eim_akailum.png';
-import ballockImage from 'assets/bossImage/eim_ballock.png';
 import banbanImage from 'assets/bossImage/eim_banban.png';
 import banleonImage from 'assets/bossImage/eim_banleon.png';
 import bellumImage from 'assets/bossImage/eim_bellum.png';

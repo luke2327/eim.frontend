@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText } from '@material-ui/core';
 
-class MessageDialog extends Component {
+interface Props {
+  open: boolean,
+  onClose: any, //아벨에게 검증이 필요함
+  content: string,
+}
+
+class MessageDialog extends Component<Props> {
   render() {
     const { open, onClose, content } = this.props;
 

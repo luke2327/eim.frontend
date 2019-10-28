@@ -2,19 +2,29 @@ import React, { Component } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, FormControl, NativeSelect, Typography } from '@material-ui/core';
+import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from '@material-ui/core';
+import EnhanceStore from '../../../../stores/enhanceStore';
+import { CASH_GRADE } from '../../../../models/cashGrade.type';
 
 
-const styles = (theme) => ({
+const styles = (theme: Theme) => (
+  createStyles({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
     marginBottom: 30,
   },
-});
+}));
 
-const CustomTooltip = (props) => {
-  const comma = (x) => {
+interface Props {
+  classes: {
+    formControl: string,
+  },
+  enhance: EnhanceStore,
+}
+
+const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
+  const comma = (x: number) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
@@ -34,11 +44,10 @@ const CustomTooltip = (props) => {
   return null;
 };
 
-@inject('enhance')
-@observer
-class EnhanceSfCostCard extends Component {
+
+class EnhanceSfCostCard extends Component<Props> {
   state = {
-    grade: 'bronze',
+    grade: 'bronze' as CASH_GRADE,
   }
 
   handleGradeChange = async (e) => {

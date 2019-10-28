@@ -7,13 +7,12 @@ import EnhanceStore from './stores/enhanceStore';
 import CommonStore from './stores/commonStore';
 import CrawlingStore from './stores/crawlingStore';
 import SimulateStore from './stores/simulateStore';
+import _ from 'lodash';
 
 const enhance = new EnhanceStore(),
   common = new CommonStore(),
   crawling = new CrawlingStore(),
   simulate = new SimulateStore();
-
-global._ = require('lodash');
 
 ReactDOM.render(
   <Provider
@@ -22,7 +21,7 @@ ReactDOM.render(
     crawling={crawling}
     simulate={simulate}
   >
-    <Layout />
+    <Layout common={common} />
   </Provider>,
   document.getElementById('root'),
 );

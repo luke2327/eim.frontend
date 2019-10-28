@@ -2,19 +2,28 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import { Grid } from '@material-ui/core';
+import { Grid, Theme, createStyles } from '@material-ui/core';
+import enhanceStore from '../../../../stores/enhanceStore';
 
-const styles = (theme) => ({
-  paper: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-    color: '#000000',
-    height: 650,
-    backgroundColor: '#000000',
-  },
-});
+const styles = (theme: Theme) => (
+  createStyles({
+    paper: {
+      padding: theme.spacing(3),
+      textAlign: 'center',
+      color: '#000000',
+      height: 650,
+      backgroundColor: '#000000',
+    },
+}));
 
-const CustomTooltip = (props) => {
+interface Props {
+  classes: {
+    paper: string,
+  }
+  enhance: enhanceStore,
+}
+
+const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
   const { active } = props;
 
   if (active) {
@@ -30,9 +39,7 @@ const CustomTooltip = (props) => {
   return null;
 };
 
-@inject('enhance')
-@observer
-class EnhanceEvaluateForm extends Component {
+class EnhanceEvaluateForm extends Component<Props> {
   render() {
     const { enhance } = this.props;
     return (

@@ -4,6 +4,8 @@ import MainMedition from './mainMedition';
 import { IntlProvider } from 'react-intl';
 import locale from '../assets/locale';
 import { observer, inject } from 'mobx-react';
+import commonStore from '../stores/commonStore';
+import { SUPPORTED_LANGUAGE } from '../models/language.type';
 // eslint-disable-next-line no-unused-vars
 import style from 'styles/styles.sass';
 // eslint-disable-next-line no-unused-vars
@@ -19,12 +21,12 @@ import vod from 'styles/vod.sass';
 // eslint-disable-next-line no-unused-vars
 import calculate from 'styles/calculate.sass';
 
-@inject('common')
+@inject('commonStore')
 @observer
-class Layout extends Component {
+class Layout extends Component<{common: commonStore}> {
   render() {
     const { common } = this.props;
-    const defaultLang = common.selectedLang || common.defaultLang;
+    const defaultLang = common.selectedLang || common.defaultLang as SUPPORTED_LANGUAGE;
 
     return (
       <IntlProvider
@@ -32,7 +34,7 @@ class Layout extends Component {
         messages={locale[defaultLang]}
       >
         <Fragment>
-          <Head />
+          <Head common={common} />
           <MainMedition />
         </Fragment>
       </IntlProvider>

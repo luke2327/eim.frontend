@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Box } from '@material-ui/core';
+import { Grid, Paper, Box, Theme, createStyles } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
-import LeftSideCpt from 'components/layout/leftSide';
+import LeftSideCpt from '../layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
-import itemApi from 'libs/api/item';
+import EnhanceStore from '../../stores/enhanceStore';
+import itemApi from '../../libs/api/item';
+import { WithStyles } from '@material-ui/styles';
+import { inject, observer } from 'mobx-react';
 
-const styles = (theme) => ({
+const styles = (theme: Theme) => (
+  createStyles({
   root: {
     flexGrow: 1,
     width: '100%',
@@ -29,9 +33,20 @@ const styles = (theme) => ({
     verticalAlign: 'middle',
     backgroundColor: '#FFFFFF',
   },
-});
+}));
 
-class EnhanceEquipCpt extends Component {
+interface Props {
+  classes: {
+    root: string,
+    paper: string,
+    middlePaper: string,
+  },
+  enhance: EnhanceStore,
+}
+
+@inject('enhanceStore')
+@observer
+class EnhanceEquipCpt extends Component<Props>{
   state = {
     ch: {
       starforce: 0,
@@ -44,7 +59,7 @@ class EnhanceEquipCpt extends Component {
     this.PostLuckyData('SEND!!');
   }
 
-  PostLuckyData = async (msg) => {
+  PostLuckyData = async (msg: string) => {
     const data = {
       msg: msg,
     };
@@ -56,7 +71,7 @@ class EnhanceEquipCpt extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, enhance } = this.props;
     return (
       <Box className={classes.root}>
         <div id="enhance" className="flexible container-default default margin-center-hori">
@@ -86,17 +101,17 @@ class EnhanceEquipCpt extends Component {
               </Grid>
               <Grid item xs={7}>
                 <Paper className={classes.middlePaper}>
-                  <EnhanceInputCard />
+                  <EnhanceInputCard enhance={enhance} />
                 </Paper>
               </Grid>
               <Grid item xs={5}>
                 <Paper className={classes.middlePaper}>
-                  <EnhanceEvaluateForm />
+                  <EnhanceEvaluateForm enhance={enhance} />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  <EnhanceSfCostCard />
+                  <EnhanceSfCostCard enhance={enhance} />
                 </Paper>
               </Grid>
             </Grid>

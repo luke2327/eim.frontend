@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { observer, inject } from 'mobx-react';
+import commonStore from './stores/commonStore';
+import { SUPPORTED_LANGUAGE } from './models/language.type';
 
-@inject('common')
-@observer
-class Head extends Component {
+class Head extends Component<{common: commonStore}> {
   render() {
     const { common } = this.props;
     return (
       <Helmet htmlAttributes={
-        { lang: common.selectedLang || common.defaultLang }
+        { lang: common.selectedLang || common.defaultLang as SUPPORTED_LANGUAGE }
       }
       >
         <meta charSet="utf-8" />

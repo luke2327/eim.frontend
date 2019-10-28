@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Grid } from '@material-ui/core';
-import bossInfo from 'assets/bossMeso';
+import bossInfo from '../../../assets/bossMeso';
 import BossCard from './bossCard/bossCard';
+import _ from 'lodash';
 
 class CalBossMesoCard extends Component {
   state = {
