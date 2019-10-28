@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import itemApi from 'libs/api/item';
+import itemApi from 'src/libs/api/item';
 import { observer, inject } from 'mobx-react';
 
 @inject('simulate')
