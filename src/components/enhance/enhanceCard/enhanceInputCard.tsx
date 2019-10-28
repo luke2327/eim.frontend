@@ -7,8 +7,7 @@ import EnhanceStore from '../../../stores/enhanceStore';
 interface Props {
   enhance: EnhanceStore,
 }
-
-class EnhanceInputCard extends Component<Props>{
+class EnhanceInputCard extends Component<Props> {
   state = {
     inputState: false as boolean,
   }
@@ -24,9 +23,9 @@ class EnhanceInputCard extends Component<Props>{
     return (
       <Box>
         {
-          this.state.inputState ? 
-          <EnhanceInputForm enhance={enhance} handleStateChange={this.handleStateChange} /> : 
-          <EnhanceInputFalse enhance={enhance} handleStateChange={this.handleStateChange} />
+          this.state.inputState ?
+            <EnhanceInputForm enhance={enhance} handleStateChange={this.handleStateChange} /> :
+            <EnhanceInputFalse enhance={enhance} handleStateChange={this.handleStateChange} />
         }
       </Box>
     );

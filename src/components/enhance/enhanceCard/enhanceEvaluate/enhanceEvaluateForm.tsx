@@ -14,7 +14,8 @@ const styles = (theme: Theme) => (
       height: 650,
       backgroundColor: '#000000',
     },
-}));
+  })
+);
 
 interface Props {
   classes: {

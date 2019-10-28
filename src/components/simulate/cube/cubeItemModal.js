@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { toJS } from 'mobx';
-import commonUtil from 'libs/utils/commonUtil';
+import commonUtil from 'src/libs/utils/commonUtil';
 
 
 class CubeItemModal extends Component {

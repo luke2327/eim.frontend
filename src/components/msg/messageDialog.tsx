@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogConten
 
 interface Props {
   open: boolean,
-  onClose: any, //아벨에게 검증이 필요함
+  onClose: any,
   content: string,
 }
 

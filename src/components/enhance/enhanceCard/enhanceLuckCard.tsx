@@ -5,24 +5,24 @@ import { FormattedHTMLMessage } from 'react-intl';
 
 const styles = (theme: Theme) => (
   createStyles({
-    month_text: {
+    monthText: {
       marginTop: theme.spacing(2),
       color: '#5C90D2',
     },
-    today_text: {
+    todayText: {
       marginTop: theme.spacing(2),
       color: '#43A047',
     },
-    all_text: {
+    allText: {
       marginTop: theme.spacing(2),
       color: '#5E35B1',
     },
-    small_text: {
+    smallText: {
       marginLeft: theme.spacing(1),
       fontSize: '18px',
       color: '#333333',
     },
-    board_paper: {
+    boardPaper: {
       padding: theme.spacing(7),
       textAlign: 'center',
     },
@@ -31,11 +31,11 @@ const styles = (theme: Theme) => (
 
 interface Props {
   classes: {
-    month_text: string,
-    today_text: string,
-    all_text: string,
-    small_text: string,
-    board_paper: string,
+    monthText: string,
+    todayText: string,
+    allText: string,
+    smallText: string,
+    boardPaper: string,
   },
   title: string | number | ReactNode,
   content: string | number,
@@ -45,11 +45,11 @@ class EnhanceLuckCard extends Component<Props> {
   setFontColor = () => {
     switch (this.props.title) {
       case '스타포스':
-        return this.props.classes.month_text;
+        return this.props.classes.monthText;
       case '큐브':
-        return this.props.classes.today_text;
+        return this.props.classes.todayText;
       case '젬스톤':
-        return this.props.classes.all_text;
+        return this.props.classes.allText;
       default:
         return '';
     }
@@ -60,10 +60,10 @@ class EnhanceLuckCard extends Component<Props> {
     const { classes, title, content } = this.props;
 
     return (
-      <Card key="key" className={classes.board_paper}>
-        <span key="title" className="enhance-card-object-font">{title}</span>,
+      <Card key="key" className={classes.boardPaper}>
+        <span key="title" className="enhance-card-object-font">오늘의 {title} 명당은</span>,
         <br key="br" />
-        <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span>
+        <span key="content" className={[this.setFontColor(), 'enhance-card-channel-font'].join(' ')}>{content}</span> 채널
       </Card>
     );
   }

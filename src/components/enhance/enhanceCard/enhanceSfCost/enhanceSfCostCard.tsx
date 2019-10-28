@@ -9,12 +9,13 @@ import { CASH_GRADE } from '../../../../models/cashGrade.type';
 
 const styles = (theme: Theme) => (
   createStyles({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    marginBottom: 30,
-  },
-}));
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+      marginBottom: 30,
+    },
+  })
+);
 
 interface Props {
   classes: {
@@ -33,7 +34,7 @@ const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => 
   if (active) {
     const { payload, label } = props;
     return (
-      <div className="eh-tooltip" align="center">
+      <div className="eh-tooltip">
         <p className="label">스타포스</p>
         <p className="label">{label}</p>
         <p className="intro">{`${comma(payload[0].value)}메소`}</p>
@@ -50,7 +51,7 @@ class EnhanceSfCostCard extends Component<Props> {
     grade: 'bronze' as CASH_GRADE,
   }
 
-  handleGradeChange = async (e) => {
+  handleGradeChange = async (e: any) => {
     await this.setState({
       grade: e.target.value,
     });
@@ -65,7 +66,7 @@ class EnhanceSfCostCard extends Component<Props> {
         <Grid>
           <Grid item xs={12}>
             <Typography variant="h5">스타포스 비용 분석</Typography>
-            <div align="left">
+            <div>
               <FormControl className={classes.formControl}>
                 <NativeSelect
                   value={this.state.grade}
@@ -78,7 +79,7 @@ class EnhanceSfCostCard extends Component<Props> {
                 </NativeSelect>
               </FormControl>
             </div>
-            <div align="right">
+            <div>
               단일비용
               <AreaChart
                 width={1500}

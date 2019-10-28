@@ -9,6 +9,12 @@ export default class commonStore {
   @observable defaultLangList = ['en', 'ko', 'ja'];
   @observable defaultHeaderTab = 1;
 
+  @observable headerHome = 1;
+  @observable headerEnhance = 2;
+  @observable headerSimulate = 3;
+  @observable headerVod = 4;
+  @observable headerNotice = 5;
+
   @observable selectedLang = localStorage.getItem('language') as SUPPORTED_LANGUAGE | null;
   @observable selectedHeaderTab = parseInt(sessionStorage.getItem('selectedHeaderTab') || this.defaultHeaderTab.toString(), 10);
 
@@ -18,6 +24,7 @@ export default class commonStore {
   }
 
   @action selectHeaderTab = (tab: number) => {
+    console.log('TAB : ', tab);
     sessionStorage.setItem('selectedHeaderTab', tab.toString());
     this.selectedHeaderTab = tab;
   }
