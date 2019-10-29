@@ -150,12 +150,12 @@ export default class EnhanceStore {
       case 'atk':
         return this.maxAddOptWeaponStatInput(this.item.level, this.item.atk);
       case 'hp':
-        return this.maxAddOptEquipStat(this.item.level, 'daemon');
+        return this.maxAddOptEquipStat(this.item.level, 'demon');
       case 'str':
       case 'luk':
       case 'int':
       case 'dex':
-        return this.maxAddOptEquipStat(this.item.level, 'warrior') - 70; // daemon 외의 직업을 넣는것이 목적, warrior인 것에는 별 의미 없음
+        return this.maxAddOptEquipStat(this.item.level, 'warrior') - 70; // demon 외의 직업을 넣는것이 목적, warrior인 것에는 별 의미 없음
       case 'allstat':
         return this.item.cate === 'weapon' ? 6 : 7;
       case 'damage':
@@ -172,29 +172,29 @@ export default class EnhanceStore {
       return 99;
     }
 
-    return this.itemClass === 'daemon' ? (this.item.upgrade + 1) * 470 : (this.item.upgrade + 1) * 9;
+    return this.itemClass === 'demon' ? (this.item.upgrade + 1) * 470 : (this.item.upgrade + 1) * 9;
   }
 
   @action maxAddOptEquipStat = (level: number, itemClass: ITEM_CLASS) => {
     switch (level) {
       case 100:
-        return itemClass === 'daemon' ? 2100 : (84 + 70);
+        return itemClass === 'demon' ? 2100 : (84 + 70);
       case 110:
-        return itemClass === 'daemon' ? 2310 : (84 + 70);
+        return itemClass === 'demon' ? 2310 : (84 + 70);
       case 120:
-        return itemClass === 'daemon' ? 2520 : (105 + 70);
+        return itemClass === 'demon' ? 2520 : (105 + 70);
       case 130:
-        return itemClass === 'daemon' ? 2730 : (105 + 70);
+        return itemClass === 'demon' ? 2730 : (105 + 70);
       case 135:
-        return itemClass === 'daemon' ? 2935 : (105 + 70);
+        return itemClass === 'demon' ? 2935 : (105 + 70);
       case 140:
-        return itemClass === 'daemon' ? 2940 : (112 + 70);
+        return itemClass === 'demon' ? 2940 : (112 + 70);
       case 150:
-        return itemClass === 'daemon' ? 3150 : (112 + 70);
+        return itemClass === 'demon' ? 3150 : (112 + 70);
       case 160:
-        return itemClass === 'daemon' ? 3360 : (168 + 70);
+        return itemClass === 'demon' ? 3360 : (168 + 70);
       case 200:
-        return itemClass === 'daemon' ? 4200 : (203 + 70);
+        return itemClass === 'demon' ? 4200 : (203 + 70);
       default:
         return 0;
     }
@@ -217,11 +217,11 @@ export default class EnhanceStore {
   @action maxAddOptWeaponStatEvaluate = (level: number, genStat: number, itemClass: ITEM_CLASS) => {
     switch (level) {
       case 150:
-        return genStat * (41 / 100) + (itemClass === 'daemon' ? 0 : (2 * 6)) + (2.4 * 5);
+        return genStat * (41 / 100) + (itemClass === 'demon' ? 0 : (2 * 6)) + (2.4 * 5);
       case 160:
-        return genStat * (51 / 100) + (itemClass === 'daemon' ? 0 : (2.55 * 6)) + (2.93 * 5);
+        return genStat * (51 / 100) + (itemClass === 'demon' ? 0 : (2.55 * 6)) + (2.93 * 5);
       case 200:
-        return genStat * (62 / 100) + (itemClass === 'daemon' ? 0 : (3.31 * 6)) + (4.92 * 5);
+        return genStat * (62 / 100) + (itemClass === 'demon' ? 0 : (3.31 * 6)) + (4.92 * 5);
       default:
         return 0;
     }
@@ -273,7 +273,7 @@ export default class EnhanceStore {
     let currentStat = 0;
 
     if (this.item.cate === 'equip') {
-      maxStat = this.itemClass === 'daemon' ? 8000 : 420;
+      maxStat = this.itemClass === 'demon' ? 8000 : 420;
 
       this.mainStatProperty.forEach((o) => {
         currentStat += ((o.name === 'str' ||
@@ -437,7 +437,7 @@ export default class EnhanceStore {
         default:
           return 'black';
       }
-    } else if (itemClass === 'daemon') {
+    } else if (itemClass === 'demon') {
       switch (statName) {
         case 'atk':
         case 'hp':
@@ -447,7 +447,7 @@ export default class EnhanceStore {
         default:
           return 'black';
       }
-    } else if (itemClass === 'jaenon') {
+    } else if (itemClass === 'zenon') {
       switch (statName) {
         case 'atk':
         case 'luk':
@@ -484,10 +484,10 @@ export default class EnhanceStore {
         case 'archer':
           o.status = (o.name === 'atk' || o.name === 'dex' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
           break;
-        case 'daemon':
+        case 'demon':
           o.status = (o.name === 'atk' || o.name === 'hp' || o.name === 'boss_atk' || o.name === 'damage');
           break;
-        case 'jaenon':
+        case 'zenon':
           o.status = (o.name === 'atk' || o.name === 'luk' || o.name === 'dex' || o.name === 'allstat' || o.name === 'boss_atk' || o.name === 'damage');
           break;
         default:

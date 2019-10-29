@@ -1,9 +1,9 @@
 export type ITEM_CLASS = ''
-  | 'daemon' 
-  | 'wizard' 
-  | 'pirate' 
-  | 'warrior' 
-  | 'archer' 
-  | 'thief' 
-  | 'jaenon';
+  | 'demon'
+  | 'wizard'
+  | 'pirate'
+  | 'warrior'
+  | 'archer'
+  | 'thief'
+  | 'zenon';
 // TODO: Add all classes
