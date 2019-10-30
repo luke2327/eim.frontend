@@ -6,18 +6,13 @@
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@src/*": [
-        "src/*"
-      ]
-    },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",

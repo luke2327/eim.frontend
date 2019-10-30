@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import image from 'src/assets/bossImage/eim_dusk.png';
+import image from 'assets/bossImage/eim_dusk.png';
 import { Button, Card, CardMedia, Typography, Divider } from '@material-ui/core';
 
 const styles = (theme) => ({

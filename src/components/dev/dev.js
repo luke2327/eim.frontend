@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import mapleApi from 'src/libs/api/maple';
+import mapleApi from 'libs/api/maple';
 
 @inject('common')
 @observer
