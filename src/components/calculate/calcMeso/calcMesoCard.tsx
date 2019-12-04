@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, TextField, Button, Typography, Divider } from '@material-ui/core';
 
-class CalMesoCard extends Component {
+class CalcMesoCard extends Component {
   state = {
     monsterExp: 0,
     monsterMeso: 0,
@@ -23,7 +23,7 @@ class CalMesoCard extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
-  calResult = () => {
+  calcResult = () => {
     this.setState({
       result: {
         mob10Million: Math.floor((10000000 / this.state.monsterMeso)),
@@ -70,7 +70,7 @@ class CalMesoCard extends Component {
               className="result-button"
               color="primary"
               variant="outlined"
-              onClick={this.calResult}
+              onClick={this.calcResult}
             >
               계산하기
             </Button>
@@ -118,4 +118,4 @@ class CalMesoCard extends Component {
   }
 }
 
-export default CalMesoCard;
+export default CalcMesoCard;

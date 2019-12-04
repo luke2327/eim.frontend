@@ -1,1 +1,5 @@
-export type CASH_GRADE = 'bronze' | 'silver' | 'gold' | 'diamond';
+export type MVP_GRADE =
+  | 'bronze'
+  | 'silver'
+  | 'gold'
+  | 'diamond';

@@ -7,7 +7,7 @@ import { ITEM_CLASS } from '../models/itemClass.type';
 import { Item } from '../models/item.interface';
 import { CATEGORY } from '../models/category.type';
 import { ITEM_CATEGORY } from '../models/itemCategory.type';
-import { CASH_GRADE } from '../models/cashGrade.type';
+import { MVP_GRADE } from '../models/cashGrade.type';
 
 export default class EnhanceStore {
   @observable item: Item = { // TODO: 초기값을 넣어두는게 타입과 안맞아서 임시로 as문 사용, 초기값을 비울 방법 고려해야함
@@ -116,7 +116,7 @@ export default class EnhanceStore {
     { name: '21성', cost: 0, expectCost: 0 },
     { name: '22성', cost: 0, expectCost: 0 },
   ];
-  @observable cashGrade: CASH_GRADE = 'bronze';
+  @observable cashGrade: MVP_GRADE = 'bronze';
 
   @action setSfCostInfo = () => {
     this.sfCostInfo = this.sfCostInfo.map((o, index) => {

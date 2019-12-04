@@ -1,1 +1,3 @@
-export type SEARCH_ITEM = 'cate' | 'name';
+export type SEARCH_ITEM =
+  | 'cate'
+  | 'name';

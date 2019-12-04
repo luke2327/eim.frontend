@@ -4,7 +4,7 @@ import bossInfo from '../../../assets/bossMeso';
 import BossCard from './bossCard/bossCard';
 import _ from 'lodash';
 
-class CalBossMesoCard extends Component {
+class CalcBossMesoCard extends Component {
   state = {
     bossInfo: bossInfo.boss,
   }
@@ -53,4 +53,4 @@ class CalBossMesoCard extends Component {
   }
 }
 
-export default CalBossMesoCard;
+export default CalcBossMesoCard;

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Grid, Paper, Box } from '@material-ui/core';
 import LeftSideCpt from '../layout/leftSide';
-import CalMesoCard from './calMeso/calMesoCard';
-import CalCubeCard from './calCube/calCubeCard';
-import CalMileageCard from './calMileage/calMileageCard';
-import CalBossMesoCard from './calBossMeso/calBossMesoCard';
-import CalSimbolCard from './calSimbol/calSimbolCard';
+import CalcMesoCard from './calcMeso/calcMesoCard';
+import CalcCubeCard from './calcCube/calcCubeCard';
+import CalcMileageCard from './calcMileage/calcMileageCard';
+import CalcBossMesoCard from './calcBossMeso/calcBossMesoCard';
+import CalcSymbolCard from './calcSymbol/calcSymbolCard';
 
 const styles = (theme: Theme) => (
   createStyles({
@@ -49,22 +49,22 @@ class Calculate extends Component<Props> {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Paper className={classes.bossMesoPaper}>
-                  <CalBossMesoCard />
+                  <CalcBossMesoCard />
                 </Paper>
               </Grid>
               <Grid item xs={7}>
                 <Paper className={classes.paper}>
-                  <CalMesoCard />
+                  <CalcMesoCard />
                 </Paper>
               </Grid>
               <Grid item xs={5}>
                 <Paper className={classes.paper}>
-                  <CalCubeCard />
+                  <CalcCubeCard />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper}>
-                  <CalSimbolCard />
+                  <CalcSymbolCard />
                 </Paper>
               </Grid>
             </Grid>

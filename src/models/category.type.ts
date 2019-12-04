@@ -1,1 +1,3 @@
-export type CATEGORY = 'weapon' | 'equip';
+export type CATEGORY =
+  | 'weapon'
+  | 'equip';

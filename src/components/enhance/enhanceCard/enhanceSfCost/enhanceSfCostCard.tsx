@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from '@material-ui/core';
 import EnhanceStore from '../../../../stores/enhanceStore';
-import { CASH_GRADE } from '../../../../models/cashGrade.type';
+import { MVP_GRADE } from '../../../../models/cashGrade.type';
 
 
 const styles = (theme: Theme) => (
@@ -48,7 +48,7 @@ const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => 
 
 class EnhanceSfCostCard extends Component<Props> {
   state = {
-    grade: 'bronze' as CASH_GRADE,
+    grade: 'bronze' as MVP_GRADE,
   }
 
   handleGradeChange = async (e: any) => {

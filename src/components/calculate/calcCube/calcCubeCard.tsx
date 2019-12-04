@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, TextField, Button, Typography } from '@material-ui/core';
 
-class CalCubeCard extends Component {
+class CalcCubeCard extends Component {
   state = {
     level: 0,
     cubeCount: 0,
@@ -25,7 +25,7 @@ class CalCubeCard extends Component {
     return level * level * 20;
   }
 
-  calResult = () => {
+  calcResult = () => {
     this.setState({
       meso: Math.floor(this.setCubeCost(this.state.level)) * this.state.cubeCount,
     });
@@ -63,7 +63,7 @@ class CalCubeCard extends Component {
           <Grid item xs={6}>
             <Button
               className="cube-result-button"
-              onClick={this.calResult}
+              onClick={this.calcResult}
               color="primary"
               variant="outlined"
               fullWidth
@@ -84,4 +84,4 @@ class CalCubeCard extends Component {
   }
 }
 
-export default CalCubeCard;
+export default CalcCubeCard;

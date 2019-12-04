@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class CalMileageCard extends Component {
+class CalcSymbolCard extends Component {
   render() {
     return (
       <div>
-        마일리지
+        심볼
       </div>
     );
   }
 }
 
-export default CalMileageCard;
+export default CalcSymbolCard;
