@@ -7,7 +7,7 @@ import crawlingStore from '../../stores/crawlingStore';
 import { VodItem } from '../../models/vod.interface';
 
 interface Props {
-  crawling: crawlingStore,
+  crawling: crawlingStore;
 }
 
 @inject('crawling')
@@ -15,7 +15,7 @@ interface Props {
 @observer
 class YoutubeListCpt extends Component<Props> {
   componentDidMount() {
-    const req: Record<string, number> = {
+    const req = {
       max: 10,
     };
 
