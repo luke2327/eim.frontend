@@ -1,3 +1,3 @@
 export interface AltarItem {
-  itemNo: number,
+  itemNo: number;
 }

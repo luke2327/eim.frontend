@@ -2,7 +2,7 @@ import api from './common';
 import { isArray } from 'util';
 import { SEARCH_ITEM } from '../../models/searchItem.type';
 
-interface localeType {
+interface LocaleType {
   locale: any;
   forEach?: any;
 }

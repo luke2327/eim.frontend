@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { VodItem } from '../../models/vod.interface';
 
-export default class YoutubeListCardCpt extends Component {
+interface Props {
+  item: VodItem;
+}
+
+export default class YoutubeListCardCpt extends Component<Props> {
   render() {
     const { item } = this.props;
+
     return (
       <div id="youtube-card">
         <div className="card-container">

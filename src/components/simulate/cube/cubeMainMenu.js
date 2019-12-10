@@ -24,7 +24,8 @@ class CubeMainMenu extends Component {
   };
 
   render() {
-    const { simulate } = this.props;
+    const { simulate, common } = this.props;
+
     return (
       <div className="s-item flexible">
         {
@@ -49,7 +50,11 @@ class CubeMainMenu extends Component {
         {
           this.state.cubeItemModal
             ? (
-              <CubeItemModal simulate={simulate} modalKey={this.state.cubeItemModalKey} />
+              <CubeItemModal
+                simulate={simulate}
+                common={common}
+                modalKey={this.state.cubeItemModalKey}
+              />
             )
             : null
         }
