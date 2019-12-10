@@ -22,6 +22,7 @@ class SimulateCube extends Component {
   render() {
     const { simulate, common } = this.props;
     toJS(simulate.availableCubeList);
+
     return (
       <div id="cube" className="default margin-center-hori start-flex-vertical fade-in">
         <div
@@ -69,7 +70,7 @@ class SimulateCube extends Component {
         </div>
         <div className="hori-line" />
         <div className="main-menu-zone">
-          <CubeMainMenu simulate={simulate} />
+          <CubeMainMenu simulate={simulate} common={common} />
           <div className="vert-line" />
           <CubeMethod simulate={simulate} />
         </div>

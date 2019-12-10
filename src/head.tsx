@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { observer, inject } from 'mobx-react';
-import commonStore from './stores/commonStore';
 import { SUPPORTED_LANGUAGE } from './models/language.type';
+import CommonStore from './stores/commonStore';
 
-class Head extends Component<{common: commonStore}> {
+class Head extends Component<{common: CommonStore}> {
   render() {
     const { common } = this.props;
     return (
@@ -23,8 +22,6 @@ class Head extends Component<{common: commonStore}> {
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300:400:500:700" rel="stylesheet" />
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,Symbol" />
-        {/* <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossOrigin="anonymous" /> */}
       </Helmet>
     );
   }
