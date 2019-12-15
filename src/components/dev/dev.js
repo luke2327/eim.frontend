@@ -10,7 +10,7 @@ class DevComponent extends Component {
       minLevelFilter: 160,
       maxLevelFilter: 170,
       startPosition: 0,
-      locale: this.props.common.selectedLang,
+      locale: this.props.common.statedLanguage,
     };
 
     console.log('request data : ', req);
@@ -37,7 +37,7 @@ class DevComponent extends Component {
       maxLevelFilter: 160,
       overallCategory: 'Equip',
       category: ['One-Handed Weapon', 'Two-Handed Weapon'],
-      locale: this.props.common.selectedLang,
+      locale: this.props.common.statedLanguage,
     };
 
     mapleApi.inputMapleItemMeta(req).then((res) => {
@@ -64,7 +64,7 @@ class DevComponent extends Component {
       maxLevelFilter: 150,
       overallCategory: 'Equip',
       category: 'Armor',
-      locale: this.props.common.selectedLang,
+      locale: this.props.common.statedLanguage,
     };
 
     mapleApi.inputMapleItemMeta(req).then((res) => {

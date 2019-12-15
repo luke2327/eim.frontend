@@ -17,10 +17,11 @@ class SimulateCpt extends Component {
     this.props.simulate.init();
     this.props.simulate.loadItemList();
   }
+
   render() {
     const { common } = this.props;
     return (
-      <div id="simulate" className="default margin-center-hori flexible jf-center fade-in" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
+      <div id="simulate" className="default margin-center-hori flexible jf-center fade-in" onClick={() => common.setHeaderTab('simulate')}>
         <Link to="/simulate/simulate_equip/cube" className="s-link">
           <div className="card" style={{ width: '18rem' }}>
             <img src="https://mblogthumb-phinf.pstatic.net/20160917_54/replay_world_1474114196467NkWSu_PNG/capture-20160917-210816.png?type=w2" className="card-img-top" alt="..." />
@@ -41,7 +42,7 @@ class SimulateCpt extends Component {
             </div>
           </div>
         </Link>
-        <Link to="/simulate/simulate_equip/enchant" className="s-link" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
+        <Link to="/simulate/simulate_equip/enchant" className="s-link" onClick={() => common.setHeaderTab('simulate')}>
           <div className="card" style={{ width: '18rem' }}>
             <img
               src="https://mblogthumb-phinf.pstatic.net/20160824_109/replay_world_1472038751864Uc9Uf_PNG/capture-20160824-203858.png?type=w2"
@@ -65,7 +66,7 @@ class SimulateCpt extends Component {
             </div>
           </div>
         </Link>
-        <Link to="/simulate/simulate_equip/starforce" className="s-link" onClick={() => common.selectHeaderTab(common.headerSimulate)}>
+        <Link to="/simulate/simulate_equip/starforce" className="s-link" onClick={() => common.setHeaderTab('simulate')}>
           <div className="card" style={{ width: '18rem' }}>
             <img
               src="https://mblogthumb-phinf.pstatic.net/20160905_78/replay_world_14730315598139FBKo_PNG/capture-20160905-082549.png?type=w2"

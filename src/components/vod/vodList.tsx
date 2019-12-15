@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from '../../libs/api/vod';
-import YoutubeListCard from './youtubeListCard';
+import VodListCard from './vodListCard';
 import crawlingStore from '../../stores/crawlingStore';
 import { VodItem } from '../../models/vod/vod.interface';
 
@@ -13,14 +13,14 @@ interface Props {
 @inject('crawling')
 @inject('common')
 @observer
-class YoutubeListCpt extends Component<Props> {
+class VodList extends Component<Props> {
   componentDidMount() {
     const req = {
       max: 10,
     };
 
-    api.getYoutubeList(req).then((res) => {
-      this.props.crawling.youtubeList = res.data;
+    api.getVodList(req).then((res) => {
+      this.props.crawling.vodList = res.data;
     });
   }
 
@@ -28,13 +28,13 @@ class YoutubeListCpt extends Component<Props> {
     const { crawling } = this.props;
 
     return (
-      crawling.youtubeList === undefined
+      crawling.vodList === undefined
         ? <div>loading</div>
         :
-        <div id="youtube-list" className="h100p fade-in">
-          {toJS(crawling.youtubeList).map((item: VodItem) => {
+        <div id="vod-list" className="h100p fade-in">
+          {toJS(crawling.vodList).map((item: VodItem) => {
             return Number(item.del_field) === 0
-              ? <YoutubeListCard key={item.vod_no} item={item} />
+              ? <VodListCard key={item.vod_no} item={item} />
               : null;
           })}
         </div>
@@ -42,4 +42,4 @@ class YoutubeListCpt extends Component<Props> {
   }
 }
 
-export default YoutubeListCpt;
+export default VodList;

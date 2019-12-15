@@ -5,12 +5,12 @@ interface Props {
   item: VodItem;
 }
 
-export default class YoutubeListCardCpt extends Component<Props> {
+export default class VodCard extends Component<Props> {
   render() {
     const { item } = this.props;
 
     return (
-      <div id="youtube-card">
+      <div id="vod-card">
         <div className="card-container">
           <div className="between-flex">
             <span className="yc-auth">{item.auth}</span>

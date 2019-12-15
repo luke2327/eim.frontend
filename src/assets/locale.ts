@@ -4,7 +4,7 @@ export default {
     'header.home': 'Home',
     'header.enhance': 'Evaluate',
     'header.simulate': 'Simulation',
-    'header.youtubeList': 'Youtube List',
+    'header.vodList': 'VOD List',
     'header.notice': 'Notice',
     'header.language': 'Language',
 
@@ -30,7 +30,7 @@ export default {
     'header.home': '홈',
     'header.enhance': '장비분석',
     'header.simulate': '시뮬레이션',
-    'header.youtubeList': '유튜브 리스트',
+    'header.vodList': 'VOD 리스트',
     'header.calculate': '계산기',
     'header.notice': '공지사항',
     'header.language': '언어',
@@ -61,7 +61,7 @@ export default {
     'header.home': 'ホーム',
     'header.enhance': '強化',
     'header.simulate': 'シミュレーション',
-    'header.youtubeList': 'ユーチューブ リスト',
+    'header.vodList': 'VOD リスト',
     'header.notice': 'ノーティス',
     'header.language': '言語',
 

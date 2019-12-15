@@ -1,31 +1,26 @@
 import { observable, action } from 'mobx';
-import { SUPPORTED_LANGUAGE } from '../models/language.type';
+import { SUPPORTED_HEADER_TAB } from '../models/common/supportedHeaderTab.type';
+import { SUPPORTED_LANGUAGE } from '../models/common/supportedLanguage.type';
+import { SUPPORTED_THEME } from '../models/common/supportedTheme.type';
 
 export default class CommonStore {
-  @observable defaultColor = 'white';
-  @observable defaultTheme = 'white';
-  @observable defaultLang = navigator.language.split(/[-_]/)[0];
-  @observable defaultNofi = 'on';
-  @observable defaultLangList = ['en', 'ko', 'ja'];
-  @observable defaultHeaderTab = 1;
+  @observable defaultColor: SUPPORTED_THEME = 'white';
+  @observable defaultTheme: SUPPORTED_THEME = 'white';
+  @observable defaultLang = navigator.language.split(/[-_]/)[0] as SUPPORTED_LANGUAGE;
+  @observable defaultLangList: SUPPORTED_LANGUAGE[] = ['en', 'ko', 'ja'];
 
-  @observable headerHome = 1;
-  @observable headerEnhance = 2;
-  @observable headerSimulate = 3;
-  @observable headerVod = 4;
-  @observable headerNotice = 5;
+  @observable statedLanguage = localStorage.getItem('statedLanguage') as SUPPORTED_LANGUAGE | null;
+  @observable statedHeaderTab = sessionStorage.getItem('statedHeaderTab') || 'home';
 
-  @observable selectedLang = localStorage.getItem('language') as SUPPORTED_LANGUAGE | null;
-  @observable selectedHeaderTab =
-    parseInt(sessionStorage.getItem('selectedHeaderTab') || this.defaultHeaderTab.toString(), 10);
+  @action setLanguage = (language: SUPPORTED_LANGUAGE) => {
+    localStorage.setItem('statedLanguage', language);
 
-  @action selectLang = (language: SUPPORTED_LANGUAGE) => {
-    this.selectedLang = language;
-    localStorage.setItem('language', language);
+    this.statedLanguage = language;
   }
 
-  @action selectHeaderTab = (tab: number) => {
-    sessionStorage.setItem('selectedHeaderTab', tab.toString());
-    this.selectedHeaderTab = tab;
+  @action setHeaderTab = (tab: SUPPORTED_HEADER_TAB) => {
+    sessionStorage.setItem('statedHeaderTab', tab);
+
+    this.statedHeaderTab = tab;
   }
 }
