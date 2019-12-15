@@ -1,5 +1,5 @@
 import { SUPPORTED_GAME } from './supportedGame.type';
-import { SUPPORTED_LANGUAGE } from '../language.type';
+import { SUPPORTED_LANGUAGE } from '../common/supportedLanguage.type';
 import { SUPPORTED_SOURCE } from './supportedSource.type';
 
 export interface VodItem {

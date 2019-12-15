@@ -36,4 +36,5 @@ _Everything in MapleStory_
 3. 프로젝트 eject
 4. 폴더 구조 셋팅 및 README 생성
 5. react-router-dom 으로 route 구조 생성 및 enhance 컴포넌트 연동
-6. youtube_list 생성 및 연동
+6. vod 생성 및 연동
+7. JS to TS 리뉴얼

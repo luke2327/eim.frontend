@@ -1,12 +1,12 @@
 // temp component
 import React, { Component } from 'react';
-import YoutubeListCpt from 'components/youtube_list/youtubeList';
+import VodList from 'components/vod/vodList';
 
-export default class RightSideCPt extends Component {
+export default class RightSideCpt extends Component {
   render() {
     return (
       <div className="temp-side-cpt center-flex">
-        <YoutubeListCpt />
+        <VodList />
       </div>
     );
   }

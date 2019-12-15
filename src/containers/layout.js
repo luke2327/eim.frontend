@@ -25,7 +25,7 @@ import calculate from '../styles/calculate.sass';
 class Layout extends Component{
   render() {
     const { common } = this.props;
-    const defaultLang = common.selectedLang || common.defaultLang;
+    const defaultLang = common.statedLanguage || common.defaultLang;
 
     return (
       <IntlProvider

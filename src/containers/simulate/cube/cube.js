@@ -36,7 +36,7 @@ class SimulateCube extends Component {
             {
               simulate.altarItem
                 ? (
-                  toJS(simulate.altarItem[`name_${common.selectedLang}`])
+                  toJS(simulate.altarItem[`name_${common.statedLanguage}`])
                 )
                 : (
                   <p>item name</p>
