@@ -40,8 +40,8 @@ interface Props {
     root: string,
     paper: string,
     middlePaper: string,
-  },
-  enhance: EnhanceStore,
+  };
+  enhance: EnhanceStore;
 }
 
 @inject('enhance')
@@ -53,7 +53,7 @@ class EnhanceEquip extends Component<Props> {
       cube: 0,
       gemstone: 0,
     },
-  }
+  };
 
   componentDidMount() {
     this.PostLuckyData('SEND!!');
@@ -61,8 +61,9 @@ class EnhanceEquip extends Component<Props> {
 
   PostLuckyData = async (msg: string) => {
     const data = {
-      msg: msg,
+      msg,
     };
+
     return itemApi.getLuckyChannel(data).then((res) => {
       this.setState({
         ch: res.data,

@@ -26,26 +26,34 @@ interface Props {
     paper: string,
     mainStatFont: string,
     blackFont: string,
-  },
-  enhance: EnhanceStore,
-  statName: string,
-  name: ALL_STAT_NAME,
-  titleColor: string,
-  opt: number | string,
-  starforce: number
+  };
+  enhance: EnhanceStore;
+  statName: string;
+  name: ALL_STAT_NAME;
+  titleColor: string;
+  opt: number | string;
+  starforce: number;
 }
 
 @inject('enhance')
 @observer
 class EnhanceStatCard extends Component<Props> {
   handleEnhanceStatChange = (e: any) => {
-    e.target.value = (e.target.value >= this.props.enhance.setInputMaxEnhanceStat(this.props.name as STAT_NAME_BASIC)) ? this.props.enhance.setInputMaxEnhanceStat(this.props.name as STAT_NAME_BASIC) : e.target.value;
+    e.target.value =
+      (e.target.value >= this.props.enhance.setInputMaxEnhanceStat(this.props.name as STAT_NAME_BASIC))
+        ? this.props.enhance.setInputMaxEnhanceStat(this.props.name as STAT_NAME_BASIC)
+        : e.target.value;
     e.target.value = (e.target.value < 0) ? 0 : e.target.value;
+
     this.props.enhance.handleChangeEnhanceStat(e.target.name, Number(e.target.value));
   }
   handleAddOptStatChange = (e: any) => {
-    e.target.value = parseInt((e.target.value >= this.props.enhance.setInputMaxAddOptStat(this.props.name)) ? this.props.enhance.setInputMaxAddOptStat(this.props.name) : e.target.value, 10);
+    e.target.value =
+      parseInt((e.target.value >= this.props.enhance.setInputMaxAddOptStat(this.props.name))
+        ? this.props.enhance.setInputMaxAddOptStat(this.props.name)
+        : e.target.value, 10);
     e.target.value = (e.target.value < 0) ? 0 : e.target.value;
+
     this.props.enhance.handleChangeAddOptStat(e.target.name, Number(e.target.value));
   }
 
@@ -54,13 +62,16 @@ class EnhanceStatCard extends Component<Props> {
     return (
       <Box>
         <Grid container spacing={3}>
-          <Grid item xs={2} className={titleColor === 'red' ? classes.mainStatFont : classes.blackFont}> { statName } </Grid>
+          <Grid
+            item
+            xs={2}
+            className={titleColor === 'red' ? classes.mainStatFont : classes.blackFont}> { statName } </Grid>
           <Grid item xs={2}> { opt } </Grid>
           <Grid item xs={2}> { enhance.sfStat[name as STAT_NAME_BASIC] } </Grid>
           <Grid item xs={2}>
 
-            { name === 'monster_def' ?
-              ''
+            { name === 'monster_def'
+              ? ''
               :
               <Input
                 type="Number"
@@ -71,8 +82,12 @@ class EnhanceStatCard extends Component<Props> {
               />}
           </Grid>
           <Grid item xs={2}>
-            { (name === 'chackgam' || name === 'allstat' || name === 'boss_atk' || name === 'damage' || name === 'monster_def') ?
-              ''
+            { (name === 'chackgam'
+              || name === 'allstat'
+              || name === 'boss_atk'
+              || name === 'damage'
+              || name === 'monster_def')
+              ? ''
               :
               <Input
                 type="Number"

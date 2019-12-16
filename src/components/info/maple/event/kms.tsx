@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class KMSEventCpt extends Component {
+class KMSEvent extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class KMSEventCpt extends Component {
   }
 }
 
-export default KMSEventCpt;
+export default KMSEvent;

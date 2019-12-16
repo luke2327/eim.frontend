@@ -20,8 +20,8 @@ const styles = (theme: Theme) => (
 interface Props {
   classes: {
     paper: string,
-  }
-  enhance: enhanceStore,
+  };
+  enhance: enhanceStore;
 }
 
 const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
@@ -43,6 +43,7 @@ const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => 
 class EnhanceEvaluateForm extends Component<Props> {
   render() {
     const { enhance } = this.props;
+
     return (
       <div>
         <Grid container spacing={1}>

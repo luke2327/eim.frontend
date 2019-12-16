@@ -7,7 +7,7 @@ import _ from 'lodash';
 class CalcBossMesoCard extends Component {
   state = {
     bossInfo: bossInfo.boss,
-  }
+  };
 
   testClick = () => {
     console.log('asset : ', bossInfo.boss);

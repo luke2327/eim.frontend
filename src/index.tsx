@@ -21,7 +21,7 @@ ReactDOM.render(
     simulate={simulate}
     common={common}
   >
-    <Layout />
+    <Layout common={common} />
   </Provider>,
   document.getElementById('root'),
 );

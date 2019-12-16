@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class GMSNoticeCpt extends Component {
+class GMSEvent extends Component {
   render() {
     return (
       <div>
-        GMS Notice
+        GMS Event
       </div>
     );
   }
 }
 
-export default GMSNoticeCpt;
+export default GMSEvent;

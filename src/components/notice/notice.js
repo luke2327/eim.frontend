@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class NoticeCpt extends Component {
+class Notice extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class NoticeCpt extends Component {
   }
 }
 
-export default NoticeCpt;
+export default Notice;

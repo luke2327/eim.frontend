@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class LeftSideCpt extends Component {
+export default class LeftSide extends Component {
   render() {
     return (
       <div className="temp-side-cpt flex-vertical">

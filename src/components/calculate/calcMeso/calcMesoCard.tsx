@@ -11,7 +11,7 @@ class CalcMesoCard extends Component {
       mesoExp100Million: 0,
       mesoGoalExp: 0,
     },
-  }
+  };
 
   handleChange = (e: any) => {
     this.setState({

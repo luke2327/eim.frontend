@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button, Table, TableHead, TableRow, TableBody, Paper, TableCell, BottomNavigation, BottomNavigationAction, createStyles } from '@material-ui/core';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  TextField,
+  DialogActions,
+  Button,
+  Table,
+  TableHead,
+  TableRow,
+  TableBody,
+  Paper,
+  TableCell,
+  BottomNavigation,
+  BottomNavigationAction,
+  createStyles
+} from '@material-ui/core';
 import EnhanceStore from '../../../../stores/enhanceStore';
 import { Item } from '../../../../models/item.interface';
 import itemApi from '../../../../libs/api/item';
@@ -63,7 +79,7 @@ class EnhanceInputDialog extends Component<Props> {
       setRowsPerPage: 300,
     },
     itemList: [],
-  }
+  };
 
   columns: Column[] = [
     { id: 'name', label: '이름', minWidth: 200 },
@@ -77,7 +93,7 @@ class EnhanceInputDialog extends Component<Props> {
     { id: 'int', label: 'int', minWidth: 60, align: 'right' },
     { id: 'hp', label: 'hp', minWidth: 60, align: 'right' },
     { id: 'mp', label: 'mp', minWidth: 60, align: 'right' },
-  ]
+  ];
 
   componentDidMount() {
     this.PostSearchData('all', '');
@@ -85,8 +101,7 @@ class EnhanceInputDialog extends Component<Props> {
 
   PostSearchData = async (cate: string, name: string) => {
     const data: Record<SEARCH_ITEM, string> = {
-      cate: cate,
-      name: name,
+      cate, name,
     };
 
     return itemApi.getSearchItem(data).then((res: any) => {
@@ -174,9 +189,20 @@ class EnhanceInputDialog extends Component<Props> {
                   </TableHead>
                   <TableBody>
                     {
-                      this.state.itemList.slice(this.state.getTable.page * this.state.getTable.rowsPerPage, this.state.getTable.page * this.state.getTable.rowsPerPage + this.state.getTable.rowsPerPage).map((row: Item) => {
+                      this.state.itemList.slice(
+                        this.state.getTable.page * this.state.getTable.rowsPerPage,
+                        this.state.getTable.page *
+                        this.state.getTable.rowsPerPage +
+                        this.state.getTable.rowsPerPage).
+                        map((row: Item) => {
                         return (
-                          <TableRow hover role="checkbox" tabIndex={-1} key={row.item_no} onClick={(e) => this.handleItemClick(e, row)}>
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={row.item_no}
+                            onClick={(e) => this.handleItemClick(e, row)}
+                          >
                             {
                               this.columns.map((column) => {
                                 const value = row[column.id];
