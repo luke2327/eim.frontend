@@ -16,7 +16,7 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
-class MainMedition extends Component {
+class MainModerator extends Component {
   render() {
     return (
       <Fragment>
@@ -42,4 +42,4 @@ class MainMedition extends Component {
   }
 }
 
-export default MainMedition;
+export default MainModerator;

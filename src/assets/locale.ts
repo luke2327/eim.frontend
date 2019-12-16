@@ -5,6 +5,7 @@ export default {
     'header.enhance': 'Evaluate',
     'header.simulate': 'Simulation',
     'header.vodList': 'VOD List',
+    'header.calculate': 'Calculate',
     'header.notice': 'Notice',
     'header.language': 'Language',
 
@@ -62,6 +63,7 @@ export default {
     'header.enhance': '強化',
     'header.simulate': 'シミュレーション',
     'header.vodList': 'VOD リスト',
+    'header.calculate': '計算機',
     'header.notice': 'ノーティス',
     'header.language': '言語',
 
