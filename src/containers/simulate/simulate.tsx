@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { toJS } from 'mobx';
 import { FormattedHTMLMessage } from 'react-intl';
 import { inject, observer } from 'mobx-react';
-import itemApi from '../../libs/api/item';
+import CommonStore from '../../stores/commonStore';
+import simulateStore from '../../stores/simulateStore';
+
+interface Props {
+  common: CommonStore;
+  simulate: simulateStore;
+}
 
 @inject('simulate')
 @inject('common')
 @observer
-class SimulateCpt extends Component {
+class Simulate extends Component<Props> {
   componentDidMount() {
     this.initialize();
   }
@@ -21,10 +26,18 @@ class SimulateCpt extends Component {
   render() {
     const { common } = this.props;
     return (
-      <div id="simulate" className="default margin-center-hori flexible jf-center fade-in" onClick={() => common.setHeaderTab('simulate')}>
+      <div
+        id="simulate"
+        className="default margin-center-hori flexible jf-center fade-in"
+        onClick={() => common.setHeaderTab('simulate')}
+      >
         <Link to="/simulate/simulate_equip/cube" className="s-link">
           <div className="card" style={{ width: '18rem' }}>
-            <img src="https://mblogthumb-phinf.pstatic.net/20160917_54/replay_world_1474114196467NkWSu_PNG/capture-20160917-210816.png?type=w2" className="card-img-top" alt="..." />
+            <img
+              src="https://mblogthumb-phinf.pstatic.net/20160917_54/replay_world_1474114196467NkWSu_PNG/capture-20160917-210816.png?type=w2"
+              className="card-img-top"
+              alt="..."
+            />
             <div className="card-body end-flex-vertical">
               <div className="s-air" />
               <div className="below">
@@ -66,7 +79,11 @@ class SimulateCpt extends Component {
             </div>
           </div>
         </Link>
-        <Link to="/simulate/simulate_equip/starforce" className="s-link" onClick={() => common.setHeaderTab('simulate')}>
+        <Link
+          to="/simulate/simulate_equip/starforce"
+          className="s-link"
+          onClick={() => common.setHeaderTab('simulate')}
+        >
           <div className="card" style={{ width: '18rem' }}>
             <img
               src="https://mblogthumb-phinf.pstatic.net/20160905_78/replay_world_14730315598139FBKo_PNG/capture-20160905-082549.png?type=w2"
@@ -95,4 +112,4 @@ class SimulateCpt extends Component {
   }
 }
 
-export default SimulateCpt;
+export default Simulate;

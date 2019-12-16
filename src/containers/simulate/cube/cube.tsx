@@ -6,11 +6,18 @@ import CubeMethod from '../../../components/simulate/cube/cubeMethod';
 import CubeCalc from '../../../components/simulate/cube/cubeCalc';
 import ItemPotential from '../../../components/simulate/cube/itemPotential';
 import WearingEquip from '../../../components/simulate/wearingEquip';
+import CommonStore from '../../../stores/commonStore';
+import simulateStore from '../../../stores/simulateStore';
+
+interface Props {
+  common: CommonStore;
+  simulate: simulateStore;
+}
 
 @inject('simulate')
 @inject('common')
 @observer
-class SimulateCube extends Component {
+class SimulateCube extends Component<Props> {
   componentDidMount() {
     this.initialize();
   }

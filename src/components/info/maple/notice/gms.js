@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class GMSNoticeCpt extends Component {
+class GMSNotice extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class GMSNoticeCpt extends Component {
   }
 }
 
-export default GMSNoticeCpt;
+export default GMSNotice;

@@ -46,7 +46,7 @@ interface Props {
 
 @inject('enhance')
 @observer
-class EnhanceEquipCpt extends Component<Props> {
+class EnhanceEquip extends Component<Props> {
   state = {
     ch: {
       starforce: 0,
@@ -122,4 +122,4 @@ class EnhanceEquipCpt extends Component<Props> {
   }
 }
 
-export default withStyles(styles)(EnhanceEquipCpt);
+export default withStyles(styles)(EnhanceEquip);
