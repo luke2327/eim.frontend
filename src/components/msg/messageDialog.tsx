@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, DialogContentText } from '@material-ui/core';
 
 interface Props {
-  open: boolean,
-  onClose: any,
-  content: string,
+  open: boolean;
+  onClose: any;
+  content: string;
 }
 
 class MessageDialog extends Component<Props> {

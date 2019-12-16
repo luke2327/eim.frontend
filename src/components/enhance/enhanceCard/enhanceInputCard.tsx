@@ -10,22 +10,22 @@ interface Props {
 class EnhanceInputCard extends Component<Props> {
   state = {
     inputState: false as boolean,
-  }
+  };
 
   handleStateChange = () => {
     this.setState({
       inputState: !this.state.inputState,
     });
-  };
+  }
 
   render() {
     const { enhance } = this.props;
     return (
       <Box>
         {
-          this.state.inputState ?
-            <EnhanceInputForm enhance={enhance} handleStateChange={this.handleStateChange} /> :
-            <EnhanceInputFalse enhance={enhance} handleStateChange={this.handleStateChange} />
+          this.state.inputState
+            ? <EnhanceInputForm enhance={enhance} handleStateChange={this.handleStateChange} />
+            : <EnhanceInputFalse enhance={enhance} handleStateChange={this.handleStateChange} />
         }
       </Box>
     );

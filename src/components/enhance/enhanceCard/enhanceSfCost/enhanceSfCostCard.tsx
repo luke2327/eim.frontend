@@ -6,7 +6,6 @@ import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from
 import EnhanceStore from '../../../../stores/enhanceStore';
 import { MVP_GRADE } from '../../../../models/cashGrade.type';
 
-
 const styles = (theme: Theme) => (
   createStyles({
     formControl: {
@@ -20,8 +19,8 @@ const styles = (theme: Theme) => (
 interface Props {
   classes: {
     formControl: string,
-  },
-  enhance: EnhanceStore,
+  };
+  enhance: EnhanceStore;
 }
 
 const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => {
@@ -45,16 +44,16 @@ const CustomTooltip = (props: { active?: any; payload?: any; label?: any; }) => 
   return null;
 };
 
-
 class EnhanceSfCostCard extends Component<Props> {
   state = {
     grade: 'bronze' as MVP_GRADE,
-  }
+  };
 
   handleGradeChange = async (e: any) => {
     await this.setState({
       grade: e.target.value,
     });
+
     this.props.enhance.cashGrade = this.state.grade;
     this.props.enhance.setSfCostInfo();
   }

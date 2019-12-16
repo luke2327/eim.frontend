@@ -36,9 +36,9 @@ interface Props {
     allText: string,
     smallText: string,
     boardPaper: string,
-  },
-  title: string | number | ReactNode,
-  content: string | number,
+  };
+  title: string | number | ReactNode;
+  content: string | number;
 }
 
 class EnhanceLuckCard extends Component<Props> {
@@ -54,7 +54,6 @@ class EnhanceLuckCard extends Component<Props> {
         return '';
     }
   }
-
 
   render() {
     const { classes, title, content } = this.props;

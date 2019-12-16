@@ -6,7 +6,7 @@ class CalcCubeCard extends Component {
     level: 0,
     cubeCount: 0,
     meso: 0,
-  }
+  };
 
   handleChange = (e: any) => {
     this.setState({
@@ -14,15 +14,20 @@ class CalcCubeCard extends Component {
     });
   }
 
-  setCubeCost = (level: number) => {
+  setCubeCost = (level: number): number => {
+    let cubeCost;
+
     if (level < 30) {
-      return 0;
-    } if (level < 71) {
-      return level * level * 0.5;
-    } if (level < 121) {
-      return level * level * 2.5;
+      cubeCost = 0;
+    } else if (level < 71) {
+      cubeCost = level * level * 0.5;
+    } else if (level < 121) {
+      cubeCost = level * level * 2.5;
+    } else {
+      cubeCost = level * level * 20;
     }
-    return level * level * 20;
+
+    return cubeCost;
   }
 
   calcResult = () => {

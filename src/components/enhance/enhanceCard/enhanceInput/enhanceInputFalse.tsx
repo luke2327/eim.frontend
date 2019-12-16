@@ -17,19 +17,19 @@ const styles = () => (
   })
 );
 
-interface Props{
+interface Props {
   classes: {
     root: string,
     textMargin: string,
-  },
-  enhance: EnhanceStore,
-  handleStateChange: () => void,
+  };
+  enhance: EnhanceStore;
+  handleStateChange: () => void;
 }
 
 class EnhanceInputFalse extends Component<Props> {
   state = {
     registDialogState: false,
-  }
+  };
 
   OpenDialog = () => {
     this.setState({
@@ -51,6 +51,7 @@ class EnhanceInputFalse extends Component<Props> {
 
   render() {
     const { classes, enhance } = this.props;
+
     return (
       <Box className={classes.root}>
         <Box className={classes.textMargin}>

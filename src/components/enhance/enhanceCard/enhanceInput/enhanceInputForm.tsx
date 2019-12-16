@@ -21,18 +21,18 @@ const styles = () => ({
   },
 });
 
-interface Props{
+interface Props {
   classes: {
     nameText: string,
     sfControl: string,
     buttonClass: string,
-  },
-  enhance: EnhanceStore,
-  handleStateChange: () => void,
+  };
+  enhance: EnhanceStore;
+  handleStateChange: () => void;
 }
 
 class EnhanceInputForm extends Component<Props> {
-  state={
+  state = {
     level: 150,
     getSf: {
       value: 0,
@@ -56,7 +56,7 @@ class EnhanceInputForm extends Component<Props> {
       msgStatus: false,
       content: '',
     },
-  }
+  };
 
   closeMsgDialog = () => {
     this.setState({
@@ -114,6 +114,7 @@ class EnhanceInputForm extends Component<Props> {
 
   render() {
     const { classes, enhance } = this.props;
+
     return (
       <div>
         <Typography
@@ -181,19 +182,109 @@ class EnhanceInputForm extends Component<Props> {
           <Grid item xs={2} className={classes.nameText}>일반강화스탯</Grid>
           <Grid item xs={2} className={classes.nameText}>확인</Grid>
         </Grid>
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('mg_atk', this.state.getClass.value)} statName={'마력'} name={'mg_atk'} opt={enhance.item.mg_atk} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('atk', this.state.getClass.value)} statName={'공격력'} name={'atk'} opt={enhance.item.atk} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('str', this.state.getClass.value)} statName={'str'} name={'str'} opt={enhance.item.str} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('dex', this.state.getClass.value)} statName={'dex'} name={'dex'} opt={enhance.item.dex} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('luk', this.state.getClass.value)} statName={'luk'} name={'luk'} opt={enhance.item.luk} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('int', this.state.getClass.value)} statName={'int'} name={'int'} opt={enhance.item.int} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('hp', this.state.getClass.value)} statName={'HP'} name={'hp'} opt={enhance.item.hp} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('mp', this.state.getClass.value)} statName={'MP'} name={'mp'} opt={enhance.item.mp} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('monster_def', this.state.getClass.value)} statName={'방무(%)'} name={'monster_def'} opt={enhance.item.monster_def} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('boss_atk', this.state.getClass.value)} statName={'보공(%)'} name={'boss_atk'} opt={enhance.item.boss_atk} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('damage', this.state.getClass.value)} statName={'데미지(%)'} name={'damage'} opt={0} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('allstat', this.state.getClass.value)} statName={'올스탯(%)'} name={'allstat'} opt={0} starforce={this.state.getSf.value} />
-        <EnhanceStatCard enhance={enhance} titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)} statName={'착감'} name={'chackgam'} opt={0} starforce={this.state.getSf.value} />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('mg_atk', this.state.getClass.value)}
+          statName={'마력'} name={'mg_atk'}
+          opt={enhance.item.mg_atk}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('atk', this.state.getClass.value)}
+          statName={'공격력'}
+          name={'atk'}
+          opt={enhance.item.atk}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('str', this.state.getClass.value)}
+          statName={'str'}
+          name={'str'}
+          opt={enhance.item.str}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('dex', this.state.getClass.value)}
+          statName={'dex'}
+          name={'dex'}
+          opt={enhance.item.dex}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('luk', this.state.getClass.value)}
+          statName={'luk'}
+          name={'luk'}
+          opt={enhance.item.luk}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('int', this.state.getClass.value)}
+          statName={'int'}
+          name={'int'}
+          opt={enhance.item.int}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('hp', this.state.getClass.value)}
+          statName={'HP'}
+          name={'hp'}
+          opt={enhance.item.hp}
+          starforce={this.state.getSf.value}
+          />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('mp', this.state.getClass.value)}
+          statName={'MP'}
+          name={'mp'}
+          opt={enhance.item.mp}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('monster_def', this.state.getClass.value)}
+          statName={'방무(%)'}
+          name={'monster_def'}
+          opt={enhance.item.monster_def}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('boss_atk', this.state.getClass.value)}
+          statName={'보공(%)'}
+          name={'boss_atk'}
+          opt={enhance.item.boss_atk}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('damage', this.state.getClass.value)}
+          statName={'데미지(%)'}
+          name={'damage'}
+          opt={0}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('allstat', this.state.getClass.value)}
+          statName={'올스탯(%)'}
+          name={'allstat'}
+          opt={0}
+          starforce={this.state.getSf.value}
+        />
+        <EnhanceStatCard
+          enhance={enhance}
+          titleColor={enhance.setClassStatFont('chackgam', this.state.getClass.value)}
+          statName={'착감'}
+          name={'chackgam'}
+          opt={0}
+          starforce={this.state.getSf.value}
+        />
         <Grid container spacing={1}>
           <Grid item xs={4}>
             <Button

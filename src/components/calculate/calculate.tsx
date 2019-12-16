@@ -35,12 +35,13 @@ interface Props {
     root: string,
     paper: string,
     bossMesoPaper: string,
-  }
+  };
 }
 
 class Calculate extends Component<Props> {
   render() {
     const { classes } = this.props;
+
     return (
       <Box className={classes.root}>
         <div id="enhance" className="flexible container-default default margin-center-hori">
