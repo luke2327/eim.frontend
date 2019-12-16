@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { Grid, Paper, Box } from '@material-ui/core';
-import LeftSideCpt from '../layout/leftSide';
+import LeftSide from '../layout/leftSide';
 import CalcMesoCard from './calcMeso/calcMesoCard';
 import CalcCubeCard from './calcCube/calcCubeCard';
 import CalcMileageCard from './calcMileage/calcMileageCard';
@@ -44,7 +44,7 @@ class Calculate extends Component<Props> {
     return (
       <Box className={classes.root}>
         <div id="enhance" className="flexible container-default default margin-center-hori">
-          <LeftSideCpt />
+          <LeftSide />
           <div className={[classes.root, 'fade-in'].join(' ')}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

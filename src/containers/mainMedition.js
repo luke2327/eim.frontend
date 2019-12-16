@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import EnhanceEquipCpt from '../components/enhance/enhanceEquip';
+import EnhanceEquip from '../components/enhance/enhanceEquip';
 import SimulateCpt from './simulate/simulate';
 import SimulateCube from './simulate/cube/cube';
 import SimulateEnchant from '../components/simulate/enchant/enchant';
@@ -24,7 +24,7 @@ class MainMedition extends Component {
           <HeaderCpt />
           <Switch>
             <Route exact path="/" component={MainView} />
-            <Route exact path="/enhance/enhanceEquip" component={EnhanceEquipCpt} />
+            <Route exact path="/enhance/enhanceEquip" component={EnhanceEquip} />
             <Route exact path="/calculate" component={CalculateCpt} />
             <Route exact path="/simulate" component={SimulateCpt} />
             <Route exact path="/simulate/simulate_equip/cube" component={SimulateCube} />
