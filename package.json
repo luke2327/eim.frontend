@@ -166,6 +166,7 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.12",
-    "@types/recharts": "^1.7.1"
+    "@types/recharts": "^1.7.1",
+    "tslint": "^5.20.1"
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import { SUPPORTED_LANGUAGE } from './models/common/supportedLanguage.type';
 import CommonStore from './stores/commonStore';
 
 class Head extends Component<{common: CommonStore}> {
@@ -8,7 +7,7 @@ class Head extends Component<{common: CommonStore}> {
     const { common } = this.props;
     return (
       <Helmet htmlAttributes={
-        { lang: common.statedLanguage || common.defaultLang as SUPPORTED_LANGUAGE }
+        { lang: common.statedLanguage || common.defaultLang }
       }
       >
         <meta charSet="utf-8" />
