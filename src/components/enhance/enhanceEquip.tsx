@@ -4,7 +4,7 @@ import { Grid, Paper, Box, Theme, createStyles } from '@material-ui/core';
 import EnhanceLuckCard from './enhanceCard/enhanceLuckCard';
 import EnhanceInputCard from './enhanceCard/enhanceInputCard';
 import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateForm';
-import LeftSideCpt from '../layout/leftSide';
+import LeftSide from '../layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
 import EnhanceStore from '../../stores/enhanceStore';
@@ -76,7 +76,7 @@ class EnhanceEquip extends Component<Props> {
     return (
       <Box className={classes.root}>
         <div id="enhance" className="flexible container-default default margin-center-hori">
-          <LeftSideCpt />
+          <LeftSide />
           <div className={[classes.root, 'fade-in'].join(' ')}>
             <Grid container spacing={2}>
               <Grid item xs={4}>
