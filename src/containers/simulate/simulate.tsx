@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { FormattedHTMLMessage } from 'react-intl';
 import { inject, observer } from 'mobx-react';
 import CommonStore from '../../stores/commonStore';
-import simulateStore from '../../stores/simulateStore';
+import SimulateStore from '../../stores/simulateStore';
 
 interface Props {
   common: CommonStore;
-  simulate: simulateStore;
+  simulate: SimulateStore;
 }
 
 @inject('simulate')
