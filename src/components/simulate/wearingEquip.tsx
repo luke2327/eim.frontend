@@ -3,13 +3,18 @@ import { observer, inject } from 'mobx-react';
 import WearingTooltip from './wearingTooltip';
 import { Close } from '@material-ui/icons';
 import ReactTooltip from 'react-tooltip';
+import SimulateStore from '../../stores/simulateStore';
 
-const clear = ({ simulate, overallCategory, category }) => {
+interface Props {
+  simulate: SimulateStore;
+}
+
+const clear = ({ simulate, overallCategory, category }: any): any => {
   const item = simulate.wearingEquipment[overallCategory][category];
   simulate.clearItem(item.item_no, overallCategory, category);
 };
 
-const ClearButton = (props) => {
+const ClearButton = (props: any) => {
   const { category } = props;
 
   return (
@@ -25,7 +30,7 @@ const ClearButton = (props) => {
   );
 };
 
-const GenerateWearingIcon = (props) => {
+const GenerateWearingIcon = (props: any) => {
   const { simulate, overallCategory, category } = props.param;
 
   if (!_.isEmpty(simulate.wearingEquipment[overallCategory][category])) {
@@ -42,7 +47,7 @@ const GenerateWearingIcon = (props) => {
 
 @inject('simulate')
 @observer
-class WearingEquip extends Component {
+class WearingEquip extends Component<Props> {
   render() {
     const { simulate } = this.props;
     return (

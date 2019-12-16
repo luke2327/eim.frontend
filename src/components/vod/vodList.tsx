@@ -3,11 +3,11 @@ import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
 import api from '../../libs/api/vod';
 import VodListCard from './vodListCard';
-import crawlingStore from '../../stores/crawlingStore';
+import CrawlingStore from '../../stores/crawlingStore';
 import { VodItem } from '../../models/vod/vod.interface';
 
 interface Props {
-  crawling: crawlingStore;
+  crawling: CrawlingStore;
 }
 
 @inject('crawling')
