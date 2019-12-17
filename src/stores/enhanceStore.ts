@@ -6,7 +6,7 @@ import { STAT_NAME_BASIC, STAT_NAME_ADDITIONAL } from '../models/statName.type';
 import { ITEM_CLASS } from '../models/itemClass.type';
 import { Item } from '../models/item.interface';
 import { CATEGORY } from '../models/category.type';
-import { ITEM_CATEGORY } from '../models/itemCategory.type';
+import { ITEM_CATEGORY } from '../models/item/itemCategory.type';
 import { MVP_GRADE } from '../models/cashGrade.type';
 
 export default class EnhanceStore {

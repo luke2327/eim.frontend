@@ -2,6 +2,8 @@ import { observable, action, toJS } from 'mobx';
 import itemApi from '../libs/api/item';
 import { AltarItem } from '../models/altarItem.interface';
 import { CUBE_POTENTIAL_LEVEL } from '../models/simulate/cubePotentialLevel.type';
+import { MAJOR_EQUIP_SET_LINE } from '../models/simulate/majorEquipSetLine.type';
+import { CallEquipSetLineReq } from '../models/simulate/callEquipSetLineReq.interface';
 
 const defaultPotentialLevel = 0;
 const defaultIsHidden = 1;
@@ -28,21 +30,21 @@ export default class SimulateStore {
     4: 'regendary',
   };
 
-  @observable defaultCubeGiven = {
+  @observable defaultCubeGiven: Record<MAJOR_EQUIP_SET_LINE, CallEquipSetLineReq> = {
     rootAbyss: {
       minItemLevel: 150,
       maxItemLevel: 150,
-      category: 'equip',
+      overallCategory: 'equip',
     },
     absolab: {
       minItemLevel: 160,
       maxItemLevel: 160,
-      category: 'equip',
+      overallCategory: 'equip',
     },
     arcaneUmbra: {
       minItemLevel: 200,
       maxItemLevel: 200,
-      category: 'equip',
+      overallCategory: 'equip',
     },
   };
 

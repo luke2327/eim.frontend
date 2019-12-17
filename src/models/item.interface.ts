@@ -1,5 +1,5 @@
 import { CATEGORY } from './category.type';
-import { ITEM_CATEGORY } from './itemCategory.type';
+import { ITEM_CATEGORY } from './item/itemCategory.type';
 
 export interface Item {
   item_no: number;
