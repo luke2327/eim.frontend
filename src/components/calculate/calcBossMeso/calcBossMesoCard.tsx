@@ -17,6 +17,7 @@ class CalcBossMesoCard extends Component {
 
   render() {
     const { bossInfoList } = this.state;
+
     return (
       <div>
         <Grid container spacing={1}>

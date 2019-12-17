@@ -35,6 +35,7 @@ class CalcMesoCard extends Component {
 
   render() {
     const { monsterExp, monsterMeso, goalExp, result} = this.state;
+
     return (
       <div>
         <Grid container spacing={2} className="col-2-height">
