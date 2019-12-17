@@ -7,11 +7,11 @@ import CubeCalc from '../../../components/simulate/cube/cubeCalc';
 import ItemPotential from '../../../components/simulate/cube/itemPotential';
 import WearingEquip from '../../../components/simulate/wearingEquip';
 import CommonStore from '../../../stores/commonStore';
-import simulateStore from '../../../stores/simulateStore';
+import SimulateStore from '../../../stores/simulateStore';
 
 interface Props {
   common: CommonStore;
-  simulate: simulateStore;
+  simulate: SimulateStore;
 }
 
 @inject('simulate')
@@ -83,7 +83,7 @@ class SimulateCube extends Component<Props> {
         </div>
         <div className="hori-line" />
         <div className="side-view">
-          <WearingEquip />
+          <WearingEquip simulate={simulate} />
           <div className="vert-line" />
           <CubeCalc />
         </div>
