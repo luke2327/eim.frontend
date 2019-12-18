@@ -3,9 +3,9 @@ import { Grid, TextField, Button, Typography } from '@material-ui/core';
 
 class CalcCubeCard extends Component {
   state = {
-    level: 0,
-    cubeCount: 0,
-    meso: 0,
+    level: 0 as number,
+    cubeCount: 0 as number,
+    meso: 0 as number,
   };
 
   handleChange = (e: any) => {
@@ -41,6 +41,8 @@ class CalcCubeCard extends Component {
   }
 
   render() {
+    const { level, cubeCount, meso } = this.state;
+
     return (
       <div>
         <Grid container spacing={2} className="col-2-height">
@@ -48,7 +50,7 @@ class CalcCubeCard extends Component {
           <Grid item xs={6} className="flex-vertical">
             <TextField
               label="해당 장비 렙제"
-              value={this.state.level}
+              value={level}
               name="level"
               onChange={this.handleChange}
               type="number"
@@ -57,7 +59,7 @@ class CalcCubeCard extends Component {
             />
             <TextField
               label="돌릴 횟수"
-              value={this.state.cubeCount}
+              value={cubeCount}
               name="cubeCount"
               onChange={this.handleChange}
               type="number"
@@ -80,7 +82,7 @@ class CalcCubeCard extends Component {
             <div
               className="meso-result"
             >
-              {this.comma(this.state.meso)} 메소
+              {this.comma(meso)} 메소
             </div>
           </Grid>
         </Grid>

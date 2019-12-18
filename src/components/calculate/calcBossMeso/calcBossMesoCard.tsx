@@ -3,18 +3,21 @@ import { Grid } from '@material-ui/core';
 import bossInfo from '../../../assets/bossMeso';
 import BossCard from './bossCard/bossCard';
 import _ from 'lodash';
+import { BossMesoInfo } from '../../../models/boss/bossMesoInfo.interface';
 
 class CalcBossMesoCard extends Component {
   state = {
-    bossInfo: bossInfo.boss,
+    bossInfoList: bossInfo.boss as BossMesoInfo[],
   };
 
   testClick = () => {
     console.log('asset : ', bossInfo.boss);
-    console.log('state : ', this.state.bossInfo);
+    console.log('state : ', this.state.bossInfoList);
   }
 
   render() {
+    const { bossInfoList } = this.state;
+
     return (
       <div>
         <Grid container spacing={1}>
@@ -28,7 +31,7 @@ class CalcBossMesoCard extends Component {
               <Grid container spacing={2}>
                 {
                   (
-                    _.map(this.state.bossInfo, (o, index) => {
+                    bossInfoList.map((o: BossMesoInfo, index) => {
                       return (
                         <Grid item xs={6} key={index}>
                           <BossCard data={o} />

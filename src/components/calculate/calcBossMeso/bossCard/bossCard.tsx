@@ -2,17 +2,29 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import image from 'assets/bossImage/eim_dusk.png';
 import { Button, Card, CardMedia, Typography, Divider } from '@material-ui/core';
+import { Theme, createStyles } from '@material-ui/core';
+import { BossMesoInfo } from '../../../../models/boss/bossMesoInfo.interface';
 
-const styles = (theme) => ({
-  difficultyButton: {
-    width: '80%',
-    margin: 5,
-  },
-});
+const styles = (theme: Theme) => (
+  createStyles({
+    difficultyButton: {
+      width: '80%',
+      margin: 5,
+    },
+  })
+);
 
-class BossCard extends Component {
+interface Props {
+  classes: {
+    difficultyButton: string,
+  };
+  data: BossMesoInfo;
+}
+
+class BossCard extends Component<Props> {
   render() {
     const { classes, data } = this.props;
+
     return (
       <Card className="boss-card">
         <CardMedia
@@ -24,7 +36,7 @@ class BossCard extends Component {
           <Divider variant="middle" />
           {
             (
-              _.map(data.rankList, (o, index) => {
+              data.rankList.map((o, index) => {
                 return (
                   <Button
                     color="primary"

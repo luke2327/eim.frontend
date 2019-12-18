@@ -34,6 +34,8 @@ class CalcMesoCard extends Component {
   }
 
   render() {
+    const { monsterExp, monsterMeso, goalExp, result} = this.state;
+
     return (
       <div>
         <Grid container spacing={2} className="col-2-height">
@@ -41,7 +43,7 @@ class CalcMesoCard extends Component {
           <Grid item xs={6} className="flex-vertical">
             <TextField
               label="몹 한마리당 얻는 경험치"
-              value={this.state.monsterExp}
+              value={monsterExp}
               name="monsterExp"
               onChange={this.handleChange}
               type="number"
@@ -50,7 +52,7 @@ class CalcMesoCard extends Component {
             />
             <TextField
               label="몹 한마리당 얻는 메소"
-              value={this.state.monsterMeso}
+              value={monsterMeso}
               name="monsterMeso"
               onChange={this.handleChange}
               type="number"
@@ -59,7 +61,7 @@ class CalcMesoCard extends Component {
             />
             <TextField
               label="목표 경험치량"
-              value={this.state.goalExp}
+              value={goalExp}
               name="goalExp"
               onChange={this.handleChange}
               type="number"
@@ -85,7 +87,7 @@ class CalcMesoCard extends Component {
               천만메소당 잡아야 하는 몹 수
             </Typography>
             <div className="meso-result">
-              {this.comma(this.state.result.mob10Million)} 마리
+              {this.comma(result.mob10Million)} 마리
             </div>
             <div className="divider-margin" />
             <Divider />
@@ -98,7 +100,7 @@ class CalcMesoCard extends Component {
               경험치 1억당 얻는 메소
             </Typography>
             <div className="meso-result">
-              {this.comma(this.state.result.mesoExp100Million)} 메소
+              {this.comma(result.mesoExp100Million)} 메소
             </div>
             <Typography
               variant="overline"
@@ -109,7 +111,7 @@ class CalcMesoCard extends Component {
               목표 경험치 도달시 얻는 메소
             </Typography>
             <div className="meso-result">
-              {this.comma(this.state.result.mesoGoalExp)} 메소
+              {this.comma(result.mesoGoalExp)} 메소
             </div>
           </Grid>
         </Grid>

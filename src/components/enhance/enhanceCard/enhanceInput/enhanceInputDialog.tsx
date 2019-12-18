@@ -15,7 +15,7 @@ import {
   TableCell,
   BottomNavigation,
   BottomNavigationAction,
-  createStyles
+  createStyles,
 } from '@material-ui/core';
 import EnhanceStore from '../../../../stores/enhanceStore';
 import { Item } from '../../../../models/item.interface';
@@ -43,18 +43,18 @@ const styles = () => (
   })
 );
 
-interface Props{
+interface Props {
   classes: {
     root: string,
     tableWrapper: string,
     inputStyle: string,
     toggleSize: string,
-  },
-  enhance: EnhanceStore,
-  open: boolean,
-  clickItem: () => void,
-  onClose: () => void,
-  name: string,
+  };
+  enhance: EnhanceStore;
+  open: boolean;
+  clickItem: () => void;
+  onClose: () => void;
+  name: string;
 }
 
 interface Column {
