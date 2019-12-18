@@ -1,6 +1,6 @@
-# eim.native
+# eim.frontend
 
-### EIM Native Project 2019
+### EIM Frontend Project 2019
 _Everything in MapleStory_
 
 > 본 리포지토리는 EIM 의 네이티브 리포지토리 입니다.
@@ -14,7 +14,7 @@ _Everything in MapleStory_
 
 ## 개발환경 셋팅
 에디터는 VisualStudio Code 를 이용합니다.
-문법관리는 eslintrc 를 이용해 관리합니다. (후에 추가 예정)
+문법관리는 eslintrc 를 이용해 관리합니다. (후에 추가 예정)... (추가 했지만 tslint 사용)
 
 #### 필수 의존성 모듈 설치
 1. node 를 설치합니다. (v10.16.0)
@@ -37,4 +37,4 @@ _Everything in MapleStory_
 4. 폴더 구조 셋팅 및 README 생성
 5. react-router-dom 으로 route 구조 생성 및 enhance 컴포넌트 연동
 6. vod 생성 및 연동
-7. JS to TS 리뉴얼
+7. JS to TS 리뉴얼 (진행 중 : 2019. 09. 01 ~ )
