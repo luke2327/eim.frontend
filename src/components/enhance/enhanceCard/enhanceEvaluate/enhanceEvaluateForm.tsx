@@ -16,7 +16,7 @@ import {
   Legend,
 } from 'recharts';
 import { Grid, Theme, createStyles } from '@material-ui/core';
-import enhanceStore from '../../../../stores/enhanceStore';
+import enhanceStore from 'stores/enhanceStore';
 
 const styles = (theme: Theme) => (
   createStyles({

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, FormControl, InputLabel, Select, MenuItem, Grid, Button } from '@material-ui/core';
 import EnhanceStatCard from './enhanceStatCard';
-import MessageDialog from '../../../msg/messageDialog';
-import EnhanceStore from '../../../../stores/enhanceStore';
-import { ITEM_CLASS } from '../../../../models/itemClass.type';
+import MessageDialog from 'components/msg/messageDialog';
+import EnhanceStore from 'stores/enhanceStore';
+import { ITEM_CLASS } from 'models/enhance/enhanceItemClass.type';
 
 const styles = () => ({
   nameText: {

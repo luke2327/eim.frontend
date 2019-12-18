@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react';
 import WearingTooltip from './wearingTooltip';
 import { Close } from '@material-ui/icons';
 import ReactTooltip from 'react-tooltip';
-import SimulateStore from '../../stores/simulateStore';
+import SimulateStore from 'stores/simulateStore';
 
 interface Props {
   simulate: SimulateStore;

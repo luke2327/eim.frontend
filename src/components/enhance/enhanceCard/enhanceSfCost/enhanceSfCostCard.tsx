@@ -3,8 +3,8 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import { observer, inject } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, FormControl, NativeSelect, Typography, Theme, createStyles } from '@material-ui/core';
-import EnhanceStore from '../../../../stores/enhanceStore';
-import { MVP_GRADE } from '../../../../models/cashGrade.type';
+import EnhanceStore from 'stores/enhanceStore';
+import { MVP_GRADE } from 'models/cashGrade.type';
 
 const styles = (theme: Theme) => (
   createStyles({

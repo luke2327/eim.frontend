@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { observer, inject } from 'mobx-react';
 import { Box, Grid, Input, Theme, createStyles } from '@material-ui/core';
-import EnhanceStore from '../../../../stores/enhanceStore';
-import { STAT_NAME_BASIC, ALL_STAT_NAME, STAT_NAME_ADDITIONAL } from '../../../../models/statName.type';
+import EnhanceStore from 'stores/enhanceStore';
+import { STAT_NAME_BASIC, ALL_STAT_NAME, STAT_NAME_ADDITIONAL } from 'models/statName.type';
 
 const styles = (theme: Theme) => (
   createStyles({

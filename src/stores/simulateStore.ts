@@ -1,9 +1,9 @@
 import { observable, action, toJS } from 'mobx';
-import itemApi from '../libs/api/item';
-import { AltarItem } from '../models/altarItem.interface';
-import { CUBE_POTENTIAL_LEVEL } from '../models/simulate/cubePotentialLevel.type';
-import { MAJOR_EQUIP_SET_LINE } from '../models/simulate/majorEquipSetLine.type';
-import { CallEquipSetLineReq } from '../models/simulate/callEquipSetLineReq.interface';
+import itemApi from 'libs/api/item';
+import { AltarItem } from 'models/altarItem.interface';
+import { CUBE_POTENTIAL_LEVEL } from 'models/simulate/cubePotentialLevel.type';
+import { MAJOR_EQUIP_SET_LINE } from 'models/simulate/majorEquipSetLine.type';
+import { CallEquipSetLineReq } from 'models/simulate/callEquipSetLineReq.interface';
 
 const defaultPotentialLevel = 0;
 const defaultIsHidden = 1;

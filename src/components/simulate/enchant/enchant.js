@@ -9,42 +9,6 @@ import itemApi from '../../../libs/api/item';
 @inject('common')
 @observer
 class SimulateEnchant extends Component {
-  componentDidMount() {
-    this.initialize();
-    if (!this.props.simulate.isInitializeCube) {
-      this.loadItemList();
-    }
-  }
-
-  loadItemList = async () => {
-    _.map(toJS(this.props.simulate.defaultCubeGiven), async (req, given) => {
-      req.label = given;
-      if (given === 'rootAbyss') {
-        const result = await itemApi.getSimulateItemByCube(req);
-        this.props.simulate.cubeItemRootAbyss = result.data;
-      } else if (given === 'absolab') {
-        const result = await itemApi.getSimulateItemByCube(req);
-        this.props.simulate.cubeItemAbsolab = result.data;
-      } else if (given === 'arcaneUmbra') {
-        const result = await itemApi.getSimulateItemByCube(req);
-        this.props.simulate.cubeItemArcaneUmbra = result.data;
-      }
-    });
-
-    const req = {
-      item_no: this.props.simulate.defaultAvailableCubeList,
-    };
-
-    const result = await itemApi.getSimulateAvailableByCube(req);
-    this.props.simulate.availableCubeList = result.data;
-
-    this.props.simulate.isInitializeCube = 1;
-  }
-
-  initialize = async () => {
-    await this.props.simulate.init();
-  }
-
   render() {
     const { simulate, common } = this.props;
 

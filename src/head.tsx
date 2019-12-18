@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import CommonStore from './stores/commonStore';
+import CommonStore from 'stores/commonStore';
 
 class Head extends Component<{common: CommonStore}> {
   render() {

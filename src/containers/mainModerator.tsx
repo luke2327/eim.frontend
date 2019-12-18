@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import EnhanceEquip from '../components/enhance/enhanceEquip';
+import EnhanceEquip from 'components/enhance/enhanceEquip';
 import Simulate from './simulate/simulate';
 import SimulateCube from './simulate/cube/cube';
-import SimulateEnchant from '../components/simulate/enchant/enchant';
-import SimulateSurgery from '../components/simulate/surgery/surgery';
-import SimulateStarforce from '../components/simulate/starforce/starforce';
-import VodList from '../components/vod/vodList';
-import Calculate from '../components/calculate/calculate';
+import SimulateEnchant from 'components/simulate/enchant/enchant';
+import SimulateSurgery from 'components/simulate/surgery/surgery';
+import SimulateStarforce from 'components/simulate/starforce/starforce';
+import VodList from 'components/vod/vodList';
+import Calculate from 'components/calculate/calculate';
 import HeaderCpt from './header/header';
 import Footer from './footer/footer';
-import Notice from '../components/notice/notice';
+import Notice from 'components/notice/notice';
 import MainView from './mainView';
-import Development from '../components/dev/dev';
+import Development from 'components/dev/dev';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';

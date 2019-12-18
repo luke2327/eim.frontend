@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-import api from '../../libs/api/vod';
+import api from 'libs/api/vod';
 import VodListCard from './vodListCard';
-import CrawlingStore from '../../stores/crawlingStore';
-import { VodItem } from '../../models/vod/vod.interface';
+import CrawlingStore from 'stores/crawlingStore';
+import { VodItem } from 'models/vod/vod.interface';
 
 interface Props {
   crawling: CrawlingStore;
