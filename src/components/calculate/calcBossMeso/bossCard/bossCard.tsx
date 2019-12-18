@@ -22,7 +22,6 @@ interface Props {
 }
 
 class BossCard extends Component<Props> {
-
   render() {
     const { classes, data } = this.props;
 
