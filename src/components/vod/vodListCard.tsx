@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { VodItem } from '../../models/vod/vod.interface';
+import { VodItem } from 'models/vod/vod.interface';
 
 interface Props {
   item: VodItem;

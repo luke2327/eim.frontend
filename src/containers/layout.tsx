@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import Head from '../head';
-import locale from '../assets/locale';
+import Head from 'head';
+import locale from 'assets/locale';
 import MainModerator from './mainModerator';
-import CommonStore from '../stores/commonStore';
+import CommonStore from 'stores/commonStore';
 import { IntlProvider } from 'react-intl';
 import { observer, inject } from 'mobx-react';
-import { SUPPORTED_LANGUAGE } from '../models/common/supportedLanguage.type';
-import '../styles/styles.sass';
-import '../styles/custom_bootstrap.sass';
-import '../styles/custom_material.sass';
-import '../styles/enhance.sass';
-import '../styles/simulate.sass';
-import '../styles/vod.sass';
-import '../styles/calculate.sass';
+import { SUPPORTED_LANGUAGE } from 'models/common/supportedLanguage.type';
+import 'styles/styles.sass';
+import 'styles/custom_bootstrap.sass';
+import 'styles/custom_material.sass';
+import 'styles/enhance.sass';
+import 'styles/simulate.sass';
+import 'styles/vod.sass';
+import 'styles/calculate.sass';
 
 interface Props {
   common: CommonStore;

@@ -1,20 +1,20 @@
 import { observable, action } from 'mobx';
-import sfEquip from '../assets/starforceEquip';
-import sfCost from '../assets/starforceCost';
-import { CostInfo } from '../models/costInfo.interface';
-import { STAT_NAME_BASIC, STAT_NAME_ADDITIONAL } from '../models/statName.type';
-import { ITEM_CLASS } from '../models/itemClass.type';
-import { Item } from '../models/item.interface';
-import { CATEGORY } from '../models/category.type';
-import { ITEM_CATEGORY } from '../models/item/itemCategory.type';
-import { MVP_GRADE } from '../models/cashGrade.type';
+import sfEquip from 'assets/starforceEquip';
+import sfCost from 'assets/starforceCost';
+import { CostInfo } from 'models/costInfo.interface';
+import { STAT_NAME_BASIC, STAT_NAME_ADDITIONAL } from 'models/statName.type';
+import { ITEM_CLASS } from 'models/enhance/enhanceItemClass.type';
+import { Item } from 'models/enhance/enhanceItem.interface';
+import { CATEGORY } from 'models/category.type';
+import { ENHANCE_CATE } from 'models/enhance/enhanceCate.type';
+import { MVP_GRADE } from 'models/cashGrade.type';
 
 export default class EnhanceStore {
   @observable item: Item = { // TODO: 초기값을 넣어두는게 타입과 안맞아서 임시로 as문 사용, 초기값을 비울 방법 고려해야함
     item_no: 0,
     cate: '' as CATEGORY,
     name: '',
-    item_cate: '' as ITEM_CATEGORY,
+    item_cate: '' as ENHANCE_CATE,
     level: 0,
     mg_atk: 0,
     atk: 0,

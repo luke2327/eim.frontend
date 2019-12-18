@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Box, Button, createStyles } from '@material-ui/core';
 import EnhanceInputDialog from './enhanceInputDialog';
-import EnhanceStore from '../../../../stores/enhanceStore';
+import EnhanceStore from 'stores/enhanceStore';
 
 const styles = () => (
   createStyles({

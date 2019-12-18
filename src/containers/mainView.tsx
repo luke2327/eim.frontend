@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LeftSide from '../components/layout/leftSide';
-import RightSide from '../components/layout/rightSide';
-import CenterTop from '../components/layout/centerTop';
-import CenterCenter from '../components/layout/centerCenter';
+import LeftSide from 'components/layout/leftSide';
+import RightSide from 'components/layout/rightSide';
+import CenterTop from 'components/layout/centerTop';
+import CenterCenter from 'components/layout/centerCenter';
 
 export default class MainView extends Component {
   render() {

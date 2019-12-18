@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Box } from '@material-ui/core';
 import EnhanceInputFalse from './enhanceInput/enhanceInputFalse';
 import EnhanceInputForm from './enhanceInput/enhanceInputForm';
-import EnhanceStore from '../../../stores/enhanceStore';
+import EnhanceStore from 'stores/enhanceStore';
 
 interface Props {
   enhance: EnhanceStore,

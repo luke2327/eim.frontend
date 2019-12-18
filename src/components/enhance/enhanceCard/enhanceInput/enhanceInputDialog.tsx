@@ -17,11 +17,11 @@ import {
   BottomNavigationAction,
   createStyles
 } from '@material-ui/core';
-import EnhanceStore from '../../../../stores/enhanceStore';
-import { Item } from '../../../../models/item.interface';
-import itemApi from '../../../../libs/api/item';
-import { SEARCH_ITEM } from '../../../../models/searchItem.type';
-import { ITEM_TYPE } from '../../../../models/item.type';
+import EnhanceStore from 'stores/enhanceStore';
+import { Item } from 'models/enhance/enhanceItem.interface';
+import itemApi from 'libs/api/item';
+import { SEARCH_ITEM } from 'models/searchItem.type';
+import { ITEM_TYPE } from 'models/enhance/enhanceItem.type';
 
 const styles = () => (
   createStyles({

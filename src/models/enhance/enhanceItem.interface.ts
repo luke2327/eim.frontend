@@ -1,11 +1,11 @@
-import { CATEGORY } from './category.type';
-import { ITEM_CATEGORY } from './item/itemCategory.type';
+import { CATEGORY } from '../category.type';
+import { ENHANCE_CATE } from './enhanceCate.type';
 
 export interface Item {
   item_no: number;
   cate: CATEGORY;
   name: string;
-  item_cate: ITEM_CATEGORY;
+  item_cate: ENHANCE_CATE;
   level: 0 | 150 | 160 | 200;
   mg_atk: number;
   atk: number;

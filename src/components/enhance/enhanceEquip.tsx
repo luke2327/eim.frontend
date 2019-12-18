@@ -7,8 +7,8 @@ import EnhanceEvaluateForm from './enhanceCard/enhanceEvaluate/enhanceEvaluateFo
 import LeftSide from '../layout/leftSide';
 import { FormattedHTMLMessage } from 'react-intl';
 import EnhanceSfCostCard from './enhanceCard/enhanceSfCost/enhanceSfCostCard';
-import EnhanceStore from '../../stores/enhanceStore';
-import itemApi from '../../libs/api/item';
+import EnhanceStore from 'stores/enhanceStore';
+import itemApi from 'libs/api/item';
 import { inject, observer } from 'mobx-react';
 
 const styles = (theme: Theme) => (

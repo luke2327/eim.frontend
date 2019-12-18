@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
-import { SUPPORTED_HEADER_TAB } from '../models/common/supportedHeaderTab.type';
-import { SUPPORTED_LANGUAGE } from '../models/common/supportedLanguage.type';
-import { SUPPORTED_THEME } from '../models/common/supportedTheme.type';
+import { SUPPORTED_HEADER_TAB } from 'models/common/supportedHeaderTab.type';
+import { SUPPORTED_LANGUAGE } from 'models/common/supportedLanguage.type';
+import { SUPPORTED_THEME } from 'models/common/supportedTheme.type';
 
 export default class CommonStore {
   // 2019-12-16 liam

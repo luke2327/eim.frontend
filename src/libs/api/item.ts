@@ -1,6 +1,6 @@
 import api from './common';
-import { SEARCH_ITEM } from '../../models/searchItem.type';
-import { SUPPORTED_LANGUAGE } from '../../models/common/supportedLanguage.type';
+import { SEARCH_ITEM } from 'models/searchItem.type';
+import { SUPPORTED_LANGUAGE } from 'models/common/supportedLanguage.type';
 
 interface LocaleType {
   locale: SUPPORTED_LANGUAGE;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import { toJS } from 'mobx';
-import CubeMainMenu from '../../../components/simulate/cube/cubeMainMenu';
-import CubeMethod from '../../../components/simulate/cube/cubeMethod';
-import CubeCalc from '../../../components/simulate/cube/cubeCalc';
-import ItemPotential from '../../../components/simulate/cube/itemPotential';
-import WearingEquip from '../../../components/simulate/wearingEquip';
-import CommonStore from '../../../stores/commonStore';
-import SimulateStore from '../../../stores/simulateStore';
+import CubeMainMenu from 'components/simulate/cube/cubeMainMenu';
+import CubeMethod from 'components/simulate/cube/cubeMethod';
+import CubeCalc from 'components/simulate/cube/cubeCalc';
+import ItemPotential from 'components/simulate/cube/itemPotential';
+import WearingEquip from 'components/simulate/wearingEquip';
+import CommonStore from 'stores/commonStore';
+import SimulateStore from 'stores/simulateStore';
 
 interface Props {
   common: CommonStore;
