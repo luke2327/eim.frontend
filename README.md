@@ -3,9 +3,9 @@
 ### EIM Frontend Project 2019
 _Everything in MapleStory_
 
-> 본 리포지토리는 EIM 의 네이티브 리포지토리 입니다.
+> 해당 리포지토리는 EIM 의 프론트엔드 리포지토리 입니다.
 
-본 프로젝트는 현재 3개의 리포지토리를 가지고 있습니다.
+해당 프로젝트는 현재 3개의 리포지토리를 가지고 있습니다.
 * [프론트엔드 리포지토리](https://github.com/luke2327/eim.frontend)
 * [네이티브 리포지토리](https://github.com/luke2327/eim.native)
 * [백엔드 리포지토리](https://github.com/luke2327/eim.backend)
